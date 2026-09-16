@@ -1,10 +1,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Spectral Matrix · תקציר למשקיעים</title>
+<title>Spectral Matrix · Обзор для инвесторов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root {
     --paper: #F4F5F3;
@@ -20,7 +20,7 @@
     --band: #0F151B;
     --band-text: #EEF1F2;
     --band-muted: #9AA6AE;
-    --sans: "Heebo", "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
     --measure: 62ch;
     --wide: 1120px;
@@ -47,7 +47,6 @@
     color-scheme: dark;
   }
 
-  :root { direction: rtl; }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
@@ -55,24 +54,24 @@
     margin: 0; background: var(--paper); color: var(--ink-2);
     font-family: var(--sans); font-size: 17px; line-height: 1.65;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-    
+    font-feature-settings: "cv11", "ss01";
   }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
   a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
   h1, h2, h3, h4 { font-family: var(--sans); margin: 0; color: var(--ink); text-wrap: balance; }
-  h1 { font-weight: 700; font-size: clamp(2.3rem, 1.4rem + 2.8vw, 4rem); line-height: 1.06; letter-spacing: 0; }
-  h2 { font-weight: 600; font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.6rem); line-height: 1.12; letter-spacing: 0; max-width: 24ch; }
-  h3 { font-weight: 600; font-size: 1.2rem; line-height: 1.3; letter-spacing: 0; }
-  h4 { font-weight: 600; font-size: 1rem; line-height: 1.35; letter-spacing: 0; }
+  h1 { font-weight: 700; font-size: clamp(2.3rem, 1.4rem + 2.8vw, 4rem); line-height: 1.06; letter-spacing: -0.03em; }
+  h2 { font-weight: 600; font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.6rem); line-height: 1.12; letter-spacing: -0.025em; max-width: 24ch; }
+  h3 { font-weight: 600; font-size: 1.2rem; line-height: 1.3; letter-spacing: -0.012em; }
+  h4 { font-weight: 600; font-size: 1rem; line-height: 1.35; letter-spacing: -0.005em; }
   p { margin: 0; text-wrap: pretty; }
   p + p { margin-top: 1em; }
   .eyebrow { font-family: var(--sans); font-size: .76rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
   .mono { font-family: var(--mono); }
   .measure { max-width: var(--measure); }
-  .lede { font-size: 1.32rem; line-height: 1.5; color: var(--ink-2); max-width: 56ch; font-weight: 400; letter-spacing: 0; }
+  .lede { font-size: 1.32rem; line-height: 1.5; color: var(--ink-2); max-width: 56ch; font-weight: 400; letter-spacing: -0.005em; }
   strong { font-weight: 600; color: var(--ink); }
-  .num { font-family: var(--sans); font-weight: 700; letter-spacing: 0; line-height: .95; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .num { font-family: var(--sans); font-weight: 700; letter-spacing: -0.035em; line-height: .95; font-variant-numeric: tabular-nums; color: var(--ink); }
   .num.mark { color: var(--mark); }
 
   /* ---------- icons ---------- */
@@ -99,18 +98,18 @@
   .wrap { width: min(var(--wide), 100% - 2.5rem); margin-inline: auto; }
   .page { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 3.5rem; align-items: start; }
   .rail { position: sticky; top: 1.5rem; padding-top: 4rem; }
-  .rail .eyebrow { margin-bottom: 1rem; padding-inline-start: 1rem; }
-  .rail ol { list-style: none; margin: 0; padding: 0; border-inline-start: 1px solid var(--rule); position: relative; }
-  .rail ol::before { content: ""; position: absolute; inset-inline-start: -1px; top: var(--y, 0px); height: var(--h, 0px); width: 2px; background: var(--mark); transition: top .5s var(--ease), height .5s var(--ease); }
-  .rail a { display: block; padding: .6rem 1rem; margin-inline-start: 2px; border-radius: 8px; text-decoration: none; font-size: 1.02rem; font-weight: 500; line-height: 1.3; letter-spacing: 0; color: var(--muted); transition: color .25s ease, background-color .25s ease; }
+  .rail .eyebrow { margin-bottom: 1rem; padding-left: 1rem; }
+  .rail ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--rule); position: relative; }
+  .rail ol::before { content: ""; position: absolute; left: -1px; top: var(--y, 0px); height: var(--h, 0px); width: 2px; background: var(--mark); transition: top .5s var(--ease), height .5s var(--ease); }
+  .rail a { display: block; padding: .6rem 1rem; margin-left: 2px; border-radius: 8px; text-decoration: none; font-size: 1.02rem; font-weight: 500; line-height: 1.3; letter-spacing: -0.005em; color: var(--muted); transition: color .25s ease, background-color .25s ease; }
   .rail a:hover { color: var(--ink); background: var(--panel); }
   .rail a.on { color: var(--ink); }
-  .rail .note { margin-top: 1.5rem; padding-inline-start: 1rem; font-size: .8rem; line-height: 1.55; color: var(--muted); max-width: 24ch; }
+  .rail .note { margin-top: 1.5rem; padding-left: 1rem; font-size: .8rem; line-height: 1.55; color: var(--muted); max-width: 24ch; }
   main { min-width: 0; }
   section { padding-block: clamp(4rem, 3rem + 3vw, 6.5rem); border-top: 1px solid var(--rule); scroll-margin-top: 1rem; }
   section:first-of-type { border-top: 0; }
   .sec-head { display: grid; gap: 1.1rem; margin-bottom: 3rem; position: relative; }
-  .sec-head .eyebrow::before { content: attr(data-n); color: var(--mark); margin-inline-end: .9em; }
+  .sec-head .eyebrow::before { content: attr(data-n); color: var(--mark); margin-right: .9em; }
   .sec-head .lead { max-width: var(--measure); color: var(--ink-2); font-size: 1.15rem; line-height: 1.6; }
   .sec-head::after { content: ""; display: block; width: 3rem; height: 2px; background: var(--mark); margin-top: .6rem; }
 
@@ -121,14 +120,14 @@
   .hero h1 { margin-top: 1.3rem; max-width: 20ch; }
   .hero .lede { margin-top: 1.6rem; }
   .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 3rem 0 0; padding: 0; border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); }
-  .facts > div { padding-block: 1.4rem; padding-inline: 0 1.4rem; border-inline-end: 1px solid var(--rule); }
-  .facts > div:last-child { border-inline-end: 0; }
-  .facts > div + div { padding-inline-start: 1.4rem; }
+  .facts > div { padding: 1.4rem 1.4rem 1.4rem 0; border-right: 1px solid var(--rule); }
+  .facts > div:last-child { border-right: 0; }
+  .facts > div + div { padding-left: 1.4rem; }
   .facts .eyebrow { margin-bottom: .55rem; }
-  .facts .v { font-weight: 600; font-size: 1.15rem; line-height: 1.3; letter-spacing: 0; color: var(--ink); }
+  .facts .v { font-weight: 600; font-size: 1.15rem; line-height: 1.3; letter-spacing: -0.012em; color: var(--ink); }
   .chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 3rem; }
-  .chain > div { position: relative; padding-block: 1.3rem; padding-inline: 0 1.4rem; }
-  .chain > div + div { padding-inline-start: 1.6rem; }
+  .chain > div { position: relative; padding: 1.3rem 1.4rem 1.3rem 0; }
+  .chain > div + div { padding-left: 1.6rem; }
   /* the stage: one small scene per station; the link: the signal between them */
   .chain .stage { width: 3rem; height: 3rem; display: block; margin-bottom: .8rem; color: var(--mark); overflow: visible; }
   .chain .stage use { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -149,32 +148,7 @@
   .plate { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 1.6rem 1.7rem 1.4rem; }
   .plate-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; margin-bottom: .9rem; }
   .plate-head .eyebrow { color: var(--ink-2); }
-  .plate svg { width: 100%; height: auto; display: block; direction: ltr; }
-  .proc, .fly svg { direction: ltr; }
-  .proc .logs .ln { transform-origin: right; }
-  .figwrap { position: relative; container-type: inline-size; }
-  .svg-labels { position: absolute; inset: 0; pointer-events: none; direction: rtl; font-family: var(--sans); }
-  .svg-labels span { position: absolute; top: calc(var(--y) / var(--vh) * 100%); white-space: nowrap; line-height: 1; transform: translateY(-78%); font-size: calc(var(--fs) * 1px); font-size: calc(var(--fs) * 100cqw / var(--vw)); }
-  .svg-labels .mid { left: calc(var(--x) / var(--vw) * 100%); transform: translate(-50%, -78%); }
-  .svg-labels .end { right: calc((var(--vw) - var(--x)) / var(--vw) * 100%); }
-  .svg-labels .rl { --fs: 12; font-weight: 500; letter-spacing: .02em; color: var(--muted); }
-  .svg-labels .rl.r2 { color: var(--mark); }
-  .svg-labels .fcap { --fs: 11.5; color: var(--muted); }
-  .svg-labels .lbl { --fs: 10.5; font-weight: 600; letter-spacing: .1em; color: var(--muted); }
-  .svg-labels .lock { --fs: 9.5; font-weight: 700; letter-spacing: .1em; color: var(--muted); }
-  .svg-labels .lock.lost { color: var(--mark); opacity: 0; }
-  .svg-labels .centre { --fs: 12; font-weight: 600; letter-spacing: .12em; color: var(--muted); }
-  .svg-labels .cap-s, .svg-labels .lbl-s { display: none; }
-  .js .svg-labels .rl, .js .svg-labels .fcap { opacity: 0; }
-  .js .output.go .svg-labels .lock.ok { animation: lock-ok 7s linear infinite; }
-  .js .output.go .svg-labels .lock.lost { animation: lock-lost 7s linear infinite; }
-  @media (max-width: 560px) {
-    .svg-labels .rl, .svg-labels .fcap, .svg-labels .lbl { --fs: 15; }
-    .svg-labels .lock { --fs: 13; }
-    .svg-labels .cap-l, .svg-labels .lbl-l { display: none; }
-    .svg-labels .cap-s, .svg-labels .lbl-s { display: block; }
-  }
-
+  .plate svg { width: 100%; height: auto; display: block; }
   .fig1 .axis { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk line { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk text { font-family: var(--mono); font-size: 11px; font-weight: 400; fill: var(--muted); text-anchor: middle; }
@@ -200,10 +174,10 @@
   figure img { width: 100%; height: auto; border-radius: 12px; filter: saturate(.85) contrast(1.02); }
   figcaption { font-size: .86rem; line-height: 1.5; color: var(--muted); margin-top: .7rem; }
   figcaption b { color: var(--ink); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; font-size: .72rem; display: block; margin-bottom: .2rem; }
-  .callout { border-inline-start: 3px solid var(--mark); padding-block: .2rem; padding-inline: 1.2rem 0; font-size: 1.25rem; line-height: 1.45; color: var(--ink); font-weight: 500; letter-spacing: 0; max-width: var(--measure); margin-top: 2rem; }
+  .callout { border-left: 3px solid var(--mark); padding: .2rem 0 .2rem 1.2rem; font-size: 1.25rem; line-height: 1.45; color: var(--ink); font-weight: 500; letter-spacing: -0.01em; max-width: var(--measure); margin-top: 2rem; }
 
   /* ---------- technical notes ---------- */
-  .pro { margin-top: 3rem; max-width: var(--wide); background: var(--panel); border-radius: 14px; border-inline-start: 3px solid var(--mark); padding: 1.7rem 1.9rem 1.8rem; }
+  .pro { margin-top: 3rem; max-width: var(--wide); background: var(--panel); border-radius: 14px; border-left: 3px solid var(--mark); padding: 1.7rem 1.9rem 1.8rem; }
   .pro > .eyebrow { color: var(--mark); margin-bottom: .6rem; }
   .pro > h3 { font-size: 1.25rem; max-width: 44ch; margin-bottom: 1.2rem; }
   .pro .body { font-size: 1rem; line-height: 1.65; color: var(--ink-2); display: grid; gap: 1.2rem; max-width: 72ch; }
@@ -227,30 +201,30 @@
   .loop { list-style: none; padding: 0; margin: 0; counter-reset: st; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; position: relative; }
   .loop::before { content: ""; position: absolute; left: 0; right: 0; top: 1.05rem; height: 1px; background: var(--rule-2); }
   .loop li { position: relative; padding-top: 2.6rem; }
-  .loop li::before { counter-increment: st; content: counter(st, decimal-leading-zero); position: absolute; top: 0; inset-inline-start: 0; font-size: .78rem; font-weight: 700; letter-spacing: .08em; background: var(--paper); color: var(--mark); padding-block: .3rem; padding-inline: 0 .5rem; line-height: 1.2; }
+  .loop li::before { counter-increment: st; content: counter(st, decimal-leading-zero); position: absolute; top: 0; left: 0; font-size: .78rem; font-weight: 700; letter-spacing: .08em; background: var(--paper); color: var(--mark); padding: .3rem .5rem .3rem 0; line-height: 1.2; }
   .loop h3 { font-size: 1.05rem; margin-bottom: .4rem; }
   .loop p { font-size: .98rem; color: var(--ink-2); line-height: 1.55; }
   .loop-return { margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--mark); }
   .loop-return i { flex: 1; height: 1px; background: var(--mark); position: relative; }
-  .loop-return i::before { content: ""; position: absolute; inset-inline-start: 0; top: -4px; border: 4.5px solid transparent; border-inline-end: 7px solid var(--mark); }
+  .loop-return i::before { content: ""; position: absolute; left: 0; top: -4px; border: 4.5px solid transparent; border-right: 7px solid var(--mark); }
 
   /* the output: process becomes a file */
   .output { margin-top: 3rem; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 2.5rem; align-items: center; border: 1px solid var(--rule); border-radius: 16px; padding: 2rem 2.2rem; background: var(--panel); }
   .output svg { width: 100%; height: auto; display: block; }
   .output .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: #fff; background: var(--mark); padding: .4rem .7rem; border-radius: 999px; margin-bottom: .9rem; }
-  .output h3 { font-size: 1.45rem; letter-spacing: 0; margin-bottom: .6rem; }
+  .output h3 { font-size: 1.45rem; letter-spacing: -0.02em; margin-bottom: .6rem; }
   .output p { font-size: 1.05rem; color: var(--ink-2); }
   .proc .st circle, .proc .rx circle { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; }
   .proc .st use, .proc .rx use { color: var(--ink); }
-  .proc .lbl { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .12em; fill: var(--muted); text-anchor: middle; }
+  .proc .lbl { font-size: 10px; font-weight: 600; letter-spacing: .12em; fill: var(--muted); text-anchor: middle; }
   .proc .track { stroke: var(--rule-2); stroke-dasharray: 3 6; fill: none; }
   .proc .wv { fill: none; stroke: var(--mark); stroke-width: 2; stroke-linecap: round; opacity: .35; }
   .proc .chamber { fill: none; stroke: var(--rule-2); stroke-width: 1.2; stroke-dasharray: 4 4; }
-  .proc .lock { font-family: var(--sans); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-anchor: middle; fill: var(--muted); }
+  .proc .lock { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-anchor: middle; fill: var(--muted); }
   .proc .lock.lost { fill: var(--mark); opacity: 0; }
   .proc .logs .panel { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1.2; }
   .proc .logs .ttl { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; fill: var(--muted); }
-  .proc .logs .ln { fill: var(--rule-2); transform-box: fill-box; transform-origin: right; }
+  .proc .logs .ln { fill: var(--rule-2); transform-box: fill-box; transform-origin: left; }
   .proc .logs .ln.hit { fill: var(--mark); }
   .proc .opt use { transform-box: fill-box; transform-origin: center; }
   .proc .lbl-s, .plate svg .cap-s { display: none; }
@@ -277,15 +251,15 @@
   .cmp table { min-width: 0; table-layout: fixed; }
   .cmp thead th:first-child { width: 21%; }
   table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 620px; font-size: 1rem; }
-  th, td { text-align: start; vertical-align: top; padding: 1.05rem 1.2rem; border-bottom: 1px solid var(--rule); line-height: 1.5; }
-  thead th { font-weight: 600; font-size: 1.05rem; letter-spacing: 0; color: var(--ink); background: var(--panel); border-bottom: 1px solid var(--rule-2); padding-top: 1.3rem; padding-bottom: 1.2rem; }
+  th, td { text-align: left; vertical-align: top; padding: 1.05rem 1.2rem; border-bottom: 1px solid var(--rule); line-height: 1.5; }
+  thead th { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); background: var(--panel); border-bottom: 1px solid var(--rule-2); padding-top: 1.3rem; padding-bottom: 1.2rem; }
   thead th small { display: block; font-weight: 400; font-size: .86rem; color: var(--muted); margin-top: .3rem; letter-spacing: 0; }
   tbody th { font-weight: 600; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 1.2rem; line-height: 1.45; }
   td { color: var(--ink-2); }
   th.us, td.us { background: var(--mark-soft); color: var(--ink); }
   thead th.us { color: var(--mark); box-shadow: inset 0 3px 0 var(--mark); }
   td.us { font-weight: 500; }
-  td.us .ok { display: inline-block; width: 1.1rem; height: 1.1rem; vertical-align: -.2rem; margin-inline-end: .45rem; color: var(--mark); stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  td.us .ok { display: inline-block; width: 1.1rem; height: 1.1rem; vertical-align: -.2rem; margin-right: .45rem; color: var(--mark); stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   tbody tr { transition: background-color .25s ease; }
   tbody tr:hover td:not(.us), tbody tr:hover th { background: var(--panel); }
@@ -299,7 +273,7 @@
   .tile .num { font-size: clamp(2.6rem, 2rem + 2.2vw, 4rem); }
   .tile .per { font-size: .86rem; color: var(--muted); }
   .tile h3 { margin-top: .7rem; }
-  .tile ul { margin: .4rem 0 0; padding-inline-start: 1.2rem; font-size: 1rem; color: var(--ink-2); }
+  .tile ul { margin: .4rem 0 0; padding-left: 1.2rem; font-size: 1rem; color: var(--ink-2); }
   .tile li + li { margin-top: .4rem; }
 
   /* flywheel: interactive */
@@ -313,10 +287,10 @@
   .fly .node.pop circle { transform: scale(1.28); fill: var(--mark-soft); }
   .fly-panel .all li:not(.back) { transition-duration: .8s; }
   .fly-panel { grid-column: 2; grid-row: 1; }
-  .fly-all { grid-column: 1; grid-row: 2; justify-self: center; margin-top: .4rem; font: inherit; font-size: .92rem; font-weight: 500; color: var(--mark); background: none; border: 0; padding: .3rem .2rem; cursor: pointer; letter-spacing: 0; border-bottom: 1px solid transparent; transition: border-color .25s ease; }
+  .fly-all { grid-column: 1; grid-row: 2; justify-self: center; margin-top: .4rem; font: inherit; font-size: .92rem; font-weight: 500; color: var(--mark); background: none; border: 0; padding: .3rem .2rem; cursor: pointer; letter-spacing: -0.005em; border-bottom: 1px solid transparent; transition: border-color .25s ease; }
   .fly-all span { display: inline-block; transition: transform .35s var(--ease); }
   .fly-all:hover { border-bottom-color: var(--mark); }
-  .fly-all:hover span { transform: translateX(-3px); }
+  .fly-all:hover span { transform: translateX(3px); }
   .fly-panel .all { list-style: none; margin: 0; padding: 0; counter-reset: fa; display: grid; gap: 1rem; }
   .fly-panel .all li:not(.back) { display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: .6rem; row-gap: .15rem; align-items: start; opacity: 0; transform: translateY(10px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
   .fly-panel .all li.show { opacity: 1; transform: none; }
@@ -332,10 +306,10 @@
   .fly .node:hover circle, .fly .node.on circle { stroke: var(--mark); transform: scale(1.12); }
   .fly .node.on circle { fill: var(--mark-soft); }
   .fly .node:hover use, .fly .node.on use { color: var(--mark); }
-  .fly .centre { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; fill: var(--muted); text-anchor: middle; }
+  .fly .centre { font-size: 11px; font-weight: 600; letter-spacing: .14em; fill: var(--muted); text-anchor: middle; }
   .fly-panel { min-height: 11rem; }
   .fly-panel .step { font-size: .76rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--mark); margin-bottom: .6rem; }
-  .fly-panel h3 { font-size: 1.6rem; letter-spacing: 0; margin-bottom: .6rem; }
+  .fly-panel h3 { font-size: 1.6rem; letter-spacing: -0.02em; margin-bottom: .6rem; }
   .fly-panel p { font-size: 1.08rem; color: var(--ink-2); max-width: 44ch; }
   .fly-panel .dots { display: flex; gap: .45rem; margin-top: 1.4rem; }
   .fly-panel .dots i { width: 1.8rem; height: 3px; border-radius: 2px; background: var(--rule); transition: background-color .3s ease; }
@@ -346,12 +320,12 @@
   /* ---------- market ---------- */
   /* three columns on one baseline grid: label row, figure row, text row */
   .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); }
-  .stats > div { display: grid; grid-template-rows: subgrid; grid-row: span 3; padding-block: 1.7rem; padding-inline: 0 1.6rem; border-inline-end: 1px solid var(--rule); row-gap: .6rem; }
-  .stats > div + div { padding-inline-start: 1.6rem; }
-  .stats > div:last-child { border-inline-end: 0; }
+  .stats > div { display: grid; grid-template-rows: subgrid; grid-row: span 3; padding: 1.7rem 1.6rem 1.7rem 0; border-right: 1px solid var(--rule); row-gap: .6rem; }
+  .stats > div + div { padding-left: 1.6rem; }
+  .stats > div:last-child { border-right: 0; }
   .stats .eyebrow { align-self: start; }
   .stats .num { font-size: clamp(2.6rem, 2rem + 2.4vw, 4.2rem); align-self: end; margin: 0; }
-  .stats .big-text { font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin: 0; letter-spacing: 0; color: var(--ink); align-self: end; }
+  .stats .big-text { font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin: 0; letter-spacing: -0.015em; color: var(--ink); align-self: end; }
   .stats p { font-size: 1rem; color: var(--ink-2); align-self: start; }
 
   /* ---------- why now ---------- */
@@ -369,7 +343,7 @@
   .road { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; position: relative; }
   .road::before { content: ""; position: absolute; left: 0; right: 0; top: .55rem; height: 1px; background: var(--rule-2); }
   .road li { position: relative; padding-top: 2rem; }
-  .road li::before { content: ""; position: absolute; top: 0; inset-inline-start: 0; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--rule-2); background: var(--paper); }
+  .road li::before { content: ""; position: absolute; top: 0; left: 0; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--rule-2); background: var(--paper); }
   .road li.done::before { background: var(--ink); border-color: var(--ink); }
   .road li.fund::before { background: var(--mark); border-color: var(--mark); }
   .road .when { font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
@@ -385,7 +359,7 @@
   .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.1rem; }
   .card-head .eyebrow { color: var(--ink); }
   .card.prove .card-head .eyebrow { color: var(--mark); }
-  .card-head .count { font-weight: 700; font-size: 1.6rem; letter-spacing: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .card-head .count { font-weight: 700; font-size: 1.6rem; letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
   .card.prove .card-head .count { color: var(--mark); }
   .card ul { list-style: none; margin: 0; padding: 0; }
   .card li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .9rem; align-items: start; padding: .85rem 0; border-top: 1px solid var(--rule); font-size: 1rem; color: var(--ink-2); }
@@ -405,18 +379,18 @@
   .team li { display: grid; grid-template-columns: minmax(0, .46fr) minmax(0, 1fr); gap: 3rem; align-items: start; padding: 2.4rem 0; border-bottom: 1px solid var(--rule-2); }
   .team li:last-child { border-bottom: 0; }
   .team .who { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr); gap: 1.2rem; align-items: center; }
-  .team .mono-gram { width: 4.2rem; height: 4.2rem; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; }
+  .team .mono-gram { width: 4.2rem; height: 4.2rem; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
   .team li.lead .mono-gram { background: var(--mark); color: #fff; }
   .team .role { font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mark); margin-bottom: .35rem; }
-  .team h3 { font-size: 1.55rem; letter-spacing: 0; line-height: 1.15; }
+  .team h3 { font-size: 1.55rem; letter-spacing: -0.025em; line-height: 1.15; }
   .team h3 { font-size: 1.4rem; }
   .team .where { margin-top: .35rem; font-size: .92rem; color: var(--muted); }
   .team p.bio { font-size: 1.05rem; line-height: 1.65; color: var(--ink-2); max-width: 58ch; }
-  .team p.does { margin-top: 1rem; padding-inline-start: 1.1rem; border-inline-start: 2px solid var(--mark); font-weight: 500; color: var(--ink); font-size: 1rem; max-width: 56ch; }
+  .team p.does { margin-top: 1rem; padding-left: 1.1rem; border-left: 2px solid var(--mark); font-weight: 500; color: var(--ink); font-size: 1rem; max-width: 56ch; }
 
   /* ---------- ask ---------- */
   .ask { background: var(--band); color: var(--band-text); border-top: 0; margin-top: clamp(3rem, 2rem + 3vw, 5rem); position: relative; overflow: hidden; }
-  .ask .watermark { position: absolute; inset-inline-end: -2%; bottom: -6%; height: 62%; width: auto; opacity: .07; pointer-events: none; user-select: none; }
+  .ask .watermark { position: absolute; right: -2%; bottom: -6%; height: 62%; width: auto; opacity: .07; pointer-events: none; user-select: none; }
   .ask .wrap-in { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 4vw, 5rem); align-items: start; position: relative; }
   .ask .eyebrow { color: var(--band-muted); }
   .ask .num { color: var(--band-text); font-size: clamp(4.5rem, 3rem + 4.5vw, 7rem); margin-top: .5rem; }
@@ -429,7 +403,7 @@
   .use p { color: var(--band-muted); font-size: 1rem; }
   .milestone { margin-top: 1.8rem; border: 1px solid var(--mark); border-radius: 12px; padding: 1.1rem 1.3rem; display: grid; gap: .25rem; }
   .milestone .eyebrow { color: var(--mark); }
-  .milestone .v { font-weight: 600; font-size: 1.2rem; color: var(--band-text); letter-spacing: 0; }
+  .milestone .v { font-weight: 600; font-size: 1.2rem; color: var(--band-text); letter-spacing: -0.01em; }
   .contacts { margin-top: 2rem; display: flex; gap: 2.5rem; flex-wrap: wrap; }
   .contacts .role { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mark); }
   .contacts .name { font-weight: 600; font-size: 1.15rem; color: var(--band-text); margin-top: .2rem; }
@@ -445,7 +419,7 @@
     .js .brand::after { animation: sheen 1.3s cubic-bezier(.4, 0, .2, 1) .9s forwards; }
     @keyframes settle { to { opacity: 1; transform: none; } }
     @keyframes sheen { to { transform: translateX(120%); } }
-    .js .ask .watermark { opacity: 0; transform: translateX(-24px); transition: opacity 1.4s var(--ease), transform 1.4s var(--ease); }
+    .js .ask .watermark { opacity: 0; transform: translateX(24px); transition: opacity 1.4s var(--ease), transform 1.4s var(--ease); }
     .js .ask.in .watermark { opacity: .07; transform: none; }
 
     /* flow: blocks rise into place, grids stagger their items */
@@ -471,7 +445,7 @@
     .js .hero.in > * { transition-duration: 1.1s; }
 
     /* section rule */
-    .js .sec-head::after { transform: scaleX(0); transform-origin: right; }
+    .js .sec-head::after { transform: scaleX(0); transform-origin: left; }
     .js section.in .sec-head::after { animation: grow .6s var(--ease) .4s forwards; }
     @keyframes grow { to { transform: scaleX(1); } }
 
@@ -514,7 +488,7 @@
     @keyframes lock-hit { 0% { filter: brightness(1); transform: scale(1); } 8% { filter: brightness(1.5); transform: scale(1.12); } 14%, 100% { filter: brightness(1); transform: scale(1); } }
 
     /* the loop */
-    .js .loop::before { transform: scaleX(0); transform-origin: right; }
+    .js .loop::before { transform: scaleX(0); transform-origin: left; }
     .js .loop.go::before { animation: grow 1s cubic-bezier(.2,.7,.2,1) .6s forwards; }
     .js .loop li::before { color: var(--muted); }
     .js .loop.go li::before { animation: step .5s ease forwards; }
@@ -541,7 +515,7 @@
     .js .output.go .proc .wv { animation: wave-out 7s ease-out infinite; }
     .js .output.go .proc .wv:nth-child(2) { animation-delay: .3s; }
     .js .output.go .proc .wv:nth-child(3) { animation-delay: .6s; }
-    @keyframes wave-out { 0% { opacity: 0; transform: translateX(6px); } 3% { opacity: .9; } 12% { opacity: 0; transform: translateX(-22px); } 100% { opacity: 0; } }
+    @keyframes wave-out { 0% { opacity: 0; transform: translateX(-6px); } 3% { opacity: .9; } 12% { opacity: 0; transform: translateX(22px); } 100% { opacity: 0; } }
     .js .output.go .proc .rx circle { animation: rx-hit 7s ease infinite; }
     @keyframes rx-hit { 0%, 19% { stroke: var(--rule-2); transform: scale(1); } 22%, 30% { stroke: var(--mark); transform: scale(1.1); } 34%, 100% { stroke: var(--rule-2); transform: scale(1); } }
     .js .output.go .proc .rx use { animation: rx-tint 7s ease infinite; }
@@ -625,7 +599,7 @@
     @keyframes bar { to { box-shadow: inset 0 3px 0 var(--mark); } }
 
     /* roadmap */
-    .js .road::before { transform: scaleX(0); transform-origin: right; }
+    .js .road::before { transform: scaleX(0); transform-origin: left; }
     .js .road.go::before { animation: grow .9s cubic-bezier(.2,.7,.2,1) .5s forwards; }
     .js .road li::before { transform: scale(.4); opacity: .4; }
     .js .road.go li::before { animation: set .45s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -649,7 +623,7 @@
     .js .board.go .card.prove li:nth-child(2) .ring { animation-delay: 2.1s; }
     .js .board.go .card.prove li:nth-child(3) .ring { animation-delay: 2.4s; }
     @keyframes ping { 30% { transform: scale(1.25); stroke-width: 2.6; } 100% { transform: scale(1); } }
-    .js .progress i { transform: scaleX(0); transform-origin: right; }
+    .js .progress i { transform: scaleX(0); transform-origin: left; }
     .js .progress.go i { animation: grow .5s var(--ease) forwards; }
     .js .progress.go i:nth-child(1) { animation-delay: .5s; }
     .js .progress.go i:nth-child(2) { animation-delay: .6s; }
@@ -671,7 +645,7 @@
     .page { grid-template-columns: minmax(0, 1fr); gap: 0; }
     .rail { position: sticky; top: 0; z-index: 5; padding-top: 0; background: var(--paper); border-bottom: 1px solid var(--rule); }
     .rail .eyebrow, .rail .note { display: none; }
-    .rail ol { display: flex; gap: .15rem; border-inline-start: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: .5rem; }
+    .rail ol { display: flex; gap: .15rem; border-left: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: .5rem; }
     .rail ol::-webkit-scrollbar { display: none; }
     .rail ol::before { top: auto; bottom: 0; height: 2px; left: var(--x, 0px); width: var(--w, 0px); transition: left .5s var(--ease), width .5s var(--ease); }
     .rail li { flex: 0 0 auto; }
@@ -681,16 +655,16 @@
   }
   @media (max-width: 900px) {
     .facts, .chain, .loop, .now, .road, .arch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .facts > div:nth-child(2) { border-inline-end: 0; }
+    .facts > div:nth-child(2) { border-right: 0; }
     .facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
-    .facts > div:nth-child(3) { padding-inline-start: 0; }
+    .facts > div:nth-child(3) { padding-left: 0; }
     .chain .link { display: none; }
-    .chain > div + div { padding-inline-start: 0; }
+    .chain > div + div { padding-left: 0; }
     .loop::before, .road::before { display: none; }
     .two, .fly, .tiles, .board, .zeros, .ask .wrap-in, .legend, .output { grid-template-columns: minmax(0, 1fr); }
     .fly-panel, .fly-all { grid-column: auto; grid-row: auto; }
     .stats { grid-template-columns: minmax(0, 1fr); }
-    .stats > div { border-inline-end: 0; border-bottom: 1px solid var(--rule); padding-inline-start: 0; }
+    .stats > div { border-right: 0; border-bottom: 1px solid var(--rule); padding-left: 0; }
     .stats > div:last-child { border-bottom: 0; }
     .dl > div, .use li { grid-template-columns: minmax(0, 1fr); gap: .4rem; }
     .team li { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
@@ -709,7 +683,7 @@
     .cmp tbody th, .tbl-wrap tbody th { padding: 0 0 .6rem; border: 0; color: var(--ink); }
     .cmp td, .tbl-wrap td { padding: .45rem 0; border: 0; }
     .cmp td::before, .tbl-wrap td::before { content: attr(data-col); display: block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .1rem; }
-    .cmp td.us, .tbl-wrap td.us { background: transparent; padding-inline-start: .8rem; border-inline-start: 2px solid var(--mark); margin-top: .3rem; }
+    .cmp td.us, .tbl-wrap td.us { background: transparent; padding-left: .8rem; border-left: 2px solid var(--mark); margin-top: .3rem; }
     .cmp td.us::before, .tbl-wrap td.us::before { color: var(--mark); }
     .cmp tbody tr:hover td, .cmp tbody tr:hover th, .tbl-wrap tbody tr:hover td, .tbl-wrap tbody tr:hover th { background: transparent; }
     .tbl-wrap { overflow: visible; }
@@ -720,13 +694,13 @@
     section { padding-block: 3.25rem; }
     .sec-head { margin-bottom: 2rem; }
     .facts, .chain, .loop, .now, .road, .arch { grid-template-columns: minmax(0, 1fr); }
-    .facts > div { border-inline-end: 0; border-top: 1px solid var(--rule); padding-inline-start: 0; }
+    .facts > div { border-right: 0; border-top: 1px solid var(--rule); padding-left: 0; }
     .facts > div:first-child { border-top: 0; }
     .masthead .meta { gap: .75rem; }
     .brand img { height: 52px; }
     /* signal chain on a phone: a vertical chain, the same signal flowing downwards between stations */
     .chain > div { padding: 1.2rem 0 1.4rem; }
-    .chain > div + div { padding-top: 2.9rem; padding-inline-start: 0; }
+    .chain > div + div { padding-top: 2.9rem; padding-left: 0; }
     .chain .link { display: block; top: .35rem; inset-inline-start: .55rem; width: 2.6rem; height: 1.3rem; transform: rotate(90deg); transform-origin: center; }
     html[dir="rtl"] .chain .link { transform: rotate(-90deg); }
     /* the two diagrams: bigger type inside the drawings, short labels */
@@ -761,7 +735,6 @@
   }
 </style>
 
-<script>document.documentElement.setAttribute('dir', 'rtl'); document.documentElement.setAttribute('lang', 'he');</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-jammer" viewBox="0 0 24 24"><path d="M12 22V9M8 22h8M12 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6.5 2.5a8 8 0 0 0 0 7M17.5 2.5a8 8 0 0 1 0 7"/></symbol>
   <symbol id="i-lab" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="M6 12c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 3 0"/></symbol>
@@ -783,76 +756,78 @@
   <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4l9 5-9 5-9-5z"/><path d="M3 14l9 5 9-5"/></symbol>
   <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 4.5a5 5 0 0 0-5.2 6.9L3 17.7 6.3 21l6.3-6.3a5 5 0 0 0 6.9-5.2l-3 3-2.5-.7-.7-2.5z"/></symbol>
   <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-5-6.3"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></symbol>
 </svg>
 
-<div class="marking">מסמך סודי · מיועד לנמען בלבד · אינו מהווה הצעה להשקעה</div>
+<script>document.documentElement.setAttribute('lang', 'ru');</script>
+<div class="marking">Конфиденциально · Только для адресата · Не является предложением инвестировать</div>
 
 <header class="masthead">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Walkin Warden"><img src="img/logo.png" alt="Walkin Warden" width="408" height="212"></a>
     <div class="meta">
-      <span class="doc"><b>Investor Brief</b><i aria-hidden="true"></i>ספטמבר 2026</span>
+      <span class="doc"><b>Обзор для инвесторов</b><i aria-hidden="true"></i>Сентябрь 2026</span>
       <a href="index.html" hreflang="en" lang="en">English edition</a>
-      <a href="ru.html" hreflang="ru" lang="ru">Русская версия</a>
+      <a href="he.html" hreflang="he">На иврите</a>
     </div>
   </div>
 </header>
 
 <div class="wrap page">
-  <nav class="rail" aria-label="תוכן">
-    <p class="eyebrow">תוכן העניינים</p>
+  <nav class="rail" aria-label="Содержание">
+    <p class="eyebrow">Содержание</p>
     <ol>
-      <li><a href="#problem">הבעיה</a></li>
-      <li><a href="#value">מה משתנה</a></li>
-      <li><a href="#how">הלולאה</a></li>
-      <li><a href="#architecture">ארכיטקטורה</a></li>
-      <li><a href="#moat">היתרון</a></li>
-      <li><a href="#compare">החלופות</a></li>
-      <li><a href="#model">המודל העסקי</a></li>
-      <li><a href="#market">השוק</a></li>
-      <li><a href="#now">למה עכשיו</a></li>
-      <li><a href="#roadmap">מפת הדרכים</a></li>
-      <li><a href="#status">סטטוס</a></li>
-      <li><a href="#team">הצוות</a></li>
-      <li><a href="#ask">הגיוס</a></li>
+      <li><a href="#problem">Проблема</a></li>
+      <li><a href="#value">Что меняется</a></li>
+      <li><a href="#how">Цикл</a></li>
+      <li><a href="#architecture">Архитектура</a></li>
+      <li><a href="#moat">Преимущество</a></li>
+      <li><a href="#compare">Альтернативы</a></li>
+      <li><a href="#model">Бизнес-модель</a></li>
+      <li><a href="#market">Рынок</a></li>
+      <li><a href="#now">Почему сейчас</a></li>
+      <li><a href="#roadmap">Дорожная карта</a></li>
+      <li><a href="#status">Статус</a></li>
+      <li><a href="#team">Команда</a></li>
+      <li><a href="#ask">Раунд</a></li>
     </ol>
-    <p class="note">עמוד אחד. לקרוא מלמעלה למטה, או לקפוץ ישר לסקשן שמעניין אותך.</p>
+    <p class="note">Одна страница. Читайте сверху вниз или переходите сразу к нужному разделу.</p>
   </nav>
 
   <main>
 
     <!-- HERO -->
     <section class="hero" id="top">
-      <p class="eyebrow"><b>Spectral Matrix</b><span lang="en">Electronic Warfare as a Service, by Walkin Warden</span></p>
-      <h1>תוכנה שמחזירה למשבשים שכבר פרוסים בשטח את היעילות מול המקלטים החכמים החדשים, בלי להחליף את החומרה.</h1>
-      <p class="lede">לכל משבש קיים ולכל מקלט אויב, Spectral Matrix מייצרת במעבדה אוטומטית את צורת האות היעילה ביותר, ומספקת אותה לצבא כקובץ שנטען לציוד שכבר יש לו.</p>
+      <p class="eyebrow"><b>Spectral Matrix</b><span>Радиоэлектронная борьба как сервис, от Walkin Warden</span></p>
+      <h1>Программное обеспечение, которое возвращает уже развёрнутым постановщикам помех эффективность против новых умных приёмников, без замены аппаратуры.</h1>
+      <p class="lede">Для любого существующего постановщика помех и любого приёмника противника Spectral Matrix подбирает наиболее эффективную форму сигнала в автоматизированной лаборатории и передаёт её армии в виде файла, который загружается в уже имеющуюся технику.</p>
 
       <dl class="facts stagger">
-        <div><dt class="eyebrow">הגיוס</dt><dd class="v">$2M Pre-Seed</dd></div>
-        <div><dt class="eyebrow">אבן דרך ראשונה</dt><dd class="v">POC עובד בתוך כ-8 חודשים</dd></div>
-        <div><dt class="eyebrow">המודל</dt><dd class="v">EWaaS: הקמה, ואז מנוי שנתי</dd></div>
-        <div><dt class="eyebrow">מה משתנה אצל הלקוח</dt><dd class="v">החומרה הקיימת חוזרת לשירות</dd></div>
+        <div><dt class="eyebrow">Раунд</dt><dd class="v">$2 млн Pre-Seed</dd></div>
+        <div><dt class="eyebrow">Первая веха</dt><dd class="v">Рабочий POC примерно за 8 месяцев</dd></div>
+        <div><dt class="eyebrow">Модель</dt><dd class="v">EWaaS: интеграция, затем годовая подписка</dd></div>
+        <div><dt class="eyebrow">Что меняется для заказчика</dt><dd class="v">Существующая техника возвращается в строй</dd></div>
       </dl>
 
-      <div class="chain stagger" aria-label="שרשרת האות">
+      <div class="chain stagger" aria-label="Тракт сигнала">
         <div>
           <svg class="stage s-emit" viewBox="0 0 48 48" aria-hidden="true"><circle class="ring r1" cx="24" cy="24" r="10"/><circle class="ring r2" cx="24" cy="24" r="10"/><use href="#i-jammer" x="12" y="12" width="24" height="24"/></svg>
-          <p class="eyebrow">קלט</p><h3>המשבש הקיים</h3><p>הציוד שהצבא כבר רכש ופרס. נשאר בדיוק כפי שהוא.</p>
+          <p class="eyebrow">Вход</p><h3>Существующий постановщик помех</h3><p>Техника, которую армия уже купила и развернула. Она остаётся ровно такой, какая есть.</p>
         </div>
         <div>
           <svg class="link" viewBox="0 0 60 28" aria-hidden="true"><path class="rail" d="M0 14 H60"/><path class="wave raw" d="M0 14l4-7 4 11 4-10 4 8 4-5 4 9 4-12 4 9 4-6 4 8 4-7 4 6 4-3 4 2"/></svg>
           <svg class="stage s-decode" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-lab" x="12" y="2" width="24" height="24"/><g class="bars"><rect x="10" y="32" width="3" height="14" rx="1"/><rect x="16" y="32" width="3" height="14" rx="1"/><rect x="22" y="32" width="3" height="14" rx="1"/><rect x="28" y="32" width="3" height="14" rx="1"/><rect x="34" y="32" width="3" height="14" rx="1"/></g></svg>
-          <p class="eyebrow sm">Spectral Matrix</p><h3>מעבדה אוטומטית</h3><p>מוצאת את צורת האות שמנצחת את המקלט של האיום, בתוך המגבלות של אותו משבש.</p>
+          <p class="eyebrow sm">Spectral Matrix</p><h3>Автоматизированная лаборатория</h3><p>Находит форму сигнала, которая ломает приёмник угрозы, в пределах возможностей того же постановщика помех.</p>
         </div>
         <div>
           <svg class="link" viewBox="0 0 60 28" aria-hidden="true"><path class="rail" d="M0 14 H60"/><path class="wave" d="M0 14q7.5-13 15 0t15 0 15 0 15 0"/></svg>
           <svg class="stage s-file" viewBox="0 0 48 48" aria-hidden="true"><circle class="glow" cx="24" cy="24" r="18"/><path class="doc" d="M15 5h13l8 8v28a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path class="doc" d="M28 5v8h8"/><path class="fwave" d="M17 27c2-6 4-6 6 0s4 6 6 0 4-6 6 0"/><path class="fok" d="M19 36l3 3 6-6"/></svg>
-          <p class="eyebrow">פלט</p><h3>אות מעודכן</h3><p>קובץ שנטען למשבש כמו כל עדכון תוכנה, בשטח או מרחוק.</p>
+          <p class="eyebrow">Выход</p><h3>Обновлённый сигнал</h3><p>Файл, который загружается в постановщик помех как обычное обновление ПО, в поле или удалённо.</p>
         </div>
         <div>
           <svg class="link" viewBox="0 0 60 28" aria-hidden="true"><path class="rail" d="M0 14 H60"/><path class="wave" d="M0 14q7.5-13 15 0t15 0 15 0 15 0"/></svg>
           <svg class="stage s-lock" viewBox="0 0 48 48" aria-hidden="true"><circle class="lockring" cx="24" cy="24" r="20"/><use href="#i-target" x="12" y="12" width="24" height="24"/></svg>
-          <p class="eyebrow">מול</p><h3>האיום הנוכחי</h3><p>הכטב״ם עם המקלט החכם, שהמשבש הגנרי כבר לא מזיז.</p>
+          <p class="eyebrow">Против</p><h3>Актуальная угроза</h3><p>Дрон с умным приёмником, на который обычный постановщик помех больше не действует.</p>
         </div>
       </div>
     </section>
@@ -860,84 +835,78 @@
     <!-- 01 PROBLEM -->
     <section id="problem">
       <div class="sec-head">
-        <p class="eyebrow" data-n="01">הבעיה</p>
-        <h2>הכטב״מים למדו להתחמק. המשבשים נשארו מאחור.</h2>
-        <p class="lead">עד תחילת 2025 משבש רחב סרט חסם את אות הניווט, והכטב״ם איבד את דרכו הרחק מהיעד. היום מקלט חכם וזול יושב על כל כטב״ם, ואותו משבש בדיוק כמעט לא מזיז אותו.</p>
+        <p class="eyebrow" data-n="01">Проблема</p>
+        <h2>Дроны научились уклоняться. Постановщики помех остались прежними.</h2>
+        <p class="lead">До начала 2025 года широкополосный постановщик помех блокировал навигационный сигнал, и дрон терял курс далеко от цели. Сегодня на каждом дроне стоит дешёвый умный приёмник, и тот же самый постановщик помех почти не сдвигает его с курса.</p>
       </div>
 
       <div class="plate" aria-labelledby="fig1">
         <div class="plate-head">
-          <span class="eyebrow" id="fig1">איור 1 · מרחק ההסטה מהיעד, אותו משבש, אותו הספק</span>
-          <span class="eyebrow">סקלה לוגריתמית · מטרים</span>
+          <span class="eyebrow" id="fig1">Рис. 1 · Промах относительно цели, тот же постановщик помех, та же мощность</span>
+          <span class="eyebrow">Логарифмическая шкала · метры</span>
         </div>
-        <!-- Hebrew labels are HTML laid over the drawing: iOS Safari draws Hebrew inside SVG <text> with the letters in reverse order -->
-        <div class="figwrap" style="--vw: 800; --vh: 210">
-        <svg class="fig1" viewBox="0 0 800 210" role="img" aria-label="על ציר לוגריתמי מ-10 מטרים עד 100 קילומטרים, מרחק ההסטה של הכטב״ם קורס מ-20 ומעלה קילומטרים עם מקלט רגיל לכ-50 מטרים עם מקלט חכם, ירידה של פי 400 מול אותו משבש.">
+        <svg class="fig1" viewBox="0 0 800 210" role="img" aria-label="На логарифмической оси от 10 метров до 100 километров промах дрона падает с более чем 20 километров при обычном приёмнике до примерно 50 метров при умном приёмнике, в 400 раз против того же постановщика помех.">
           <line class="axis" x1="60" y1="150" x2="760" y2="150"/>
           <g class="ticks">
-            <g class="tk"><line x1="60" y1="150" x2="60" y2="157"/><text x="60" y="174">10 m</text></g>
-            <g class="tk"><line x1="235" y1="150" x2="235" y2="157"/><text x="235" y="174">100 m</text></g>
-            <g class="tk"><line x1="410" y1="150" x2="410" y2="157"/><text x="410" y="174">1 km</text></g>
-            <g class="tk"><line x1="585" y1="150" x2="585" y2="157"/><text x="585" y="174">10 km</text></g>
-            <g class="tk"><line x1="760" y1="150" x2="760" y2="157"/><text x="760" y="174">100 km</text></g>
+            <g class="tk"><line x1="60" y1="150" x2="60" y2="157"/><text x="60" y="174">10 м</text></g>
+            <g class="tk"><line x1="235" y1="150" x2="235" y2="157"/><text x="235" y="174">100 м</text></g>
+            <g class="tk"><line x1="410" y1="150" x2="410" y2="157"/><text x="410" y="174">1 км</text></g>
+            <g class="tk"><line x1="585" y1="150" x2="585" y2="157"/><text x="585" y="174">10 км</text></g>
+            <g class="tk"><line x1="760" y1="150" x2="760" y2="157"/><text x="760" y="174">100 км</text></g>
           </g>
           <g class="row r1">
+            <text class="rl" x="60" y="50">До 2025 · обычный приёмник</text>
             <line class="draw b1" x1="60" y1="70" x2="637.5" y2="70"/>
             <rect class="pt" x="634" y="60" width="7" height="20"/>
-            <text class="pt val" x="648" y="76">20+ km</text>
+            <text class="pt val" x="648" y="76">20+ км</text>
           </g>
           <g class="row r2">
+            <text class="rl" x="60" y="104">Сегодня · умный приёмник, $20–200</text>
             <line class="draw b2" x1="60" y1="124" x2="182.5" y2="124"/>
             <rect class="pt" x="179" y="114" width="7" height="20"/>
-            <text class="pt val" x="193" y="130">50 m</text>
+            <text class="pt val" x="193" y="130">50 м</text>
           </g>
           <g class="pt note">
             <line x1="182.5" y1="136" x2="182.5" y2="142"/>
             <line x1="637.5" y1="82" x2="637.5" y2="142" stroke-dasharray="2 3"/>
+            <text class="cap-l" x="410" y="200" text-anchor="middle">Эффективная дальность упала в 400 раз · аппаратура не изменилась, изменился приёмник</text><text class="cap-s" x="410" y="200" text-anchor="middle">Эффективная дальность упала в 400 раз</text>
           </g>
         </svg>
-        <div class="svg-labels" aria-hidden="true">
-          <span class="rl r1 end" style="--x: 760; --y: 50">עד 2025 · מקלט ניווט רגיל</span>
-          <span class="rl r2 end" style="--x: 760; --y: 104">היום · מקלט חכם, 20–200 דולר</span>
-          <span class="fcap cap-l mid" style="--x: 410; --y: 200">קריסה של פי 400 בטווח האפקטיבי · החומרה לא השתנתה, המקלט השתנה</span>
-          <span class="fcap cap-s mid" style="--x: 410; --y: 200">קריסה של פי 400 בטווח האפקטיבי</span>
-        </div>
-        </div>
-        <p class="cap">נתונים טיפוסיים מהשטח. משבש רחב סרט גנרי מול מקלט ניווט רגיל, ואותו משבש באותו הספק מול מקלט מדף עם הגנות מובנות נגד שיבוש ונגד זיוף אות.</p>
+        <p class="cap">Типичные цифры с поля боя. Обычный широкополосный постановщик помех против стандартного навигационного приёмника, и тот же постановщик на той же мощности против серийного приёмника со встроенной защитой от помех и от подмены сигнала.</p>
       </div>
 
       <div class="legend stagger">
         <div>
-          <p class="eyebrow">עד 2025</p>
-          <h3>משבש גנרי</h3>
-          <p class="sub">מקלט ניווט רגיל</p>
-          <p class="body">המשבש עובד. הכטב״ם מאבד את דרכו, בדרך כלל יותר מעשרים קילומטרים מהיעד.</p>
+          <p class="eyebrow">До 2025</p>
+          <h3>Обычный постановщик помех</h3>
+          <p class="sub">Стандартный навигационный приёмник</p>
+          <p class="body">Постановщик помех работает. Дрон теряет курс, как правило, более чем за двадцать километров до цели.</p>
         </div>
         <div>
-          <p class="eyebrow" style="color:var(--mark)">היום</p>
-          <h3>אותו משבש</h3>
-          <p class="sub">מקלט חכם, רכיב מדף של 20 עד 200 דולר</p>
-          <p class="body">אותו משבש, אותו הספק. הכטב״ם ממשיך כמעט עד היעד, בהסטה של כחמישים מטרים.</p>
+          <p class="eyebrow" style="color:var(--mark)">Сегодня</p>
+          <h3>Тот же постановщик помех</h3>
+          <p class="sub">Умный приёмник, серийный, $20–200</p>
+          <p class="body">Тот же постановщик, та же мощность. Дрон доходит почти до самой цели, отклонившись примерно на пятьдесят метров.</p>
         </div>
       </div>
 
       <div class="two">
         <div>
-          <p class="callout">הלקוח כבר מחזיק בחומרה. האיום התפתח מהר יותר מטכניקת השידור.</p>
-          <p class="measure" style="margin-top:1.5rem">מלאי לוחמה אלקטרונית שנרכש במאות מיליוני דולרים, ופרוס היום בחזיתות, לא עושה כלום מול האיום הנוכחי. לא בגלל החומרה. בגלל האות שהיא משדרת.</p>
+          <p class="callout">Аппаратура у заказчика уже есть. Угроза изменилась быстрее, чем техника излучения.</p>
+          <p class="measure" style="margin-top:1.5rem">Парк средств РЭБ, купленный за сотни миллионов долларов и развёрнутый сегодня на действующих фронтах, ничего не может сделать с актуальной угрозой. Не из-за аппаратуры. Из-за сигнала, который она излучает.</p>
         </div>
         <figure>
-          <img src="img/drone.jpg" alt="כטב״ם חמוש מעל סוללות הגנה בשעת דמדומים" width="1200" height="750" loading="lazy">
-          <figcaption><b>האיום</b>נשק טקטי הפך לאיום אסטרטגי: כטב״ם ארוך טווח נושא משקל, עם מקלט ניווט של 200 דולר.</figcaption>
+          <img src="img/drone.jpg" alt="Ударный дрон над батареями ПВО в сумерках" width="1200" height="750" loading="lazy">
+          <figcaption><b>Угроза</b>Тактическое оружие стало стратегической угрозой: дрон большой дальности с боевой нагрузкой и навигационным приёмником за $200.</figcaption>
         </figure>
       </div>
 
       <aside class="pro">
-        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
-        <h3>מה בדיוק השתנה במקלט, ולמה המשבש הגנרי לא מתמודד עם זה</h3>
+        <p class="eyebrow">Техническое примечание · для профессионального читателя</p>
+        <h3>Что именно изменилось в приёмнике, и почему обычный постановщик помех с этим не справляется</h3>
         <div class="body cols">
-          <div><h4>המקלט החדש</h4><p>בפברואר 2025 נתקלנו לראשונה במקלטי ניווט חכמים על כטב״מי האויב: רכיבי מדף עם הגנות מובנות נגד שיבוש ונגד זיוף אות. מאותו רגע זו ברירת המחדל בכל כטב״ם שפוגשים, לא יוצא הדופן.</p></div>
-          <div><h4>המשבש הגנרי</h4><p>מעורר ומגבר, ולעיתים בנייה עצמית בתוך הצבא. זה רוב המלאי שפרוס היום בחזיתות. מול מקלט חכם, במצבו הנוכחי, הוא אינו מסיט את הכטב״ם מהיעד. הבעיה אינה ההספק, אלא צורת האות מול ההגנות של אותו מקלט.</p></div>
+          <div><h4>Новый приёмник</h4><p>В феврале 2025 года мы впервые столкнулись с умными навигационными приёмниками на дронах противника: серийные компоненты со встроенной защитой от помех и от подмены сигнала. С этого момента это норма на каждом встреченном дроне, а не исключение.</p></div>
+          <div><h4>Обычный постановщик помех</h4><p>Возбудитель и усилитель, порой собранные силами самой армии. Это большая часть парка, развёрнутого сегодня на фронтах. Против умного приёмника в нынешнем виде он не уводит дрон от цели. Дело не в мощности, а в форме сигнала против защит этого приёмника.</p></div>
         </div>
       </aside>
     </section>
@@ -945,69 +914,69 @@
     <!-- 02 VALUE -->
     <section id="value">
       <div class="sec-head">
-        <p class="eyebrow" data-n="02">מה משתנה</p>
-        <h2>אל תחליפו את המשבש. שנו את מה שהוא משדר.</h2>
-        <p class="lead">הרעיון מוכר בעולם המקצועי, וקוראים לו התאמת טכניקות שידור. מה שלא היה קיים הוא מי שעושה את זה למשבשי ניווט, מהר, ובלי לגעת בחומרה.</p>
+        <p class="eyebrow" data-n="02">Что меняется</p>
+        <h2>Не менять постановщик помех. Менять то, что он излучает.</h2>
+        <p class="lead">Идея знакома профессионалам и называется адаптацией техники излучения. Чего не было, так это того, кто делал бы это для навигационных постановщиков помех, быстро и не касаясь аппаратуры.</p>
       </div>
       <div class="dl stagger">
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-nobox"/></svg><span>בלי פלטפורמת חומרה חדשה</span></h3><p>המשבש שכבר פרוס נשאר בדיוק כפי שהוא. אנחנו לא צריכים אותו בידיים, רק את דף הנתונים שלו.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>בלי מחזור רכש של שנים</span></h3><p>אין מכרז חומרה. ההתקשרות יושבת על תקציב השדרוג והתפעול, שמאושר שנה בשנה.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><span>טכניקה מותאמת לכל מקלט</span></h3><p>לכל זוג של משבש ואיום נבנית צורת האות היעילה ביותר, במעבדה, מול המקלט האמיתי.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-upload"/></svg><span>עדכון שמגיע לציוד שכבר בשטח</span></h3><p>הקובץ נטען דרך תוכנת ההפעלה של המשבש, באמצעי נייד אצל המפעיל או בשידור מרחוק מהחמ״ל לכל המערכות בבת אחת.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span>מענה בימים, לא בשנים</span></h3><p>כשהאויב מחליף מקלט, מחליפים את המקלט בתא ומריצים שוב. המערכת עובדת בשלב בניין הכוח, לפני הלחימה.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-nobox"/></svg><span>Без новой аппаратной платформы</span></h3><p>Уже развёрнутый постановщик помех остаётся ровно таким, какой есть. Нам не нужен он сам, только его спецификация.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>Без многолетнего цикла закупок</span></h3><p>Никакого тендера на аппаратуру. Контракт идёт по бюджету модернизации и поддержания, который утверждается из года в год.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><span>Техника под каждый приёмник</span></h3><p>Для каждой пары «постановщик помех и угроза» наиболее эффективная форма сигнала строится в лаборатории, против реального приёмника.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-upload"/></svg><span>Обновление, которое доходит до техники в поле</span></h3><p>Файл загружается через штатное ПО постановщика помех: с носителя у оператора или удалённо из центра управления сразу на все системы.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span>Ответ за дни, а не за годы</span></h3><p>Когда противник меняет приёмник, мы меняем приёмник в камере и запускаем цикл заново. Система работает на этапе подготовки сил, до начала боёв.</p></div>
       </div>
     </section>
 
     <!-- 03 HOW -->
     <section id="how">
       <div class="sec-head">
-        <p class="eyebrow" data-n="03">הלולאה</p>
-        <h2>מעבדה אוטומטית שמוצאת את האות הנכון לכל זוג של משבש ואיום.</h2>
-        <p class="lead">היום זה נעשה ידנית, על ידי צוות מומחים, ולוקח שבוע עבודה מלא לכל איום. Spectral Matrix הופכת את התהליך ללולאה שרצה לבד.</p>
+        <p class="eyebrow" data-n="03">Цикл</p>
+        <h2>Автоматизированная лаборатория, которая находит нужный сигнал для каждой пары «постановщик помех и угроза».</h2>
+        <p class="lead">Сегодня это делается вручную, командой специалистов, и занимает полную рабочую неделю на одну угрозу. Spectral Matrix превращает процесс в цикл, который работает сам.</p>
       </div>
       <ol class="loop stagger">
-        <li><h3>מדמים את המשבש הקיים</h3><p>מפרט המשבש של הלקוח נטען כמגבלות על ציוד השידור במעבדה. המשבש עצמו לא צריך להגיע אלינו.</p></li>
-        <li><h3>מכניסים את מקלט היעד למעבדה</h3><p>מקלט האויב האמיתי יושב בתא מסוכך ומקבל שמיים מדומים, כולל מסלול טיסה.</p></li>
-        <li><h3>בודקים טכניקת שידור</h3><p>המערכת משדרת מול המקלט, בתוך המגבלות של המשבש האמיתי.</p></li>
-        <li><h3>מודדים את תגובת המקלט</h3><p>האם המקלט איבד את הנעילה על הלוויינים. זה מה שקובע אם הכטב״ם ממשיך למסלול או לא.</p></li>
-        <li><h3>משפרים וחוזרים</h3><p>שכבת אופטימיזציה מייצרת גרסה מדויקת יותר לריצה הבאה, עד שהחומרה של הלקוח נותנת את המרב.</p></li>
+        <li><h3>Смоделировать существующий постановщик помех</h3><p>Спецификация постановщика помех заказчика загружается как ограничения для передающей аппаратуры лаборатории. Сам постановщик к нам попадать не должен.</p></li>
+        <li><h3>Поместить целевой приёмник в лабораторию</h3><p>Реальный приёмник противника находится в экранированной камере и принимает имитацию неба, включая траекторию полёта.</p></li>
+        <li><h3>Проверить технику излучения</h3><p>Система излучает в сторону приёмника в пределах возможностей реального постановщика помех.</p></li>
+        <li><h3>Измерить реакцию приёмника</h3><p>Потерял ли приёмник захват спутников. Именно это решает, останется дрон на курсе или нет.</p></li>
+        <li><h3>Улучшить и повторить</h3><p>Слой оптимизации формирует более точную версию для следующего прогона, пока аппаратура заказчика не выдаст свой максимум.</p></li>
       </ol>
-      <div class="loop-return" aria-hidden="true"><i></i><span>ריצה אחר ריצה, עד שהמקלט נשבר</span></div>
+      <div class="loop-return" aria-hidden="true"><i></i><span>Прогон за прогоном, пока приёмник не сломается</span></div>
 
       <div class="output">
-        <div class="figwrap" style="--vw: 600; --vh: 190">
-        <svg class="proc" viewBox="0 0 600 190" role="img" aria-label="המשבש משדר לעבר המקלט בתא; המקלט מאבד נעילה; הלוגים שלו נמשכים ונקראים; מנוע האופטימיזציה מכוונן את צורת הגל; ומה שיוצא הוא קובץ אות אחד.">
-          <!-- laid out right-to-left: the jammer on the right, the file on the left; the Hebrew labels are HTML below the drawing -->
-          <path class="track" d="M80 100 H540"/>
-          <g class="st s1" transform="translate(540 100)">
+        <svg class="proc" viewBox="0 0 600 190" role="img" aria-label="Постановщик помех излучает в сторону приёмника в камере; приёмник теряет захват; его логи считываются и анализируются; движок оптимизации корректирует форму сигнала; на выходе один файл сигнала.">
+          <path class="track" d="M60 100 H520"/>
+          <g class="st s1" transform="translate(60 100)">
             <circle r="22"/>
             <use href="#i-jammer" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
           <g class="waves">
-            <path class="wv" d="M508 86a20 20 0 0 0 0 28"/>
-            <path class="wv" d="M500 78a32 32 0 0 0 0 44"/>
-            <path class="wv" d="M492 70a44 44 0 0 0 0 60"/>
+            <path class="wv" d="M92 86a20 20 0 0 1 0 28"/>
+            <path class="wv" d="M100 78a32 32 0 0 1 0 44"/>
+            <path class="wv" d="M108 70a44 44 0 0 1 0 60"/>
           </g>
-          <g class="rx" transform="translate(400 100)">
+          <g class="rx" transform="translate(200 100)">
             <rect class="chamber" x="-34" y="-34" width="68" height="68" rx="8"/>
             <circle r="22"/>
             <use href="#i-chip" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <text class="lock ok" x="0" y="-44">ЗАХВАТ</text>
+            <text class="lock lost" x="0" y="-44">ЗАХВАТ ПОТЕРЯН</text>
           </g>
-          <g class="logs" transform="translate(210 62)">
+          <g class="logs" transform="translate(280 62)">
             <rect class="panel" x="0" y="0" width="110" height="76" rx="6"/>
-            <text class="ttl" x="102" y="13" text-anchor="end">RX LOG</text>
-            <rect class="ln" x="32" y="22" width="70" height="3" rx="1.5"/>
-            <rect class="ln" x="50" y="30" width="52" height="3" rx="1.5"/>
-            <rect class="ln" x="18" y="38" width="84" height="3" rx="1.5"/>
-            <rect class="ln" x="58" y="46" width="44" height="3" rx="1.5"/>
-            <rect class="ln hit" x="10" y="54" width="92" height="3" rx="1.5"/>
-            <rect class="ln" x="42" y="62" width="60" height="3" rx="1.5"/>
+            <text class="ttl" x="8" y="13">RX LOG</text>
+            <rect class="ln" x="8" y="22" width="70" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="30" width="52" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="38" width="84" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="46" width="44" height="3" rx="1.5"/>
+            <rect class="ln hit" x="8" y="54" width="92" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="62" width="60" height="3" rx="1.5"/>
           </g>
-          <g class="st s4 opt" transform="translate(150 100)">
+          <g class="st s4 opt" transform="translate(450 100)">
             <circle r="22"/>
             <use href="#i-cycle" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
-          <g transform="translate(44 64)">
+          <g transform="translate(496 64)">
             <g class="file">
               <path class="paper" d="M12 2h24l16 16v52a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/>
               <path d="M12 2h24l16 16v52a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/>
@@ -1016,44 +985,33 @@
               <path class="ok" d="M20 62l4 4 8-8"/>
             </g>
           </g>
+          <g class="lbl"><text x="60" y="160">ИЗЛУЧЕНИЕ</text><text class="lbl-l" x="200" y="160">ПРИЁМНИК В КАМЕРЕ</text><text class="lbl-s" x="200" y="160">ПРИЁМНИК</text><text x="335" y="160">ЛОГИ</text><text x="446" y="160">ОПТИМИЗАЦИЯ</text><text class="lbl-l" x="534" y="160">ФАЙЛ<tspan x="534" dy="13">СИГНАЛА</tspan></text><text class="lbl-s" x="528" y="160">ФАЙЛ</text></g>
         </svg>
-        <div class="svg-labels" aria-hidden="true">
-          <span class="lock ok mid" style="--x: 400; --y: 56">נעילה</span>
-          <span class="lock lost mid" style="--x: 400; --y: 56">אבדה נעילה</span>
-          <span class="lbl mid" style="--x: 540; --y: 160">שידור</span>
-          <span class="lbl lbl-l mid" style="--x: 400; --y: 160">מקלט בתא מסוכך</span>
-          <span class="lbl lbl-s mid" style="--x: 400; --y: 160">מקלט</span>
-          <span class="lbl mid" style="--x: 265; --y: 160">לוגים</span>
-          <span class="lbl mid" style="--x: 150; --y: 160">אופטימיזציה</span>
-          <span class="lbl lbl-l mid" style="--x: 72; --y: 160">קובץ אות</span>
-          <span class="lbl lbl-s mid" style="--x: 72; --y: 160">קובץ</span>
-        </div>
-        </div>
         <div>
-          <span class="tag">התוצר</span>
-          <h3>קובץ אות</h3>
-          <p>טכניקת שידור מאומתת, כקובץ שנטען למשבש הקיים כמו כל עדכון תוכנה. לא חומרה, לא התקנה, לא מכרז.</p>
+          <span class="tag">Результат</span>
+          <h3>Файл сигнала</h3>
+          <p>Проверенная техника излучения, в виде файла, который загружается в существующий постановщик помех как любое обновление ПО. Без аппаратуры, без монтажа, без тендера.</p>
         </div>
       </div>
 
       <aside class="pro with-fig">
         <figure>
-          <img src="img/bench.jpg" alt="שולחן המדידה: מנתחי אותות שמציגים את צורת הגל שהמשבש משדר ואת תגובת המקלט" width="800" height="1000" loading="lazy">
-          <figcaption><b>המדידה</b>כל ריצה נמדדת: מה שודר, ומה המקלט עשה עם זה.</figcaption>
+          <img src="img/bench.jpg" alt="Измерительный стенд: анализаторы сигналов показывают форму сигнала постановщика помех и реакцию приёмника" width="800" height="1000" loading="lazy">
+          <figcaption><b>Измерение</b>Каждый прогон измеряется: что было излучено, и что приёмник с этим сделал.</figcaption>
         </figure>
-        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
-        <h3>מה כבר הוכח, ומה ההבדל מהעבודה הידנית שנעשית היום</h3>
+        <p class="eyebrow">Техническое примечание · для профессионального читателя</p>
+        <h3>Что уже доказано, и чем это отличается от ручной работы, которая ведётся сегодня</h3>
         <div class="body">
-          <div><h4>מה כבר הוכח בשטח</h4><p>המייסד וצוותו כבר עשו את זה ידנית, במהלך מערכה. אותה מערכת בדיוק, באותו הספק, הגיעה לטווח שיבוש גדול פי עשרה. מה שהשתנה היה צורת האות בלבד. ההתאמה הידנית גזלה שבוע עבודה של מהנדס RF, פיזיקאי ואיש עיבוד אותות לכל זוג של משבש ואיום. האוטומציה עושה את אותו מסלול בימים.</p></div>
-          <div><h4>מה הלולאה מודדת</h4><p>הקריטריון היחיד הוא תגובת המקלט האמיתי: שמירה על נעילה, איבוד נעילה, או הסטה. לא סימולציה של המקלט אלא המקלט עצמו, עם ההגנות שלו, מול שמיים מלאים שכוללים מסלול טיסה. זה מה שהופך את התוצר לטכניקה מאומתת ולא להערכה.</p></div>
+          <div><h4>Что уже доказано в поле</h4><p>Основатель и его команда уже делали это вручную, в ходе кампании. Та же самая система на той же мощности достигла десятикратной дальности подавления. Изменилась только форма сигнала. Ручная адаптация занимала неделю работы РЧ-инженера, физика и специалиста по обработке сигналов на каждую пару «постановщик помех и угроза». Автоматизация проходит тот же путь за дни.</p></div>
+          <div><h4>Что измеряет цикл</h4><p>Единственный критерий — реакция реального приёмника: удержание захвата, потеря захвата или отклонение. Не модель приёмника, а сам приёмник с его собственными защитами, против полного неба с траекторией полёта. Именно поэтому на выходе проверенная техника, а не оценка.</p></div>
         </div>
         <div class="tbl-wrap full">
           <table>
-            <thead><tr><th></th><th>ידני, היום</th><th class="us">Spectral Matrix</th></tr></thead>
+            <thead><tr><th></th><th>Вручную, сегодня</th><th class="us">Spectral Matrix</th></tr></thead>
             <tbody>
-              <tr><th>זמן לכל זוג</th><td data-col="ידני, היום">שבועות של עבודת צוות מומחים, מתחת ללחץ מבצעי</td><td class="us" data-col="Spectral Matrix">ימים, ללא התערבות אנושית בלולאה</td></tr>
-              <tr><th>גישה למשבש</th><td data-col="ידני, היום">נדרשת. בלי החומרה עצמה אין ניסוי</td><td class="us" data-col="Spectral Matrix">לא נדרשת. המגבלות שלו מדומות מדף הנתונים</td></tr>
-              <tr><th>האויב החליף מקלט</th><td data-col="ידני, היום">מתחילים מהתחלה</td><td class="us" data-col="Spectral Matrix">מחליפים את המקלט בתא ומריצים שוב</td></tr>
+              <tr><th>Время на одну пару</th><td data-col="Вручную, сегодня">Недели работы команды специалистов под оперативным давлением</td><td class="us" data-col="Spectral Matrix">Дни, без участия человека в цикле</td></tr>
+              <tr><th>Доступ к постановщику помех</th><td data-col="Вручную, сегодня">Обязателен. Без самой аппаратуры эксперимента нет</td><td class="us" data-col="Spectral Matrix">Не нужен. Его ограничения моделируются по спецификации</td></tr>
+              <tr><th>Противник сменил приёмник</th><td data-col="Вручную, сегодня">Всё заново, с самого начала</td><td class="us" data-col="Spectral Matrix">Замена приёмника в камере и новый прогон</td></tr>
             </tbody>
           </table>
         </div>
@@ -1063,54 +1021,54 @@
     <!-- 04 ARCHITECTURE -->
     <section id="architecture">
       <div class="sec-head">
-        <p class="eyebrow" data-n="04">ארכיטקטורה</p>
-        <h2>הארכיטקטורה, לקורא המקצועי</h2>
-        <p class="lead">סביבת בדיקה סגורה שמחזיקה בתוכה את שני הצדדים: את המגבלות של המשבש של הלקוח ואת המקלט האמיתי של האיום. ביניהם רצה לולאת מדידה ואופטימיזציה, והתוצר היחיד שיוצא החוצה הוא טכניקת שידור מאומתת.</p>
+        <p class="eyebrow" data-n="04">Архитектура</p>
+        <h2>Архитектура, для профессионального читателя</h2>
+        <p class="lead">Замкнутая испытательная среда, внутри которой обе стороны: ограничения постановщика помех заказчика и реальный приёмник угрозы. Между ними работает цикл измерения и оптимизации, а единственное, что выходит наружу, это проверенная техника излучения.</p>
       </div>
       <div class="arch stagger">
-        <div><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><p class="eyebrow">מגבלות</p><h3>מגבלות המשבש של הלקוח</h3><p>רוחב סרט, הספק ומעורר, מדף הנתונים, כמגבלות קשיחות על כל מה שהמעבדה משדרת.</p></div>
-        <div class="core"><svg class="ic" aria-hidden="true"><use href="#i-lab"/></svg><p class="eyebrow">סביבה</p><h3>סביבת בדיקה RF / GNSS</h3><p>תא מסוכך, מחולל אותות רחב סרט וסימולטור ניווט לווייני שמייצר שמיים מלאים.</p></div>
-        <div><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><p class="eyebrow">יעד</p><h3>מקלט היעד</h3><p>המקלט האמיתי של האיום, מתוך ספרייה ממופה של מקלטים מסחריים.</p></div>
-        <div><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg><p class="eyebrow">מדידה</p><h3>מדידה</h3><p>האם המקלט שמר על נעילה, איבד אותה, או הוסט. לוגי המקלט מנותחים ריצה אחר ריצה.</p></div>
-        <div class="core"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><p class="eyebrow">אופטימיזציה</p><h3>מנוע אופטימיזציה</h3><p>מנתח את התוצאה ומייצר את צורת האות לריצה הבאה. הלולאה נסגרת בלי אדם בתוכה.</p></div>
-        <div><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><p class="eyebrow">תוצר</p><h3>טכניקת שידור מאומתת</h3><p>קובץ אות למשבש של הלקוח, מתועד מול המקלט שהוא נבנה נגדו.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><p class="eyebrow">Ограничение</p><h3>Ограничения постановщика помех заказчика</h3><p>Полоса, мощность и возбудитель, то есть спецификация, как жёсткие рамки для всего, что излучает лаборатория.</p></div>
+        <div class="core"><svg class="ic" aria-hidden="true"><use href="#i-lab"/></svg><p class="eyebrow">Среда</p><h3>Испытательная среда РЧ / ГНСС</h3><p>Экранированная камера, широкополосный генератор сигналов и имитатор спутниковой навигации, формирующий полное небо.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><p class="eyebrow">Цель</p><h3>Целевой приёмник</h3><p>Реальный приёмник угрозы из картированной библиотеки коммерческих приёмников.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg><p class="eyebrow">Измерение</p><h3>Измерение</h3><p>Удержал ли приёмник захват, потерял его или был отклонён. Логи приёмника анализируются прогон за прогоном.</p></div>
+        <div class="core"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><p class="eyebrow">Оптимизация</p><h3>Движок оптимизации</h3><p>Анализирует результат и формирует форму сигнала для следующего прогона. Цикл замыкается без человека внутри.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><p class="eyebrow">Результат</p><h3>Проверенная техника излучения</h3><p>Файл сигнала для постановщика помех заказчика, задокументированный против приёмника, под который он создан.</p></div>
       </div>
-      <p class="arch-foot">↺ הלולאה חוזרת</p>
+      <p class="arch-foot">↺ Цикл повторяется</p>
       <figure style="margin-top:3rem">
-        <img src="img/lab.jpg" alt="תא RF מסוכך עם מחוללי אותות ומנתחי ספקטרום: סביבת המעבדה שבה נבחן כל מקלט אויב" width="900" height="1200" loading="lazy" style="aspect-ratio:16/9;object-fit:cover">
-        <figcaption><b>המעבדה</b>מקלט האויב יושב בתא מסוכך, מקבל שמיים מדומים, ומותקף שוב ושוב עד שהאות מדויק.</figcaption>
+        <img src="img/lab.jpg" alt="Экранированная РЧ-камера с генераторами сигналов и анализаторами спектра: лабораторная среда, где испытывается каждый приёмник противника" width="900" height="1200" loading="lazy" style="aspect-ratio:16/9;object-fit:cover">
+        <figcaption><b>Лаборатория</b>Приёмник противника находится в экранированной камере, принимает имитацию неба и атакуется снова и снова, пока сигнал не станет точным.</figcaption>
       </figure>
     </section>
 
     <!-- 05 MOAT -->
     <section id="moat">
       <div class="sec-head">
-        <p class="eyebrow" data-n="05">היתרון</p>
-        <h2>היתרון מצטבר: כל מקלט שממופה מוזיל את הלקוח הבא ומייקר את העזיבה.</h2>
-        <p class="lead">זה לא יתרון של אלגוריתם בודד. זה שילוב של ספרייה שגדלה, נתוני מדידה שנצברים, אינטגרציה לחומרה של כל לקוח, ושירות שמתחדש כל עוד האיום מתחלף.</p>
+        <p class="eyebrow" data-n="05">Преимущество</p>
+        <h2>Преимущество накапливается: каждый картированный приёмник делает следующего заказчика дешевле, а уход дороже.</h2>
+        <p class="lead">Это не преимущество одного алгоритма. Это сочетание растущей библиотеки, накапливающихся данных измерений, интеграции в аппаратуру каждого заказчика и сервиса, который продлевается, пока меняется угроза.</p>
       </div>
       <div class="dl stagger">
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-library"/></svg><span>ספריית מקלטים שגדלה עם כל לקוח</span></h3><p>מקלטי המדף שאנחנו ממפים הם הנכס שלנו, והם משותפים. מקלט שמופה עבור לקוח אחד משרת את הבאים אחריו, והמעבדה השנייה עולה פחות מהראשונה.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg><span>נתוני מדידה שנצברים ריצה אחר ריצה</span></h3><p>כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. מנוע האופטימיזציה מתחיל כל איום חדש מנקודה מתקדמת יותר.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-people"/></svg><span>אוטומציה של עבודה שרק מומחים בודדים יודעים לעשות</span></h3><p>שבוע עבודה של מהנדס RF, פיזיקאי ואיש עיבוד אותות, לכל זוג של משבש ואיום, הופך לימים בלי אדם בתוך הלולאה.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span>אינטגרציה לציוד של כל לקוח</span></h3><p>ההקמה בונה סביבת מעבדה שמדמה את הציוד של הלקוח עד רמת דף הנתונים. מי שעשה את זה פעם אחת אצל לקוח הוא הכתובת לכל עדכון הבא.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><span>עדכונים חוזרים כל עוד האיום מתחלף</span></h3><p>השירות השנתי מזרים טכניקות חדשות למערכות הפרוסות, מרחוק, כתגובה לאיומים חדשים בשטח. האיום מתחלף בשבועות, והמנוי חי מזה.</p></div>
-        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span>התוצרים של הלקוח נשארים אצלו</span></h3><p>מפרטי המשבשים של הלקוח וקבצי האות שנגזרים מהם אינם עוברים לאיש. הספרייה המשותפת היא של המקלטים, לא של הלקוחות.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-library"/></svg><span>Библиотека приёмников, растущая с каждым заказчиком</span></h3><p>Серийные приёмники, которые мы картируем, это наш актив, и он общий. Приёмник, картированный для одного заказчика, служит всем последующим, и вторая лаборатория обходится дешевле первой.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg><span>Данные измерений, накапливающиеся прогон за прогоном</span></h3><p>Каждый прогон против реального приёмника добавляет измеренный результат. Движок оптимизации начинает каждую новую угрозу с более продвинутой точки.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-people"/></svg><span>Автоматизация работы, которую умеют делать единицы</span></h3><p>Неделя работы РЧ-инженера, физика и специалиста по обработке сигналов на каждую пару «постановщик помех и угроза» превращается в дни без человека внутри цикла.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span>Интеграция в технику каждого заказчика</span></h3><p>Интеграция создаёт лабораторную среду, воспроизводящую технику заказчика вплоть до уровня спецификации. Кто сделал это у заказчика один раз, тот и есть адрес для каждого следующего обновления.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><span>Регулярные обновления, пока меняется угроза</span></h3><p>Годовой сервис поставляет новые техники на развёрнутые системы, удалённо, в ответ на новые угрозы в поле. Угроза меняется за недели, и подписка живёт за счёт этого.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span>Результаты заказчика остаются у заказчика</span></h3><p>Спецификации постановщиков помех заказчика и производные от них файлы сигналов никому не передаются. Общая библиотека — это библиотека приёмников, а не заказчиков.</p></div>
       </div>
-      <p class="callout">ככל שיותר משפחות מקלטים ממופות, המערכת נעשית מהירה יותר לכל לקוח חדש, והשירות השנתי שווה יותר לכל לקוח קיים. זה הנכס שנבנה עם הזמן, לא הקובץ הבודד.</p>
+      <p class="callout">Чем больше семейств приёмников картировано, тем быстрее система работает для каждого нового заказчика, и тем больше стоит годовой сервис для каждого существующего. Именно этот актив строится со временем, а не отдельный файл.</p>
       <aside class="pro">
-        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
-        <h3>למה קשה ויקר לאויב להתגונן מזה</h3>
-        <div class="body"><p>יש הגנות, והן ידועות: אנטנות שמכוונות את הקליטה לכיוון הלוויין, ומערכת ניווט עצמאית שלא תלויה בלוויינים. שתיהן מייקרות ומסרבלות כל כטב״ם, והן דורשות מהאויב מחזור פיתוח והחלפת מלאי. לנו, מנגד, הקשחה כזאת עולה החלפת מקלט בתא והרצה מחדש, כלומר ימים. מה שעמיד בזמן הוא השיטה, לא הקובץ הבודד.</p></div>
+        <p class="eyebrow">Техническое примечание · для профессионального читателя</p>
+        <h3>Почему противнику трудно и дорого защищаться от этого</h3>
+        <div class="body"><p>Защиты существуют, и они известны: антенны, направляющие приём на спутник, и автономная навигационная система, вообще не зависящая от спутников. И то, и другое делает каждый дрон дороже и громоздче, и то, и другое требует от противника цикла разработки и замены парка. Для нас же такое усиление стоит замены приёмника в камере и ещё одного прогона, то есть дней. Со временем сохраняется метод, а не отдельный файл.</p></div>
       </aside>
     </section>
 
     <!-- 06 COMPARE -->
     <section id="compare">
       <div class="sec-head">
-        <p class="eyebrow" data-n="06">החלופות</p>
-        <h2>האיום מתחלף בשבועות. שתי הדרכים האחרות להתמודד איתו עונות בשנים, או בכוח אדם שאין.</h2>
-        <p class="lead">מי שמכיר את התחום שואל מיד: במה זה שונה ממה שכבר מוכרים לצבאות? זו התשובה, במונחים של עסק.</p>
+        <p class="eyebrow" data-n="06">Альтернативы</p>
+        <h2>Угроза меняется за недели. Два других способа ответить на неё занимают годы, или требуют людей, которых нет.</h2>
+        <p class="lead">Любой, кто знает отрасль, сразу спрашивает: чем это отличается от того, что уже продают армиям? Вот ответ, в деловых терминах.</p>
       </div>
       <div class="cmp">
         <div class="scroll">
@@ -1118,186 +1076,181 @@
             <thead>
               <tr>
                 <th></th>
-                <th>לקנות חומרה חדשה<small>כולל מערכת ייעודית נגד כטב״מים</small></th>
-                <th>מו״פ ידני בתוך הצבא<small>מהנדס שמכוון אות למקלט אחד</small></th>
-                <th class="us">Spectral Matrix<small>קובץ אות למשבשים שכבר פרוסים</small></th>
+                <th>Купить новую аппаратуру<small>включая специализированную систему противодействия дронам</small></th>
+                <th>Ручные НИОКР внутри армии<small>инженер настраивает сигнал под один приёмник</small></th>
+                <th class="us">Spectral Matrix<small>файл сигнала для уже развёрнутых постановщиков помех</small></th>
               </tr>
             </thead>
             <tbody>
-              <tr><th>זמן תגובה לאיום חדש</th><td data-col="לקנות חומרה חדשה">שנים: מכרז, ייצור, הטמעה</td><td data-col="מו״פ ידני בתוך הצבא">שבועות עד חודשים לכל זוג משבש ואיום</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>ימים</td></tr>
-              <tr><th>החלפת חומרה</th><td data-col="לקנות חומרה חדשה">כן, מערכת חדשה במקום הקיימת</td><td data-col="מו״פ ידני בתוך הצבא">לא</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>לא. החומרה הפרוסה נשארת</td></tr>
-              <tr><th>תהליך הרכש</th><td data-col="לקנות חומרה חדשה">מכרז חומרה, עשרות עד מאות מיליוני דולר</td><td data-col="מו״פ ידני בתוך הצבא">פנימי, תלוי באנשים</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>הקמה חד פעמית, ואז מנוי מתקציב השדרוג והתפעול</td></tr>
-              <tr><th>כוח אדם מומחה</th><td data-col="לקנות חומרה חדשה">אצל היצרן, לא אצל הלקוח</td><td data-col="מו״פ ידני בתוך הצבא">צוות נדיר שאין כמעט לאף צבא</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>אוטומטי. אין אדם בתוך הלולאה</td></tr>
-              <tr><th>עדכונים חוזרים</th><td data-col="לקנות חומרה חדשה">מחזור רכש חדש לכל דור איום</td><td data-col="מו״פ ידני בתוך הצבא">כל איום מהתחלה</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>הזרמת טכניקות חדשות ברציפות, מרחוק</td></tr>
-              <tr><th>יכולת גידול</th><td data-col="לקנות חומרה חדשה">מערכת אחת לכל רכש</td><td data-col="מו״פ ידני בתוך הצבא">לינארית בכוח אדם</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>ספרייה משותפת: המעבדה השנייה עולה פחות מהראשונה</td></tr>
-              <tr><th>עלות מעבר ללקוח</th><td data-col="לקנות חומרה חדשה">נעילה ליצרן החומרה</td><td data-col="מו״פ ידני בתוך הצבא">אין, וגם אין המשכיות</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>ספריית איומים של הלקוח, ושיתוף מודיעיני ארוך טווח</td></tr>
+              <tr><th>Время реакции на новую угрозу</th><td data-col="Купить новую аппаратуру">Годы: тендер, производство, интеграция</td><td data-col="Ручные НИОКР внутри армии">От недель до месяцев на каждую пару «постановщик помех и угроза»</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Дни</td></tr>
+              <tr><th>Замена аппаратуры</th><td data-col="Купить новую аппаратуру">Да, новая система вместо существующей</td><td data-col="Ручные НИОКР внутри армии">Нет</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Нет. Развёрнутая аппаратура остаётся</td></tr>
+              <tr><th>Процесс закупки</th><td data-col="Купить новую аппаратуру">Тендер на аппаратуру, от десятков до сотен миллионов долларов</td><td data-col="Ручные НИОКР внутри армии">Внутренний, зависит от конкретных людей</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Разовая интеграция, затем подписка из бюджета модернизации и поддержания</td></tr>
+              <tr><th>Специалисты</th><td data-col="Купить новую аппаратуру">У производителя, не у заказчика</td><td data-col="Ручные НИОКР внутри армии">Редкая команда, которой почти ни у одной армии нет</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Автоматически. Без человека внутри цикла</td></tr>
+              <tr><th>Регулярные обновления</th><td data-col="Купить новую аппаратуру">Новый цикл закупок на каждое поколение угрозы</td><td data-col="Ручные НИОКР внутри армии">Каждая угроза с нуля</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Новые техники поставляются непрерывно, удалённо</td></tr>
+              <tr><th>Масштабируемость</th><td data-col="Купить новую аппаратуру">Одна система на одну закупку</td><td data-col="Ручные НИОКР внутри армии">Линейно по числу людей</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Общая библиотека: вторая лаборатория дешевле первой</td></tr>
+              <tr><th>Стоимость перехода для заказчика</th><td data-col="Купить новую аппаратуру">Привязка к производителю аппаратуры</td><td data-col="Ручные НИОКР внутри армии">Никакой, и никакой преемственности</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Собственная библиотека угроз заказчика и долгосрочный обмен разведданными</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-      <p class="tbl-note">מערכות שמאתרות ומאכנות משבשים ומזייפי אות בצד הנגדי משלימות אותנו ולא מתחרות בנו: הן מגלות מאיפה משדרים, אנחנו קובעים מה לשדר.</p>
+      <p class="tbl-note">Системы, которые обнаруживают и определяют местоположение постановщиков помех и спуфинга у противника, дополняют нас, а не конкурируют с нами: они показывают, откуда идёт излучение, мы определяем, что излучать.</p>
     </section>
 
     <!-- 07 MODEL -->
     <section id="model">
       <div class="sec-head">
-        <p class="eyebrow" data-n="07">המודל העסקי</p>
-        <h2>הקמה חד פעמית, ואחריה הכנסה חוזרת כל עוד האיום מתחלף.</h2>
-        <p class="lead">ההקמה מתאימה את המעבדה לציוד של הלקוח. המנוי השנתי מזרים טכניקות חדשות למערכות הפרוסות. ההכנסה החוזרת היא העיקר, וההקמה היא מה שמאפשר אותה.</p>
+        <p class="eyebrow" data-n="07">Бизнес-модель</p>
+        <h2>Разовая интеграция, а после неё регулярная выручка, пока меняется угроза.</h2>
+        <p class="lead">Интеграция адаптирует лабораторию к технике заказчика. Годовая подписка поставляет новые техники на развёрнутые системы. Главное — регулярная выручка, а интеграция — то, что делает её возможной.</p>
       </div>
       <div class="tiles stagger">
         <div class="tile">
           <svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg>
-          <p class="eyebrow">הקמה ראשונית, NRE</p>
-          <div class="num"><span data-count="5" data-prefix="~$" data-suffix="M">~$5M</span></div>
-          <p class="per">לכל לקוח · חד פעמי</p>
-          <h3>הקמה ואינטגרציה</h3>
-          <p class="eyebrow">מה זה קונה</p>
+          <p class="eyebrow">Первичная интеграция, NRE</p>
+          <div class="num"><span data-count="5" data-prefix="~$" data-suffix=" млн">~$5 млн</span></div>
+          <p class="per">на заказчика · разово</p>
+          <h3>Интеграция и настройка</h3>
+          <p class="eyebrow">Что входит</p>
           <ul>
-            <li>אפיון ומחקר ראשוני מול האיומים שמעניינים את הלקוח</li>
-            <li>סביבת מעבדה שמדמה את ציוד הלקוח, עד רמת דף הנתונים</li>
-            <li>התאמת התוכנה ומנוע האופטימיזציה לחומרה המקומית</li>
+            <li>Первичная характеризация и исследование против угроз, значимых для заказчика</li>
+            <li>Лабораторная среда, воспроизводящая технику заказчика вплоть до уровня спецификации</li>
+            <li>Адаптация ПО и движка оптимизации к локальной аппаратуре</li>
           </ul>
         </div>
         <div class="tile us">
           <svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg>
-          <p class="eyebrow" style="color:var(--mark)">EWaaS, שירות חוזר</p>
-          <div class="num mark">$5–10M</div>
-          <p class="per">ARR לכל לקוח · שנה בשנה</p>
-          <h3>שירות שנתי</h3>
-          <p class="eyebrow">מה זה קונה</p>
+          <p class="eyebrow" style="color:var(--mark)">EWaaS, регулярный сервис</p>
+          <div class="num mark">$5–10 млн</div>
+          <p class="per">ARR на заказчика · из года в год</p>
+          <h3>Годовой сервис</h3>
+          <p class="eyebrow">Что входит</p>
           <ul>
-            <li>הזרמת טכניקות חדשות באופן רציף למערכות הפרוסות</li>
-            <li>בנייה ותחזוקה של ספריית האיומים של הלקוח, בהפרדה מלאה</li>
-            <li>עדכונים מרחוק כתגובה מיידית לאיומים חדשים בשטח</li>
+            <li>Новые техники, непрерывно поставляемые на развёрнутые системы</li>
+            <li>Создание и ведение библиотеки угроз заказчика, полностью изолированной</li>
+            <li>Удалённые обновления как немедленный ответ на новые угрозы в поле</li>
           </ul>
         </div>
       </div>
 
       <div class="fly" id="fly">
-        <div class="figwrap" style="--vw: 400; --vh: 400">
-        <svg viewBox="0 0 400 400" aria-label="גלגל התנופה: חמישה שלבים שמזינים זה את זה. עוברים עם העכבר על שלב כדי לקרוא אותו.">
+        <svg viewBox="0 0 400 400" aria-label="Маховик: пять шагов, которые подпитывают друг друга. Наведите на шаг или выберите его, чтобы прочитать.">
           <circle class="ring" cx="200" cy="200" r="140"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(-90 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(-18 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(54 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(126 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(198 200 200)"/>
-          <g class="node on" data-i="0" tabindex="0" role="button" aria-label="שלב 1: ידע על מקלט חדש"><circle cx="200" cy="60" r="24"/><use href="#i-chip" x="188" y="48" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
-          <g class="node" data-i="1" tabindex="0" role="button" aria-label="שלב 2: ספריית איומים גדולה יותר, לשימוש חוזר"><circle cx="333.1" cy="156.7" r="24"/><use href="#i-library" x="321.1" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
-          <g class="node" data-i="2" tabindex="0" role="button" aria-label="שלב 3: הקמה מהירה יותר, כיסוי רחב יותר"><circle cx="282.3" cy="313.3" r="24"/><use href="#i-wrench" x="270.3" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
-          <g class="node" data-i="3" tabindex="0" role="button" aria-label="שלב 4: שירות שנתי ששווה יותר"><circle cx="117.7" cy="313.3" r="24"/><use href="#i-cycle" x="105.7" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
-          <g class="node" data-i="4" tabindex="0" role="button" aria-label="שלב 5: עלות עזיבה גבוהה יותר"><circle cx="66.9" cy="156.7" r="24"/><use href="#i-lock" x="54.9" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <text class="centre" x="200" y="204">МАХОВИК</text>
+          <g class="node on" data-i="0" tabindex="0" role="button" aria-label="Шаг 1: знание нового приёмника"><circle cx="200" cy="60" r="24"/><use href="#i-chip" x="188" y="48" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="1" tabindex="0" role="button" aria-label="Шаг 2: большая библиотека угроз, многократного использования"><circle cx="333.1" cy="156.7" r="24"/><use href="#i-library" x="321.1" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="2" tabindex="0" role="button" aria-label="Шаг 3: быстрее интеграция, шире охват"><circle cx="282.3" cy="313.3" r="24"/><use href="#i-wrench" x="270.3" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="3" tabindex="0" role="button" aria-label="Шаг 4: годовой сервис, который стоит больше"><circle cx="117.7" cy="313.3" r="24"/><use href="#i-cycle" x="105.7" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="4" tabindex="0" role="button" aria-label="Шаг 5: выше цена ухода"><circle cx="66.9" cy="156.7" r="24"/><use href="#i-lock" x="54.9" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
         </svg>
-        <div class="svg-labels" aria-hidden="true">
-          <span class="centre mid" style="--x: 200; --y: 196">גלגל</span>
-          <span class="centre mid" style="--x: 200; --y: 212">התנופה</span>
-        </div>
-        </div>
-        <button type="button" class="fly-all" id="fly-all">להציג את כל המחזור <span aria-hidden="true">←</span></button>
+        <button type="button" class="fly-all" id="fly-all">Показать весь цикл <span aria-hidden="true">→</span></button>
         <div class="fly-panel" aria-live="polite">
           <div class="single">
-            <p class="step">שלב 1 מתוך 5</p>
-            <h3>ידע על מקלט חדש</h3>
-            <p class="desc">כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. כל איום חדש שהמעבדה פוגשת הופך לידע שממנו המנוע מתחיל בפעם הבאה.</p>
+            <p class="step">Шаг 1 из 5</p>
+            <h3>Знание нового приёмника</h3>
+            <p class="desc">Каждый прогон против реального приёмника добавляет измеренный результат. Каждая новая угроза, с которой сталкивается лаборатория, становится знанием, с которого движок начинает в следующий раз.</p>
             <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-            <p class="hint">עוברים עם העכבר על שלב בגלגל כדי לקרוא אותו.</p>
+            <p class="hint">Наведите на шаг на колесе или коснитесь его, чтобы прочитать.</p>
           </div>
           <ol class="all" hidden>
-            <li><h4>ידע על מקלט חדש</h4><p>כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. כל איום חדש שהמעבדה פוגשת הופך לידע שממנו המנוע מתחיל בפעם הבאה.</p></li>
-            <li><h4>ספריית איומים גדולה יותר, לשימוש חוזר</h4><p>מקלט שמופה עבור לקוח אחד משרת את כל הבאים אחריו. ספריית מקלטי המדף היא הנכס המשותף.</p></li>
-            <li><h4>הקמה מהירה יותר, כיסוי רחב יותר</h4><p>ככל שיותר משפחות מקלטים ממופות, המעבדה השנייה עולה פחות מהראשונה ומכסה יותר מהאיום כבר מהיום הראשון.</p></li>
-            <li><h4>שירות שנתי ששווה יותר</h4><p>טכניקות חדשות זורמות למערכות הפרוסות ככל שהאיום מתחלף. ככל שהספרייה מכסה יותר, כל שנת שירות נותנת יותר.</p></li>
-            <li><h4>עלות עזיבה גבוהה יותר</h4><p>ספריית האיומים של הלקוח, האינטגרציה לציוד שלו והרציפות של העדכונים נשארים כולם עם השירות.</p></li>
-            <li class="back"><button type="button" id="fly-back">חזרה לשלב אחד בכל פעם</button></li>
+            <li><h4>Знание нового приёмника</h4><p>Каждый прогон против реального приёмника добавляет измеренный результат. Каждая новая угроза, с которой сталкивается лаборатория, становится знанием, с которого движок начинает в следующий раз.</p></li>
+            <li><h4>Большая библиотека угроз, многократного использования</h4><p>Приёмник, картированный для одного заказчика, служит всем последующим. Библиотека серийных приёмников — общий актив.</p></li>
+            <li><h4>Быстрее интеграция, шире охват</h4><p>Чем больше семейств приёмников картировано, тем дешевле вторая лаборатория по сравнению с первой, и тем большую часть угрозы она покрывает с первого дня.</p></li>
+            <li><h4>Годовой сервис, который стоит больше</h4><p>Новые техники поступают на развёрнутые системы по мере изменения угрозы. Чем больше покрывает библиотека, тем больше даёт каждый год сервиса.</p></li>
+            <li><h4>Выше цена ухода</h4><p>Собственная библиотека угроз заказчика, интеграция в его технику и непрерывность обновлений остаются вместе с сервисом.</p></li>
+            <li class="back"><button type="button" id="fly-back">Вернуться к пошаговому просмотру</button></li>
           </ol>
         </div>
-        <p class="layers">שתי שכבות נפרדות, ובמפורש: ספריית מקלטי המדף שאנחנו ממפים היא הנכס שלנו והיא משותפת. מפרטי המשבשים של הלקוח וקבצי האות שנגזרים מהם נשארים שלו בלבד.</p>
+        <p class="layers">Два отдельных слоя, названные явно: библиотека серийных приёмников, которые мы картируем, это наш актив, и он общий. Спецификации постановщиков помех заказчика и производные от них файлы сигналов остаются только у него.</p>
       </div>
 
       <aside class="pro">
-        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
-        <h3>מאיזה תקציב זה נקנה, ולמה קשה לצאת מזה</h3>
-        <div class="body"><p>אנחנו לא מתחרים על תקציבי הרכש. ההתקשרות יושבת על תקציבי השדרוג והתפעול של צבאות מערביים: תקציב שנתי, יציב, שמאושר בלי מכרז חומרה. העסקאות הן B2G ו-G2G ארוכות טווח, שנשענות על שיתוף מודיעיני, ולכן קשה מאוד לצאת מהן.</p></div>
+        <p class="eyebrow">Техническое примечание · для профессионального читателя</p>
+        <h3>Из какого бюджета это покупается, и почему от этого трудно уйти</h3>
+        <div class="body"><p>Мы не конкурируем за закупочные бюджеты. Контракт идёт по бюджетам модернизации и поддержания западных армий: годовой бюджет, стабильный, утверждаемый без тендера на аппаратуру. Сделки долгосрочные, B2G и G2G, опирающиеся на обмен разведданными, и от них очень трудно уйти.</p></div>
       </aside>
     </section>
 
     <!-- 08 MARKET -->
     <section id="market">
       <div class="sec-head">
-        <p class="eyebrow" data-n="08">השוק</p>
-        <h2>השוק, ואיפה נכנסים קודם</h2>
-        <p class="lead">שוק הלוחמה האלקטרונית גדל, והחלק שצומח הכי מהר בתוכו הוא ההגנה מפני כטב״מים. הכניסה הראשונה היא בנקודה שבה ההיתכנות הטכנית והביקוש נפגשים, וזה בדיוק מה שה-POC בודק.</p>
+        <p class="eyebrow" data-n="08">Рынок</p>
+        <h2>Рынок, и куда мы входим первыми</h2>
+        <p class="lead">Рынок радиоэлектронной борьбы растёт, и быстрее всего растёт его часть, связанная с защитой от дронов. Первый вход в точке, где сходятся техническая осуществимость и спрос, и именно это проверяет POC.</p>
       </div>
       <div class="stats stagger">
-        <div><p class="eyebrow">TAM</p><div class="num"><span data-count="22" data-prefix="$" data-suffix="B">$22B</span></div><p>שוק הלוחמה האלקטרונית העולמי, 2026. צומח במהירות בעקבות ריבוי הכטב״מים.</p></div>
-        <div><p class="eyebrow">הסגמנט הרלוונטי</p><div class="num"><span data-count="6" data-prefix="$" data-suffix="B">$6B</span></div><p>מערכות הגנה נגד כטב״מים ושיבוש אותות ניווט. מנוע הצמיחה, והחלק שאליו אנחנו נכנסים.</p></div>
-        <div><p class="eyebrow" style="color:var(--mark)">נקודת הכניסה</p><p class="big-text">המקלט הנפוץ ביותר בצד האויב, מול סוג האמל״ח הנפוץ ביותר בעולם</p><p>ה-POC מתחיל שם: משבש גנרי מול המקלט הנפוץ ביותר. הצלחה בנקודה הזאת היא מענה לרוב השוק כבר בשלב הראשון.</p></div>
+        <div><p class="eyebrow">TAM</p><div class="num"><span data-count="22" data-prefix="$" data-suffix=" млрд">$22 млрд</span></div><p>Мировой рынок радиоэлектронной борьбы, 2026 год. Быстро растёт на фоне распространения дронов.</p></div>
+        <div><p class="eyebrow">Релевантный сегмент</p><div class="num"><span data-count="6" data-prefix="$" data-suffix=" млрд">$6 млрд</span></div><p>Системы противодействия дронам и подавление навигационного сигнала. Двигатель роста, и та часть, куда мы входим.</p></div>
+        <div><p class="eyebrow" style="color:var(--mark)">Точка входа</p><p class="big-text">Самый распространённый приёмник у противника, против самого массового класса оружия в мире</p><p>POC начинается именно здесь: обычный постановщик помех против самого распространённого приёмника. Успех в этой точке — ответ для большей части рынка уже на первом этапе.</p></div>
       </div>
     </section>
 
     <!-- 09 WHY NOW -->
     <section id="now">
       <div class="sec-head">
-        <p class="eyebrow" data-n="09">למה עכשיו</p>
-        <h2>למה עכשיו</h2>
-        <p class="lead">חמישה דברים קרו בזה אחר זה, והם מה שפותח את החלון: המקלט הוזל, המלאי הפסיק לעבוד, האיום מאיץ, הרכש איטי מדי, והתשובה היחידה שמהירה מספיק היא תוכנה.</p>
+        <p class="eyebrow" data-n="09">Почему сейчас</p>
+        <h2>Почему сейчас</h2>
+        <p class="lead">Пять событий произошли одно за другим, и вместе они открывают окно: приёмник стал дешёвым, парк перестал работать, угроза ускорилась, закупки слишком медленны, а единственный достаточно быстрый ответ — программный.</p>
       </div>
       <ol class="now stagger">
-        <li><h3>מקלטים חכמים וזולים הפכו לברירת המחדל</h3><p>רכיבי מדף של 20 עד 200 דולר, עם הגנות מובנות. מתחילת 2025 זה כל כטב״ם שפוגשים, לא יוצא הדופן.</p></li>
-        <li><h3>מלאי המשבשים הקיים הפסיק לעבוד</h3><p>ציוד שנרכש במאות מיליוני דולרים ופרוס בחזיתות לא מזיז את הכטב״ם החדש. לא בגלל החומרה, בגלל האות.</p></li>
-        <li><h3>האיום מתחלף בשבועות</h3><p>כל החלפת מקלט בצד האויב היא איום חדש. מי שעונה בשנים תמיד מאחור.</p></li>
-        <li><h3>רכש חומרה לוקח שנים</h3><p>מכרז, ייצור, הטמעה. עד שהמערכת החדשה מגיעה, המקלט שהיא נבנתה נגדו כבר הוחלף.</p></li>
-        <li><h3>עדכון אות מגיע בימים</h3><p>קובץ שנטען לציוד הקיים, בשטח או מרחוק מהחמ״ל לכל המערכות בבת אחת. זו התשובה היחידה שמהירה כמו האיום.</p></li>
+        <li><h3>Дешёвые умные приёмники стали нормой</h3><p>Серийные компоненты за $20–200 со встроенными защитами. С начала 2025 года это каждый встреченный дрон, а не исключение.</p></li>
+        <li><h3>Существующий парк постановщиков помех перестал работать</h3><p>Техника, купленная за сотни миллионов долларов и развёрнутая на фронтах, не сдвигает новый дрон с курса. Не из-за аппаратуры, из-за сигнала.</p></li>
+        <li><h3>Угроза меняется за недели</h3><p>Каждая смена приёмника у противника — новая угроза. Кто отвечает годами, тот всегда позади.</p></li>
+        <li><h3>Закупка аппаратуры занимает годы</h3><p>Тендер, производство, интеграция. К моменту прибытия новой системы приёмник, под который она создавалась, уже заменён.</p></li>
+        <li><h3>Обновление сигнала приходит за дни</h3><p>Файл, загружаемый в существующую технику, в поле или удалённо из центра управления сразу на все системы. Это единственный ответ, столь же быстрый, как угроза.</p></li>
       </ol>
-      <h3 style="margin-top:3rem">ולמה אף אחד אחר לא עושה את זה</h3>
+      <h3 style="margin-top:3rem">И почему этого не делает никто другой</h3>
       <div class="zeros stagger">
-        <div><div class="num mark">0</div><div><h3>יצרניות אמל״ח שהמודל שלהן מתגמל על החייאת מלאי קיים</h3><p>התעשייה הביטחונית מוכרת מערכות חדשות וחוזי תחזוקה. שדרוג של ציוד שכבר נמכר עומד בניגוד למודל ההכנסות שלה.</p></div></div>
-        <div><div class="num mark">0</div><div><h3>מרכזים ייעודיים שעושים את זה למשבשי ניווט</h3><p>מה שהמעצמות מפעילות מאות אנשים כדי לעשות עבור מטוסי קרב לא קיים כמערך מסודר עבור משבשי ניווט. היום זה נעשה ידנית, על ידי מומחים בודדים, ולאט.</p></div></div>
+        <div><div class="num mark">0</div><div><h3>Производителей вооружений, чья модель вознаграждает возвращение в строй существующего парка</h3><p>Оборонная промышленность продаёт новые системы и контракты на обслуживание. Модернизация уже проданной техники противоречит её модели выручки.</p></div></div>
+        <div><div class="num mark">0</div><div><h3>Специализированных центров, делающих это для навигационных постановщиков помех</h3><p>То, что крупные державы делают силами сотен людей для боевой авиации, не существует как организованная способность для навигационных постановщиков помех. Сегодня это делается вручную, единицами специалистов, и медленно.</p></div></div>
       </div>
     </section>
 
     <!-- 10 ROADMAP -->
     <section id="roadmap">
       <div class="sec-head">
-        <p class="eyebrow" data-n="10">מפת הדרכים</p>
-        <h2>מה קיים היום, מה הסבב מממן, ומה בא אחרי POC מוצלח</h2>
-        <p class="lead">שלוש קטגוריות של יכולת, בסדר עולה של קושי, על אותה מעבדה. הסבב הזה מממן את הראשונה.</p>
+        <p class="eyebrow" data-n="10">Дорожная карта</p>
+        <h2>Что есть сегодня, что финансирует этот раунд, и что будет после успешного POC</h2>
+        <p class="lead">Три категории возможностей, по возрастанию сложности, на одной и той же лаборатории. Этот раунд финансирует первую.</p>
       </div>
       <ol class="road stagger">
-        <li class="done"><p class="when">קיים היום</p><p class="sub">לפני הסבב</p><h3>ארכיטקטורה, תוכנה ראשונית, ספרייה</h3><p>ארכיטקטורה טכנית מלאה, גרסה ראשונית של התוכנה, ספריית מקלטי יעד ממופה, מעבדה ראשונית ברמה בסיסית.</p></li>
-        <li class="fund"><p class="when">מה ה-Pre-Seed מממן</p><p class="sub">חודשים 1 עד 8, POC</p><h3>שיבוש (Jamming)</h3><p>סגירת הלולאה מקצה לקצה מול משבש גנרי ו-3 מקלטי איום מובילים, החל מהמקלט הנפוץ ביותר בצד האויב.</p></li>
-        <li><p class="when">אחרי POC מוצלח</p><p class="sub">שלב שני</p><h3>הזזת אות (Spoofing)</h3><p>קטגוריית אלגוריתם שנייה על אותה מעבדה: במקום להרעיש למקלט, לשכנע אותו שהוא נמצא במקום אחר.</p></li>
-        <li><p class="when">בהמשך</p><p class="sub">שלב שלישי</p><h3>Meaconing</h3><p>הרמה הגבוהה ביותר של הקושי, ומענה למקלטים המתקדמים ביותר שכבר קיימים בשוק.</p></li>
+        <li class="done"><p class="when">Есть сегодня</p><p class="sub">до раунда</p><h3>Архитектура, начальное ПО, библиотека</h3><p>Полная техническая архитектура, начальная версия ПО, картированная библиотека целевых приёмников, начальная лаборатория базового уровня.</p></li>
+        <li class="fund"><p class="when">Что финансирует Pre-Seed</p><p class="sub">месяцы 1–8, POC</p><h3>Подавление</h3><p>Замыкание цикла от начала до конца против обычного постановщика помех и 3 ведущих приёмников угроз, начиная с самого распространённого приёмника у противника.</p></li>
+        <li><p class="when">После успешного POC</p><p class="sub">второй этап</p><h3>Спуфинг</h3><p>Вторая категория алгоритмов на той же лаборатории: вместо того чтобы топить приёмник в шуме, убедить его, что он находится в другом месте.</p></li>
+        <li><p class="when">Позже</p><p class="sub">третий этап</p><h3>Ретрансляционная подмена (meaconing)</h3><p>Высший уровень сложности, и ответ на самые продвинутые приёмники, уже представленные на рынке.</p></li>
       </ol>
     </section>
 
     <!-- 11 STATUS -->
     <section id="status">
       <div class="sec-head">
-        <p class="eyebrow" data-n="11">סטטוס</p>
-        <h2>מה כבר קיים, ומה ה-POC צריך להוכיח</h2>
-        <p class="lead">הפרדה מפורשת, כדי שיכולת עתידית לא תיראה כיכולת קיימת.</p>
+        <p class="eyebrow" data-n="11">Статус</p>
+        <h2>Что уже существует, и что должен доказать POC</h2>
+        <p class="lead">Явное разделение, чтобы будущая возможность не читалась как существующая.</p>
       </div>
-      <div class="progress-cap"><span>קיים לפני הסבב: 5 פריטים</span><span>ה-POC צריך להוכיח: 3 פריטים</span></div>
+      <div class="progress-cap"><span>Сделано до раунда: 5 пунктов</span><span>POC должен доказать: 3 пункта</span></div>
       <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i class="todo"></i><i class="todo"></i><i class="todo"></i></div>
       <div class="board stagger">
         <div class="card">
-          <div class="card-head"><p class="eyebrow">קיים ומוכח</p><span class="count">5</span></div>
+          <div class="card-head"><p class="eyebrow">Есть и доказано</p><span class="count">5</span></div>
           <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>ארכיטקטורה טכנית מלאה של המערכת, כולל מפרט רכש מוכן ל-RFQ ברמת הקונקטור הבודד.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>גרסה ראשונית של התוכנה כתובה. הלולאה מחכה לציוד.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>ספריית מקלטי יעד ממופה: 6 מקלטים מסחריים, מהפגיע ביותר ועד רמה מחקרית, עם מפת היכולות של כל אחד.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>צוות ליבה: המייסד ועוד 4 אנשי מקצוע מהתחום. מעבדה ראשונית פועלת ברמה בסיסית.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>אימות מול התחום: הבעיה והפתרון נבחנו מול שישה אנשי מקצוע בכירים בלוחמה אלקטרונית.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Полная техническая архитектура системы, включая закупочную спецификацию, готовую к RFQ, вплоть до отдельного разъёма.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Начальная версия ПО написана. Цикл ждёт оборудования.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Картированная библиотека целевых приёмников: 6 коммерческих приёмников, от самого уязвимого до исследовательского уровня, с картой возможностей для каждого.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Основная команда: основатель и ещё 4 специалиста из отрасли. Начальная лаборатория, работающая на базовом уровне.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Проверка на практике: проблема и решение рассмотрены с шестью старшими специалистами по радиоэлектронной борьбе.</span></li>
           </ul>
         </div>
         <div class="card prove">
-          <div class="card-head"><p class="eyebrow">מה ה-POC צריך להוכיח</p><span class="count">3</span></div>
+          <div class="card-head"><p class="eyebrow">Что должен доказать POC</p><span class="count">3</span></div>
           <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>סגירת הלולאה מקצה לקצה, אוטומטית, על הציוד המלא של המעבדה.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>יכולת מוכחת מול 3 איומי כטב״ם מובילים, החל מהמקלט הנפוץ ביותר בצד האויב.</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>התקשרות ראשונית (LOI) עם גוף ביטחוני ראשון, לשיתוף פעולה ולניסוי שדה.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Замыкание цикла от начала до конца, автоматически, на полном оборудовании лаборатории.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Доказанная эффективность против 3 ведущих дронов-угроз, начиная с самого распространённого приёмника у противника.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>Первичное соглашение (LOI) с первой оборонной структурой, о сотрудничестве и полевых испытаниях.</span></li>
           </ul>
         </div>
       </div>
@@ -1306,30 +1259,30 @@
     <!-- 12 TEAM -->
     <section id="team">
       <div class="sec-head">
-        <p class="eyebrow" data-n="12">הצוות</p>
-        <h2>הצוות שעשה את זה ידנית פעם אחת, ועכשיו בונה את המכונה</h2>
-        <p class="lead">שלושה מהחמישה שירתו בלוחמה אלקטרונית מול מערכות ניווט לווייני. השניים הנוספים מביאים מו״פ ביטחוני ועסקאות לאומיות.</p>
+        <p class="eyebrow" data-n="12">Команда</p>
+        <h2>Команда, которая однажды сделала это вручную, а теперь строит машину</h2>
+        <p class="lead">Трое из пяти служили в радиоэлектронной борьбе против спутниковых навигационных систем. Двое других привносят оборонные НИОКР и сделки государственного уровня.</p>
       </div>
       <ul class="team stagger">
         <li class="lead">
-          <div class="who"><div class="mono-gram" aria-hidden="true">NG</div><div><p class="role">CEO &amp; Founder</p><h3>נועם גלאם</h3><p class="where">לוחמה אלקטרונית מבצעית</p></div></div>
-          <div class="bio-col"><p class="bio">היחידה המבצעית ללוחמה אלקטרונית, עשרות משימות מבצעיות מול מערכות ניווט לווייני. פיתח אמל״ח נגד רחפנים שנמצא היום אחרי ניסוי צבאי. שותף בחברת טכנולוגיה לאופטימיזציה של אלגוריתמי AI.</p><p class="does">מכיר את הבעיה מהצד המבצעי, ועשה בעצמו את ההתאמה הידנית שהמערכת הופכת לאוטומטית.</p></div>
+          <div class="who"><div class="mono-gram" aria-hidden="true">NG</div><div><p class="role">CEO и основатель</p><h3>Ноам Глам</h3><p class="where">Оперативная радиоэлектронная борьба</p></div></div>
+          <div class="bio-col"><p class="bio">Оперативное подразделение радиоэлектронной борьбы, десятки боевых задач против спутниковых навигационных систем. Разработал средство противодействия дронам, уже прошедшее военные испытания. Партнёр в технологической компании по оптимизации алгоритмов ИИ.</p><p class="does">Знает проблему с оперативной стороны, и сам выполнял ручную адаптацию, которую система делает автоматической.</p></div>
         </li>
         <li>
-          <div class="who"><div class="mono-gram" aria-hidden="true">CTO</div><div><p class="role">CTO / Tech Lead</p><h3>מומחה בינה מלאכותית ומערכות RF</h3><p class="where">מו״פ ביטחוני</p></div></div>
-          <div class="bio-col"><p class="bio">ניהל מחקר ופיתוח בחברה ביטחונית ציבורית, רשם 3 פטנטים בתחום התקשורת, ובעל ניסיון משני אקזיטים קודמים.</p><p class="does">האחריות הטכנולוגית הכוללת על המערכת.</p></div>
+          <div class="who"><div class="mono-gram" aria-hidden="true">CTO</div><div><p class="role">CTO / технический лидер</p><h3>Специалист по ИИ и РЧ-системам</h3><p class="where">Оборонные НИОКР</p></div></div>
+          <div class="bio-col"><p class="bio">Руководил исследованиями и разработками в публичной оборонной компании, имеет 3 патента в области связи и опыт двух предыдущих выходов из бизнеса.</p><p class="does">Общая технологическая ответственность за систему.</p></div>
         </li>
         <li>
-          <div class="who"><div class="mono-gram" aria-hidden="true">DL</div><div><p class="role">RF &amp; Algorithms</p><h3>דוד לבדב</h3><p class="where">מדידות RF ו-GNSS</p></div></div>
-          <div class="bio-col"><p class="bio">חוקר ספקטרום וראש צוות טכני לשעבר ביחידת לוחמה אלקטרונית. כיום הנדסאי RF בתעשייה הביטחונית, במדידות RF ו-GNSS ובאינטגרציה של מערכות.</p><p class="does">המעבדה, ניתוח לוגי המקלט ופיתוח האלגוריתם.</p></div>
+          <div class="who"><div class="mono-gram" aria-hidden="true">DL</div><div><p class="role">РЧ и алгоритмы</p><h3>Давид Лебедев</h3><p class="where">Измерения РЧ и ГНСС</p></div></div>
+          <div class="bio-col"><p class="bio">Бывший исследователь спектра и руководитель технической группы в подразделении радиоэлектронной борьбы. Сегодня РЧ-инженер в оборонной промышленности, занимается измерениями РЧ и ГНСС и системной интеграцией.</p><p class="does">Лаборатория, анализ логов приёмника и разработка алгоритма.</p></div>
         </li>
         <li>
-          <div class="who"><div class="mono-gram" aria-hidden="true">NZ</div><div><p class="role">AI &amp; Automation</p><h3>ניר זרי</h3><p class="where">AI וצד שרת</p></div></div>
-          <div class="bio-col"><p class="bio">חוקר ספקטרום לשעבר ביחידת לוחמה אלקטרונית, והנדסאי אלקטרוניקה RF. מפתח AI ומתכנת צד שרת.</p><p class="does">בונה את האוטומציות שמריצות את הלולאה.</p></div>
+          <div class="who"><div class="mono-gram" aria-hidden="true">NZ</div><div><p class="role">ИИ и автоматизация</p><h3>Нир Зари</h3><p class="where">ИИ и бэкенд</p></div></div>
+          <div class="bio-col"><p class="bio">Бывший исследователь спектра в подразделении радиоэлектронной борьбы и инженер РЧ-электроники. Разработчик ИИ и бэкенд-программист.</p><p class="does">Строит автоматизацию, которая запускает цикл.</p></div>
         </li>
         <li>
-          <div class="who"><div class="mono-gram" aria-hidden="true">AS</div><div><p class="role">Strategic Advisor</p><h3>עמית שדה</h3><p class="where">מכרזים ועסקאות לאומיות</p></div></div>
-          <div class="bio-col"><p class="bio">ניסיון מוכח במכרזים ובעסקאות לאומיות.</p><p class="does">הצד העסקי, והקשרים מול גופים ביטחוניים וקרנות.</p></div>
+          <div class="who"><div class="mono-gram" aria-hidden="true">AS</div><div><p class="role">Стратегический советник</p><h3>Амит Саде</h3><p class="where">Тендеры и сделки государственного уровня</p></div></div>
+          <div class="bio-col"><p class="bio">Подтверждённый опыт в тендерах и в сделках государственного уровня.</p><p class="does">Деловая сторона, и отношения с оборонными структурами и фондами.</p></div>
         </li>
       </ul>
     </section>
@@ -1342,30 +1295,30 @@
   <img class="watermark" src="img/logo.png" alt="" aria-hidden="true" width="408" height="212">
   <div class="wrap wrap-in">
     <div>
-      <p class="eyebrow" data-n="13">הגיוס</p>
-      <div class="num"><span data-count="2" data-prefix="$" data-suffix="M">$2M</span></div>
+      <p class="eyebrow" data-n="13">Раунд</p>
+      <div class="num"><span data-count="2" data-prefix="$" data-suffix=" млн">$2 млн</span></div>
       <p class="pre">Pre-Seed</p>
-      <p class="cap">סבב אחד, אבן דרך אחת: POC עובד, מול המקלט הנפוץ ביותר בצד האויב.</p>
+      <p class="cap">Один раунд, одна веха: рабочий POC против самого распространённого приёмника у противника.</p>
       <div class="contacts">
-        <div><p class="role">CEO &amp; Founder</p><p class="name">נועם גלאם</p></div>
-        <div><p class="role">Strategic Advisor</p><p class="name">עמית שדה</p></div>
+        <div><p class="role">CEO и основатель</p><p class="name">Ноам Глам</p></div>
+        <div><p class="role">Стратегический советник</p><p class="name">Амит Саде</p></div>
       </div>
     </div>
     <div>
       <ul class="use">
-        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-rack"/></svg><span>תשתית מעבדה</span></h3><p>מחולל אותות רחב סרט, סימולטור ניווט לווייני, תא מסוכך ומחשוב.</p></li>
-        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><span>מנוע האופטימיזציה</span></h3><p>סגירת הלולאה מקצה לקצה, אוטומטית.</p></li>
-        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg><span>אימות שדה ולקוח</span></h3><p>הוכחת יכולת מול 3 איומי כטב״ם מובילים, וניסוי שדה עם הגוף הביטחוני הראשון.</p></li>
-        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-case"/></svg><span>פיתוח עסקי</span></h3><p>הבשלת ההתקשרות מול גוף ביטחוני ראשון, עד להתקשרות ראשונית (LOI).</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-rack"/></svg><span>Лабораторная инфраструктура</span></h3><p>Широкополосный генератор сигналов, имитатор спутниковой навигации, экранированная камера и вычислительные мощности.</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><span>Движок оптимизации</span></h3><p>Замыкание цикла от начала до конца, автоматически.</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg><span>Полевая проверка и проверка у заказчика</span></h3><p>Доказательство эффективности против 3 ведущих дронов-угроз, и полевые испытания с первой оборонной структурой.</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-case"/></svg><span>Развитие бизнеса</span></h3><p>Доведение отношений с первой оборонной структурой до первичного соглашения (LOI).</p></li>
       </ul>
-      <div class="milestone"><p class="eyebrow">אבן הדרך שהסבב מממן</p><p class="v">POC עובד בתוך כ-8 חודשים</p></div>
+      <div class="milestone"><p class="eyebrow">Веха, которую финансирует этот раунд</p><p class="v">Рабочий POC примерно за 8 месяцев</p></div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>Spectral Matrix by Walkin Warden · Investor Brief, ספטמבר 2026 · מסמך סודי, מיועד לנמען בלבד, ואינו מהווה הצעה להשקעה.</span>
+    <span>Spectral Matrix от Walkin Warden · Обзор для инвесторов, сентябрь 2026 · Конфиденциально, только для адресата, не является предложением инвестировать.</span>
     <img src="img/logo.png" alt="Walkin Warden" width="408" height="212">
   </div>
 </footer>
@@ -1392,7 +1345,7 @@
           ol.style.setProperty('--x', a.offsetLeft + 'px');
           ol.style.setProperty('--w', a.offsetWidth + 'px');
           if (ol.scrollWidth > ol.clientWidth) {
-            a.scrollIntoView({ inline: 'center', block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+            ol.scrollTo({ left: a.offsetLeft - ol.clientWidth / 2 + a.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
           }
         }
       });
@@ -1443,11 +1396,11 @@
     var fly = document.getElementById('fly');
     if (fly) {
       var steps = [
-        { t: 'ידע על מקלט חדש', d: 'כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. כל איום חדש שהמעבדה פוגשת הופך לידע שממנו המנוע מתחיל בפעם הבאה.', a: -90 },
-        { t: 'ספריית איומים גדולה יותר, לשימוש חוזר', d: 'מקלט שמופה עבור לקוח אחד משרת את כל הבאים אחריו. ספריית מקלטי המדף היא הנכס המשותף.', a: -18 },
-        { t: 'הקמה מהירה יותר, כיסוי רחב יותר', d: 'ככל שיותר משפחות מקלטים ממופות, המעבדה השנייה עולה פחות מהראשונה ומכסה יותר מהאיום כבר מהיום הראשון.', a: 54 },
-        { t: 'שירות שנתי ששווה יותר', d: 'טכניקות חדשות זורמות למערכות הפרוסות ככל שהאיום מתחלף. ככל שהספרייה מכסה יותר, כל שנת שירות נותנת יותר.', a: 126 },
-        { t: 'A higher cost of leaving', d: 'The customer’s own threat library, the integration into its equipment and the continuity of updates all stay with the service.', a: 198 }
+        { t: 'Знание нового приёмника', d: 'Каждый прогон против реального приёмника добавляет измеренный результат. Каждая новая угроза, с которой сталкивается лаборатория, становится знанием, с которого движок начинает в следующий раз.', a: -90 },
+        { t: 'Большая библиотека угроз, многократного использования', d: 'Приёмник, картированный для одного заказчика, служит всем последующим. Библиотека серийных приёмников — общий актив.', a: -18 },
+        { t: 'Быстрее интеграция, шире охват', d: 'Чем больше семейств приёмников картировано, тем дешевле вторая лаборатория по сравнению с первой, и тем большую часть угрозы она покрывает с первого дня.', a: 54 },
+        { t: 'Годовой сервис, который стоит больше', d: 'Новые техники поступают на развёрнутые системы по мере изменения угрозы. Чем больше покрывает библиотека, тем больше даёт каждый год сервиса.', a: 126 },
+        { t: 'Выше цена ухода', d: 'Собственная библиотека угроз заказчика, интеграция в его технику и непрерывность обновлений остаются вместе с сервисом.', a: 198 }
       ];
       var nodes = fly.querySelectorAll('.node');
       var segs = fly.querySelectorAll('.seg');
@@ -1472,7 +1425,7 @@
         cur = i;
         nodes.forEach(function (n, k) { n.classList.toggle('on', k === i); n.classList.remove('lit'); });
         dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
-        stepEl.textContent = 'שלב ' + (i + 1) + ' מתוך 5';
+        stepEl.textContent = 'Шаг ' + (i + 1) + ' из 5';
         titleEl.textContent = steps[i].t;
         descEl.textContent = steps[i].d;
         light(i, false);
