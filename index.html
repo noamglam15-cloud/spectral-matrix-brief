@@ -154,6 +154,10 @@
   .fig1 .tk text { font-family: var(--mono); font-size: 11px; font-weight: 400; fill: var(--muted); text-anchor: middle; }
   .fig1 .rl { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: .02em; fill: var(--muted); }
   .fig1 .draw { stroke-width: 6; stroke-linecap: butt; }
+  .fig1 .r1 .draw { stroke: var(--ink); }
+  .fig1 .r1 rect, .fig1 .r1 .val { fill: var(--ink); }
+  .fig1 .r2 .draw { stroke: var(--mark); }
+  .fig1 .r2 rect, .fig1 .r2 .val, .fig1 .r2 .rl { fill: var(--mark); }
   .fig1 .val { font-family: var(--sans); font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
   .fig1 .note line { stroke: var(--rule-2); }
   .fig1 .note text { font-family: var(--sans); font-size: 11.5px; font-weight: 400; fill: var(--muted); }
@@ -444,26 +448,11 @@
     .js section.in .sec-head::after { animation: grow .6s var(--ease) .4s forwards; }
     @keyframes grow { to { transform: scaleX(1); } }
 
-    /* fig. 1: the scale builds first (axis draws, ticks rise one by one), then the two bars, then the values */
-    .js .fig1 .axis { stroke-dasharray: 700; stroke-dashoffset: 700; }
-    .js .plate.go .fig1 .axis { animation: draw .9s cubic-bezier(.2,.7,.2,1) .3s forwards; }
-    .js .fig1 .tk { opacity: 0; transform: translateY(10px); }
-    .js .plate.go .fig1 .tk { animation: tick-up .55s var(--ease) forwards; }
-    .js .plate.go .fig1 .tk:nth-child(1) { animation-delay: .45s; }
-    .js .plate.go .fig1 .tk:nth-child(2) { animation-delay: .6s; }
-    .js .plate.go .fig1 .tk:nth-child(3) { animation-delay: .75s; }
-    .js .plate.go .fig1 .tk:nth-child(4) { animation-delay: .9s; }
-    .js .plate.go .fig1 .tk:nth-child(5) { animation-delay: 1.05s; }
-    @keyframes tick-up { to { opacity: 1; transform: translateY(0); } }
-    .js .fig1 .rl { opacity: 0; }
-    .js .plate.go .fig1 .rl { animation: fade .5s ease 1.2s forwards; }
-    .js .plate.go .fig1 .draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.3s cubic-bezier(.2,.7,.2,1) 1.4s forwards; }
-    .js .plate.go .fig1 .draw.b2 { animation-delay: 2s; }
+    /* fig. 1: the scale builds first (axis draws, ticks rise one by one), then the two bars, then the values.
+       The sequence itself is driven from the script (Web Animations), which behaves the same on iOS Safari. */
+    .js .fig1 .axis, .js .fig1 .draw { stroke-dasharray: 700; stroke-dashoffset: 700; }
+    .js .fig1 .tk, .js .fig1 .rl, .js .fig1 .pt, .js .fig1 .note { opacity: 0; }
     @keyframes draw { to { stroke-dashoffset: 0; } }
-    .js .pt { opacity: 0; }
-    .js .plate.go .fig1 .r1 .pt { animation: fade .5s ease 2.5s forwards; }
-    .js .plate.go .fig1 .r2 .pt { animation: fade .5s ease 2.9s forwards; }
-    .js .plate.go .fig1 .note { animation: fade .6s ease 3.4s forwards; }
     @keyframes fade { to { opacity: 1; } }
 
     /* signal chain, 6.5 s cycle while the hero is in view:
@@ -865,16 +854,16 @@
           <!-- until 2025 -->
           <g class="row r1">
             <text class="rl" x="60" y="50">Until 2025 · standard receiver</text>
-            <line class="draw b1" x1="60" y1="70" x2="637.5" y2="70" stroke="var(--ink)"/>
-            <rect class="pt" x="634" y="60" width="7" height="20" fill="var(--ink)"/>
-            <text class="pt val" x="648" y="76" fill="var(--ink)">20+ km</text>
+            <line class="draw b1" x1="60" y1="70" x2="637.5" y2="70"/>
+            <rect class="pt" x="634" y="60" width="7" height="20"/>
+            <text class="pt val" x="648" y="76">20+ km</text>
           </g>
           <!-- today -->
           <g class="row r2">
-            <text class="rl" x="60" y="104" fill="var(--mark)">Today · smart receiver, $20–200</text>
-            <line class="draw b2" x1="60" y1="124" x2="182.5" y2="124" stroke="var(--mark)"/>
-            <rect class="pt" x="179" y="114" width="7" height="20" fill="var(--mark)"/>
-            <text class="pt val" x="193" y="130" fill="var(--mark)">50 m</text>
+            <text class="rl" x="60" y="104">Today · smart receiver, $20–200</text>
+            <line class="draw b2" x1="60" y1="124" x2="182.5" y2="124"/>
+            <rect class="pt" x="179" y="114" width="7" height="20"/>
+            <text class="pt val" x="193" y="130">50 m</text>
           </g>
           <g class="pt note">
             <line x1="182.5" y1="136" x2="182.5" y2="142"/>
@@ -1377,9 +1366,30 @@
 
     /* figures and lists start their own sequence only when they themselves are on screen,
        so a tall section on a phone never plays its diagram before the reader gets there */
+    /* fig. 1, step by step: axis → ticks rise → row labels → bar 1 → bar 2 → values → note */
+    function playFig1(svg) {
+      if (!svg || !svg.animate) { svg && svg.querySelectorAll('.tk, .rl, .pt, .note').forEach(function (el) { el.style.opacity = 1; }); return; }
+      var soft = 'cubic-bezier(.2, .7, .2, 1)', spring = 'cubic-bezier(.16, 1, .3, 1)';
+      var dash = [{ strokeDashoffset: 700 }, { strokeDashoffset: 0 }];
+      var fade = [{ opacity: 0 }, { opacity: 1 }];
+      svg.querySelector('.axis').animate(dash, { duration: 900, delay: 300, easing: soft, fill: 'forwards' });
+      svg.querySelectorAll('.tk').forEach(function (g, i) {
+        g.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'translateY(0px)' }], { duration: 550, delay: 450 + i * 150, easing: spring, fill: 'forwards' });
+      });
+      svg.querySelectorAll('.rl').forEach(function (t) { t.animate(fade, { duration: 500, delay: 1200, fill: 'forwards' }); });
+      svg.querySelector('.b1').animate(dash, { duration: 1300, delay: 1400, easing: soft, fill: 'forwards' });
+      svg.querySelector('.b2').animate(dash, { duration: 1300, delay: 2000, easing: soft, fill: 'forwards' });
+      svg.querySelectorAll('.r1 .pt').forEach(function (el) { el.animate(fade, { duration: 500, delay: 2500, fill: 'forwards' }); });
+      svg.querySelectorAll('.r2 .pt').forEach(function (el) { el.animate(fade, { duration: 500, delay: 2900, fill: 'forwards' }); });
+      svg.querySelector('.note').animate(fade, { duration: 600, delay: 3400, fill: 'forwards' });
+    }
+
     var goIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('go'); goIo.unobserve(e.target); }
+        if (e.isIntersecting) {
+          e.target.classList.add('go'); goIo.unobserve(e.target);
+          if (e.target.classList.contains('plate')) playFig1(e.target.querySelector('.fig1'));
+        }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
     document.querySelectorAll('.plate, .chain, .stagger, .loop, .output, .arch, .cmp, .road, .board, .progress, .tiles, .dl, .use, .legend').forEach(function (el) { goIo.observe(el); });
@@ -1434,18 +1444,24 @@
         allItems.forEach(function (li) { li.classList.remove('show'); });
         segs.forEach(function (s) { s.classList.remove('lit'); });
         nodes.forEach(function (n) { n.classList.remove('on'); n.classList.remove('lit'); n.classList.remove('pop'); });
-        /* one step at a time, in order: the node pops, its arc draws, its line of text slides in */
-        var gap = 1000;
+        /* the arc travels: a node lights, the arc leaves it, reaches the next node, which then lights —
+           and so on around the wheel, until the last arc closes the ring back at step 1 */
+        var arrive = 950, hold = 350, t = 250;
+        function reach(i) {
+          nodes[i].classList.add('lit'); nodes[i].classList.add('pop');
+          allItems[i].classList.add('show');
+          if (i === 0) { try { all.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (err) {} }
+          playTimers.push(setTimeout(function () { nodes[i].classList.remove('pop'); }, 650));
+        }
         steps.forEach(function (s, i) {
-          playTimers.push(setTimeout(function () {
-            nodes[i].classList.add('lit');
-            nodes[i].classList.add('pop');
-            light(i, true);
-            allItems[i].classList.add('show');
-            if (i === 0) { try { all.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (err) {} }
-            playTimers.push(setTimeout(function () { nodes[i].classList.remove('pop'); }, 700));
-          }, 300 + gap * i));
+          playTimers.push(setTimeout(function () { reach(i); }, t));
+          playTimers.push(setTimeout(function () { light(i, true); }, t + hold));   /* arc leaves node i */
+          t += hold + arrive;                                                      /* ... and arrives at the next */
         });
+        playTimers.push(setTimeout(function () {                                   /* the ring closes at step 1 */
+          nodes[0].classList.add('pop');
+          playTimers.push(setTimeout(function () { nodes[0].classList.remove('pop'); }, 650));
+        }, t));
       }
       function backToSingle() {
         clearPlay(); mode = 'single';
