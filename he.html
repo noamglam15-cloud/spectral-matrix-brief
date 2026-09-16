@@ -284,6 +284,8 @@
   .fly .seg.lit { stroke-dashoffset: 0; }
   .fly .node.lit circle { stroke: var(--mark); }
   .fly .node.lit use { color: var(--mark); }
+  .fly .node.pop circle { transform: scale(1.28); fill: var(--mark-soft); }
+  .fly-panel .all li:not(.back) { transition-duration: .8s; }
   .fly-all { justify-self: center; margin-top: .4rem; font: inherit; font-size: .92rem; font-weight: 500; color: var(--mark); background: none; border: 0; padding: .3rem .2rem; cursor: pointer; letter-spacing: 0; border-bottom: 1px solid transparent; transition: border-color .25s ease; }
   .fly-all span { display: inline-block; transition: transform .35s var(--ease); }
   .fly-all:hover { border-bottom-color: var(--mark); }
@@ -429,14 +431,14 @@
     .js section.in > :nth-child(6) { transition-delay: .5s; }
     .js section.in > :nth-child(n+7) { transition-delay: .6s; }
     .js .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-    .js section.in .stagger > * { opacity: 1; transform: none; }
-    .js section.in .stagger > :nth-child(1) { transition-delay: .15s; }
-    .js section.in .stagger > :nth-child(2) { transition-delay: .25s; }
-    .js section.in .stagger > :nth-child(3) { transition-delay: .35s; }
-    .js section.in .stagger > :nth-child(4) { transition-delay: .45s; }
-    .js section.in .stagger > :nth-child(5) { transition-delay: .55s; }
-    .js section.in .stagger > :nth-child(6) { transition-delay: .65s; }
-    .js section.in .stagger > :nth-child(n+7) { transition-delay: .75s; }
+    .js .stagger.go > * { opacity: 1; transform: none; }
+    .js .stagger.go > :nth-child(1) { transition-delay: .15s; }
+    .js .stagger.go > :nth-child(2) { transition-delay: .25s; }
+    .js .stagger.go > :nth-child(3) { transition-delay: .35s; }
+    .js .stagger.go > :nth-child(4) { transition-delay: .45s; }
+    .js .stagger.go > :nth-child(5) { transition-delay: .55s; }
+    .js .stagger.go > :nth-child(6) { transition-delay: .65s; }
+    .js .stagger.go > :nth-child(n+7) { transition-delay: .75s; }
     .js section > .stagger, .js .ask > * { opacity: 1; transform: none; transition: none; }
     .js tbody.stagger > tr { transform: none; }
     .js .hero.in > * { transition-duration: 1.1s; }
@@ -448,71 +450,71 @@
 
     /* fig. 1: the scale builds first (axis draws, ticks rise one by one), then the two bars, then the values */
     .js .fig1 .axis { stroke-dasharray: 700; stroke-dashoffset: 700; }
-    .js section.in .fig1 .axis { animation: draw .9s cubic-bezier(.2,.7,.2,1) .3s forwards; }
+    .js .plate.go .fig1 .axis { animation: draw .9s cubic-bezier(.2,.7,.2,1) .3s forwards; }
     .js .fig1 .tk { opacity: 0; transform: translateY(10px); }
-    .js section.in .fig1 .tk { animation: tick-up .55s var(--ease) forwards; }
-    .js section.in .fig1 .tk:nth-child(1) { animation-delay: .45s; }
-    .js section.in .fig1 .tk:nth-child(2) { animation-delay: .6s; }
-    .js section.in .fig1 .tk:nth-child(3) { animation-delay: .75s; }
-    .js section.in .fig1 .tk:nth-child(4) { animation-delay: .9s; }
-    .js section.in .fig1 .tk:nth-child(5) { animation-delay: 1.05s; }
+    .js .plate.go .fig1 .tk { animation: tick-up .55s var(--ease) forwards; }
+    .js .plate.go .fig1 .tk:nth-child(1) { animation-delay: .45s; }
+    .js .plate.go .fig1 .tk:nth-child(2) { animation-delay: .6s; }
+    .js .plate.go .fig1 .tk:nth-child(3) { animation-delay: .75s; }
+    .js .plate.go .fig1 .tk:nth-child(4) { animation-delay: .9s; }
+    .js .plate.go .fig1 .tk:nth-child(5) { animation-delay: 1.05s; }
     @keyframes tick-up { to { opacity: 1; transform: translateY(0); } }
     .js .fig1 .rl { opacity: 0; }
-    .js section.in .fig1 .rl { animation: fade .5s ease 1.2s forwards; }
-    .js section.in .fig1 .draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.3s cubic-bezier(.2,.7,.2,1) 1.4s forwards; }
-    .js section.in .fig1 .draw.b2 { animation-delay: 2s; }
+    .js .plate.go .fig1 .rl { animation: fade .5s ease 1.2s forwards; }
+    .js .plate.go .fig1 .draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.3s cubic-bezier(.2,.7,.2,1) 1.4s forwards; }
+    .js .plate.go .fig1 .draw.b2 { animation-delay: 2s; }
     @keyframes draw { to { stroke-dashoffset: 0; } }
     .js .pt { opacity: 0; }
-    .js section.in .fig1 .r1 .pt { animation: fade .5s ease 2.5s forwards; }
-    .js section.in .fig1 .r2 .pt { animation: fade .5s ease 2.9s forwards; }
-    .js section.in .fig1 .note { animation: fade .6s ease 3.4s forwards; }
+    .js .plate.go .fig1 .r1 .pt { animation: fade .5s ease 2.5s forwards; }
+    .js .plate.go .fig1 .r2 .pt { animation: fade .5s ease 2.9s forwards; }
+    .js .plate.go .fig1 .note { animation: fade .6s ease 3.4s forwards; }
     @keyframes fade { to { opacity: 1; } }
 
     /* signal chain, 6.5 s cycle while the hero is in view:
        transmit (rings leave the antenna) → raw signal travels → the lab receives and decodes it (analyser bars)
        → a clean waveform travels → it is written into the file (wave and check draw, the file glows)
        → the file travels → lock on the threat (the ring closes on the crosshair) */
-    .js section.in .s-emit .ring { animation: ring-out 6.5s ease-out 1.2s infinite; }
-    .js section.in .s-emit .r2 { animation-delay: 1.5s; }
+    .js .chain.go .s-emit .ring { animation: ring-out 6.5s ease-out 1.2s infinite; }
+    .js .chain.go .s-emit .r2 { animation-delay: 1.5s; }
     @keyframes ring-out { 0% { transform: scale(.6); opacity: .9; } 12% { transform: scale(2.3); opacity: 0; } 100% { opacity: 0; } }
-    .js section.in .chain .link .wave { animation: flow 6.5s linear 1.9s infinite; }
-    .js section.in .chain > div:nth-child(3) .link .wave { animation-delay: 4s; }
-    .js section.in .chain > div:nth-child(4) .link .wave { animation-delay: 5.3s; }
+    .js .chain.go .link .wave { animation: flow 6.5s linear 1.9s infinite; }
+    .js .chain.go > div:nth-child(3) .link .wave { animation-delay: 4s; }
+    .js .chain.go > div:nth-child(4) .link .wave { animation-delay: 5.3s; }
     @keyframes flow { 0% { opacity: .28; stroke-dashoffset: 0; } 2% { opacity: 1; } 12% { opacity: 1; stroke-dashoffset: -40; } 14%, 100% { opacity: .28; stroke-dashoffset: -40; } }
-    html[dir="rtl"] .js section.in .chain .link .wave { animation-name: flow-rtl; }
+    html[dir="rtl"] .js .chain.go .link .wave { animation-name: flow-rtl; }
     @keyframes flow-rtl { 0% { opacity: .28; stroke-dashoffset: 0; } 2% { opacity: 1; } 12% { opacity: 1; stroke-dashoffset: 40; } 14%, 100% { opacity: .28; stroke-dashoffset: 40; } }
-    .js section.in .s-decode .bars rect { animation: bars 6.5s ease-in-out 2.7s infinite; }
-    .js section.in .s-decode .bars rect:nth-child(2) { animation-delay: 2.78s; }
-    .js section.in .s-decode .bars rect:nth-child(3) { animation-delay: 2.86s; }
-    .js section.in .s-decode .bars rect:nth-child(4) { animation-delay: 2.94s; }
-    .js section.in .s-decode .bars rect:nth-child(5) { animation-delay: 3.02s; }
+    .js .chain.go .s-decode .bars rect { animation: bars 6.5s ease-in-out 2.7s infinite; }
+    .js .chain.go .s-decode .bars rect:nth-child(2) { animation-delay: 2.78s; }
+    .js .chain.go .s-decode .bars rect:nth-child(3) { animation-delay: 2.86s; }
+    .js .chain.go .s-decode .bars rect:nth-child(4) { animation-delay: 2.94s; }
+    .js .chain.go .s-decode .bars rect:nth-child(5) { animation-delay: 3.02s; }
     @keyframes bars { 0% { transform: scaleY(.18); opacity: .55; } 3% { transform: scaleY(1); opacity: 1; } 6% { transform: scaleY(.35); } 9% { transform: scaleY(.85); } 12% { transform: scaleY(.3); } 15% { transform: scaleY(.7); } 18% { transform: scaleY(.45); opacity: 1; } 21%, 100% { transform: scaleY(.18); opacity: .55; } }
-    .js section.in .s-decode use { transform-box: fill-box; transform-origin: center; animation: decode 6.5s ease 2.7s infinite; }
+    .js .chain.go .s-decode use { transform-box: fill-box; transform-origin: center; animation: decode 6.5s ease 2.7s infinite; }
     @keyframes decode { 0% { filter: brightness(1); } 4%, 16% { filter: brightness(1.45); } 20%, 100% { filter: brightness(1); } }
-    .js section.in .s-file .fwave { animation: draw40 6.5s ease 4.6s infinite; }
-    .js section.in .s-file .fok { animation: draw40 6.5s ease 5s infinite; }
+    .js .chain.go .s-file .fwave { animation: draw40 6.5s ease 4.6s infinite; }
+    .js .chain.go .s-file .fok { animation: draw40 6.5s ease 5s infinite; }
     @keyframes draw40 { 0% { stroke-dashoffset: 40; } 8% { stroke-dashoffset: 0; } 70% { stroke-dashoffset: 0; } 74%, 100% { stroke-dashoffset: 40; } }
-    .js section.in .s-file .glow { animation: glow 6.5s ease 4.6s infinite; }
+    .js .chain.go .s-file .glow { animation: glow 6.5s ease 4.6s infinite; }
     @keyframes glow { 0% { opacity: 0; transform: scale(.6); } 8% { opacity: 1; transform: scale(1.15); } 30% { opacity: .6; transform: scale(1); } 40%, 100% { opacity: 0; transform: scale(.6); } }
-    .js section.in .s-lock .lockring { animation: lock-in 6.5s cubic-bezier(.2, .7, .2, 1) 5.9s infinite; }
+    .js .chain.go .s-lock .lockring { animation: lock-in 6.5s cubic-bezier(.2, .7, .2, 1) 5.9s infinite; }
     @keyframes lock-in { 0% { transform: scale(1.6); opacity: 0; } 2% { opacity: .9; } 8% { transform: scale(.62); opacity: .9; } 12% { transform: scale(.66); opacity: 0; } 100% { opacity: 0; } }
-    .js section.in .s-lock use { transform-box: fill-box; transform-origin: center; animation: lock-hit 6.5s ease 5.9s infinite; }
+    .js .chain.go .s-lock use { transform-box: fill-box; transform-origin: center; animation: lock-hit 6.5s ease 5.9s infinite; }
     @keyframes lock-hit { 0% { filter: brightness(1); transform: scale(1); } 8% { filter: brightness(1.5); transform: scale(1.12); } 14%, 100% { filter: brightness(1); transform: scale(1); } }
 
     /* the loop */
     .js .loop::before { transform: scaleX(0); transform-origin: right; }
-    .js section.in .loop::before { animation: grow 1s cubic-bezier(.2,.7,.2,1) .6s forwards; }
+    .js .loop.go::before { animation: grow 1s cubic-bezier(.2,.7,.2,1) .6s forwards; }
     .js .loop li::before { color: var(--muted); }
-    .js section.in .loop li::before { animation: step .5s ease forwards; }
-    .js section.in .loop li:nth-child(1)::before { animation-delay: .75s; }
-    .js section.in .loop li:nth-child(2)::before { animation-delay: .95s; }
-    .js section.in .loop li:nth-child(3)::before { animation-delay: 1.15s; }
-    .js section.in .loop li:nth-child(4)::before { animation-delay: 1.35s; }
-    .js section.in .loop li:nth-child(5)::before { animation-delay: 1.55s; }
+    .js .loop.go li::before { animation: step .5s ease forwards; }
+    .js .loop.go li:nth-child(1)::before { animation-delay: .75s; }
+    .js .loop.go li:nth-child(2)::before { animation-delay: .95s; }
+    .js .loop.go li:nth-child(3)::before { animation-delay: 1.15s; }
+    .js .loop.go li:nth-child(4)::before { animation-delay: 1.35s; }
+    .js .loop.go li:nth-child(5)::before { animation-delay: 1.55s; }
     @keyframes step { to { color: var(--mark); } }
     .loop-return i { background: repeating-linear-gradient(90deg, var(--mark) 0 6px, transparent 6px 12px); }
-    .js section.in .loop-return { transition-delay: 1.9s; }
-    .js section.in .loop-return i { animation: run .6s linear 2.2s 3; }
+    .js .loop.go + .loop-return { transition-delay: 1.9s; }
+    .js .loop.go + .loop-return i { animation: run .6s linear 2.2s 3; }
     @keyframes run { to { background-position-x: -24px; } }
 
     /* the process, literally, on a 7 s cycle while in view:
@@ -521,130 +523,130 @@
        34–58 % its logs are pulled, line by line; the measured line lights
        58–78 % the engine turns once
        80–100 % the file arrives, the waveform and the check draw in */
-    .js section.in .proc .s1 circle { animation: pulse7 7s ease infinite; }
+    .js .output.go .proc .s1 circle { animation: pulse7 7s ease infinite; }
     @keyframes pulse7 { 0%, 6% { stroke: var(--rule-2); transform: scale(1); } 2%, 4% { stroke: var(--mark); transform: scale(1.14); } }
     .js .proc .wv { opacity: 0; }
-    .js section.in .proc .wv { animation: wave-out 7s ease-out infinite; }
-    .js section.in .proc .wv:nth-child(2) { animation-delay: .3s; }
-    .js section.in .proc .wv:nth-child(3) { animation-delay: .6s; }
+    .js .output.go .proc .wv { animation: wave-out 7s ease-out infinite; }
+    .js .output.go .proc .wv:nth-child(2) { animation-delay: .3s; }
+    .js .output.go .proc .wv:nth-child(3) { animation-delay: .6s; }
     @keyframes wave-out { 0% { opacity: 0; transform: translateX(-6px); } 3% { opacity: .9; } 12% { opacity: 0; transform: translateX(22px); } 100% { opacity: 0; } }
-    .js section.in .proc .rx circle { animation: rx-hit 7s ease infinite; }
+    .js .output.go .proc .rx circle { animation: rx-hit 7s ease infinite; }
     @keyframes rx-hit { 0%, 19% { stroke: var(--rule-2); transform: scale(1); } 22%, 30% { stroke: var(--mark); transform: scale(1.1); } 34%, 100% { stroke: var(--rule-2); transform: scale(1); } }
-    .js section.in .proc .rx use { animation: rx-tint 7s ease infinite; }
+    .js .output.go .proc .rx use { animation: rx-tint 7s ease infinite; }
     @keyframes rx-tint { 0%, 19% { color: var(--ink); } 22%, 56% { color: var(--mark); } 60%, 100% { color: var(--ink); } }
-    .js section.in .proc .lock.ok { animation: lock-ok 7s linear infinite; }
+    .js .output.go .proc .lock.ok { animation: lock-ok 7s linear infinite; }
     @keyframes lock-ok { 0%, 20% { opacity: 1; } 21%, 96% { opacity: 0; } 98%, 100% { opacity: 1; } }
-    .js section.in .proc .lock.lost { animation: lock-lost 7s linear infinite; }
+    .js .output.go .proc .lock.lost { animation: lock-lost 7s linear infinite; }
     @keyframes lock-lost { 0%, 20% { opacity: 0; } 22%, 58% { opacity: 1; } 60%, 100% { opacity: 0; } }
     .js .proc .logs .ln { transform: scaleX(0); opacity: 0; }
-    .js section.in .proc .logs .ln { animation: log-in 7s cubic-bezier(.2, .7, .2, 1) infinite; }
-    .js section.in .proc .logs .ln:nth-of-type(2) { animation-delay: .2s; }
-    .js section.in .proc .logs .ln:nth-of-type(3) { animation-delay: .4s; }
-    .js section.in .proc .logs .ln:nth-of-type(4) { animation-delay: .6s; }
-    .js section.in .proc .logs .ln:nth-of-type(5) { animation-delay: .8s; }
-    .js section.in .proc .logs .ln:nth-of-type(6) { animation-delay: 1s; }
+    .js .output.go .proc .logs .ln { animation: log-in 7s cubic-bezier(.2, .7, .2, 1) infinite; }
+    .js .output.go .proc .logs .ln:nth-of-type(2) { animation-delay: .2s; }
+    .js .output.go .proc .logs .ln:nth-of-type(3) { animation-delay: .4s; }
+    .js .output.go .proc .logs .ln:nth-of-type(4) { animation-delay: .6s; }
+    .js .output.go .proc .logs .ln:nth-of-type(5) { animation-delay: .8s; }
+    .js .output.go .proc .logs .ln:nth-of-type(6) { animation-delay: 1s; }
     @keyframes log-in { 0%, 35% { transform: scaleX(0); opacity: 0; } 39% { transform: scaleX(1); opacity: 1; } 88% { opacity: 1; } 92%, 100% { opacity: 0; transform: scaleX(1); } }
-    .js section.in .proc .logs .ln.hit { animation-name: log-hit; }
+    .js .output.go .proc .logs .ln.hit { animation-name: log-hit; }
     @keyframes log-hit { 0%, 35% { transform: scaleX(0); opacity: 0; } 39% { transform: scaleX(1); opacity: 1; } 46% { opacity: .35; } 49% { opacity: 1; } 52% { opacity: .35; } 55%, 88% { opacity: 1; } 92%, 100% { opacity: 0; transform: scaleX(1); } }
-    .js section.in .proc .logs .panel { animation: panel7 7s ease infinite; }
+    .js .output.go .proc .logs .panel { animation: panel7 7s ease infinite; }
     @keyframes panel7 { 0%, 33% { stroke: var(--rule-2); } 36%, 58% { stroke: var(--mark); } 62%, 100% { stroke: var(--rule-2); } }
-    .js section.in .proc .opt use { animation: spin7 7s cubic-bezier(.4, 0, .2, 1) infinite; }
+    .js .output.go .proc .opt use { animation: spin7 7s cubic-bezier(.4, 0, .2, 1) infinite; }
     @keyframes spin7 { 0%, 58% { transform: rotate(0deg); color: var(--ink); } 60% { color: var(--mark); } 78% { transform: rotate(360deg); color: var(--mark); } 82%, 100% { transform: rotate(360deg); color: var(--ink); } }
-    .js section.in .proc .s4 circle { animation: opt7 7s ease infinite; }
+    .js .output.go .proc .s4 circle { animation: opt7 7s ease infinite; }
     @keyframes opt7 { 0%, 57% { stroke: var(--rule-2); } 60%, 78% { stroke: var(--mark); } 82%, 100% { stroke: var(--rule-2); } }
     .js .proc .file { transform-box: fill-box; transform-origin: center; }
-    .js section.in .proc .file { animation: arrive 7s var(--ease) infinite; }
+    .js .output.go .proc .file { animation: arrive 7s var(--ease) infinite; }
     @keyframes arrive { 0%, 80% { opacity: .3; transform: scale(.94); } 86% { opacity: 1; transform: scale(1.06); } 90%, 100% { opacity: 1; transform: scale(1); } }
-    .js section.in .proc .file .wave { stroke-dasharray: 60; animation: wave 7s linear infinite; }
+    .js .output.go .proc .file .wave { stroke-dasharray: 60; animation: wave 7s linear infinite; }
     @keyframes wave { 0%, 86% { stroke-dashoffset: 60; } 94%, 100% { stroke-dashoffset: 0; } }
-    .js section.in .proc .file .ok { stroke-dasharray: 20; animation: okd 7s linear infinite; }
+    .js .output.go .proc .file .ok { stroke-dasharray: 20; animation: okd 7s linear infinite; }
     @keyframes okd { 0%, 93% { stroke-dashoffset: 20; } 100% { stroke-dashoffset: 0; } }
 
     /* icons rise into place, then the four in the signal chain keep a slow float */
-    .js section.in .chain .stage, .js section.in .tile .ic, .js section.in .arch .ic, .js section.in h3.ic-row .ic { animation: rise .9s var(--ease) .5s backwards; }
-    .js section.in .chain > div:nth-child(2) .stage { animation-delay: .65s; }
-    .js section.in .chain > div:nth-child(3) .stage { animation-delay: .8s; }
-    .js section.in .chain > div:nth-child(4) .stage { animation-delay: .95s; }
-    .js section.in .dl > div:nth-child(2) .ic { animation-delay: .6s; }
-    .js section.in .dl > div:nth-child(3) .ic { animation-delay: .7s; }
-    .js section.in .dl > div:nth-child(4) .ic { animation-delay: .8s; }
-    .js section.in .dl > div:nth-child(5) .ic { animation-delay: .9s; }
-    .js section.in .dl > div:nth-child(6) .ic { animation-delay: 1s; }
+    .js .chain.go .stage, .js .tiles.go .tile .ic, .js .arch.go .ic, .js .go h3.ic-row .ic { animation: rise .9s var(--ease) .5s backwards; }
+    .js .chain.go > div:nth-child(2) .stage { animation-delay: .65s; }
+    .js .chain.go > div:nth-child(3) .stage { animation-delay: .8s; }
+    .js .chain.go > div:nth-child(4) .stage { animation-delay: .95s; }
+    .js .dl.go > div:nth-child(2) .ic { animation-delay: .6s; }
+    .js .dl.go > div:nth-child(3) .ic { animation-delay: .7s; }
+    .js .dl.go > div:nth-child(4) .ic { animation-delay: .8s; }
+    .js .dl.go > div:nth-child(5) .ic { animation-delay: .9s; }
+    .js .dl.go > div:nth-child(6) .ic { animation-delay: 1s; }
     @keyframes rise { 0% { opacity: 0; transform: translateY(10px); } 60% { opacity: 1; transform: translateY(-3px); } 100% { opacity: 1; transform: translateY(0); } }
-    .js section.in .chain .stage { animation: rise .9s var(--ease) .5s backwards, float 3.6s ease-in-out 1.4s infinite; }
+    .js .chain.go .stage { animation: rise .9s var(--ease) .5s backwards, float 3.6s ease-in-out 1.4s infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 
     /* architecture: icons draw themselves as the highlight passes */
     .js .arch .ic * { stroke-dasharray: 100; stroke-dashoffset: 100; }
-    .js section.in .arch .ic * { animation: draw-ic 1.1s var(--ease) forwards; }
-    .js section.in .arch > div:nth-child(1) .ic * { animation-delay: .8s; }
-    .js section.in .arch > div:nth-child(2) .ic * { animation-delay: 1s; }
-    .js section.in .arch > div:nth-child(3) .ic * { animation-delay: 1.2s; }
-    .js section.in .arch > div:nth-child(4) .ic * { animation-delay: 1.4s; }
-    .js section.in .arch > div:nth-child(5) .ic * { animation-delay: 1.6s; }
-    .js section.in .arch > div:nth-child(6) .ic * { animation-delay: 1.8s; }
+    .js .arch.go .ic * { animation: draw-ic 1.1s var(--ease) forwards; }
+    .js .arch.go > div:nth-child(1) .ic * { animation-delay: .8s; }
+    .js .arch.go > div:nth-child(2) .ic * { animation-delay: 1s; }
+    .js .arch.go > div:nth-child(3) .ic * { animation-delay: 1.2s; }
+    .js .arch.go > div:nth-child(4) .ic * { animation-delay: 1.4s; }
+    .js .arch.go > div:nth-child(5) .ic * { animation-delay: 1.6s; }
+    .js .arch.go > div:nth-child(6) .ic * { animation-delay: 1.8s; }
     @keyframes draw-ic { to { stroke-dashoffset: 0; } }
-    .js section.in .arch > div { animation: pass .8s ease forwards; }
-    .js section.in .arch > div:nth-child(1) { animation-delay: .9s; }
-    .js section.in .arch > div:nth-child(2) { animation-delay: 1.1s; }
-    .js section.in .arch > div:nth-child(3) { animation-delay: 1.3s; }
-    .js section.in .arch > div:nth-child(4) { animation-delay: 1.5s; }
-    .js section.in .arch > div:nth-child(5) { animation-delay: 1.7s; }
-    .js section.in .arch > div:nth-child(6) { animation-delay: 1.9s; }
+    .js .arch.go > div { animation: pass .8s ease forwards; }
+    .js .arch.go > div:nth-child(1) { animation-delay: .9s; }
+    .js .arch.go > div:nth-child(2) { animation-delay: 1.1s; }
+    .js .arch.go > div:nth-child(3) { animation-delay: 1.3s; }
+    .js .arch.go > div:nth-child(4) { animation-delay: 1.5s; }
+    .js .arch.go > div:nth-child(5) { animation-delay: 1.7s; }
+    .js .arch.go > div:nth-child(6) { animation-delay: 1.9s; }
     @keyframes pass { 35% { box-shadow: inset 0 0 0 2px var(--mark); } 100% { box-shadow: inset 0 0 0 0 transparent; } }
-    .js section.in .arch-foot { transition-delay: 2.5s; }
+    .js .arch.go + .arch-foot { transition-delay: 2.5s; }
 
     /* compare: rows settle in, then the Spectral Matrix column lights */
     .js .cmp tbody tr { opacity: 0; transition: opacity .7s var(--ease); }
-    .js section.in .cmp tbody tr { opacity: 1; }
-    .js section.in .cmp tbody tr:nth-child(1) { transition-delay: .5s; }
-    .js section.in .cmp tbody tr:nth-child(2) { transition-delay: .6s; }
-    .js section.in .cmp tbody tr:nth-child(3) { transition-delay: .7s; }
-    .js section.in .cmp tbody tr:nth-child(4) { transition-delay: .8s; }
-    .js section.in .cmp tbody tr:nth-child(5) { transition-delay: .9s; }
-    .js section.in .cmp tbody tr:nth-child(6) { transition-delay: 1s; }
-    .js section.in .cmp tbody tr:nth-child(7) { transition-delay: 1.1s; }
+    .js .cmp.go tbody tr { opacity: 1; }
+    .js .cmp.go tbody tr:nth-child(1) { transition-delay: .5s; }
+    .js .cmp.go tbody tr:nth-child(2) { transition-delay: .6s; }
+    .js .cmp.go tbody tr:nth-child(3) { transition-delay: .7s; }
+    .js .cmp.go tbody tr:nth-child(4) { transition-delay: .8s; }
+    .js .cmp.go tbody tr:nth-child(5) { transition-delay: .9s; }
+    .js .cmp.go tbody tr:nth-child(6) { transition-delay: 1s; }
+    .js .cmp.go tbody tr:nth-child(7) { transition-delay: 1.1s; }
     .js .cmp td.us .ok { stroke-dasharray: 30; stroke-dashoffset: 30; }
-    .js section.in .cmp td.us .ok { animation: draw-ic .6s var(--ease) 1.4s forwards; }
+    .js .cmp.go td.us .ok { animation: draw-ic .6s var(--ease) 1.4s forwards; }
     .js .cmp thead th.us { box-shadow: inset 0 0 0 var(--mark); }
-    .js section.in .cmp thead th.us { animation: bar .6s var(--ease) 1.2s forwards; }
+    .js .cmp.go thead th.us { animation: bar .6s var(--ease) 1.2s forwards; }
     @keyframes bar { to { box-shadow: inset 0 3px 0 var(--mark); } }
 
     /* roadmap */
     .js .road::before { transform: scaleX(0); transform-origin: right; }
-    .js section.in .road::before { animation: grow .9s cubic-bezier(.2,.7,.2,1) .5s forwards; }
+    .js .road.go::before { animation: grow .9s cubic-bezier(.2,.7,.2,1) .5s forwards; }
     .js .road li::before { transform: scale(.4); opacity: .4; }
-    .js section.in .road li::before { animation: set .45s cubic-bezier(.2,.7,.2,1) forwards; }
-    .js section.in .road li:nth-child(1)::before { animation-delay: .7s; }
-    .js section.in .road li:nth-child(2)::before { animation-delay: .95s; }
-    .js section.in .road li:nth-child(3)::before { animation-delay: 1.2s; }
-    .js section.in .road li:nth-child(4)::before { animation-delay: 1.45s; }
+    .js .road.go li::before { animation: set .45s cubic-bezier(.2,.7,.2,1) forwards; }
+    .js .road.go li:nth-child(1)::before { animation-delay: .7s; }
+    .js .road.go li:nth-child(2)::before { animation-delay: .95s; }
+    .js .road.go li:nth-child(3)::before { animation-delay: 1.2s; }
+    .js .road.go li:nth-child(4)::before { animation-delay: 1.45s; }
     @keyframes set { to { transform: scale(1); opacity: 1; } }
 
     /* status: ticks draw in one by one, the open boxes pulse once */
     .js .card li .tick { stroke-dasharray: 20; stroke-dashoffset: 20; }
-    .js section.in .card:not(.prove) li .tick { animation: draw-ic .5s var(--ease) forwards; }
-    .js section.in .card:not(.prove) li:nth-child(1) .tick { animation-delay: .7s; }
-    .js section.in .card:not(.prove) li:nth-child(2) .tick { animation-delay: .9s; }
-    .js section.in .card:not(.prove) li:nth-child(3) .tick { animation-delay: 1.1s; }
-    .js section.in .card:not(.prove) li:nth-child(4) .tick { animation-delay: 1.3s; }
-    .js section.in .card:not(.prove) li:nth-child(5) .tick { animation-delay: 1.5s; }
+    .js .board.go .card:not(.prove) li .tick { animation: draw-ic .5s var(--ease) forwards; }
+    .js .board.go .card:not(.prove) li:nth-child(1) .tick { animation-delay: .7s; }
+    .js .board.go .card:not(.prove) li:nth-child(2) .tick { animation-delay: .9s; }
+    .js .board.go .card:not(.prove) li:nth-child(3) .tick { animation-delay: 1.1s; }
+    .js .board.go .card:not(.prove) li:nth-child(4) .tick { animation-delay: 1.3s; }
+    .js .board.go .card:not(.prove) li:nth-child(5) .tick { animation-delay: 1.5s; }
     .js .card.prove li .ring { transform-box: fill-box; transform-origin: center; }
-    .js section.in .card.prove li .ring { animation: ping 1.2s ease forwards; }
-    .js section.in .card.prove li:nth-child(1) .ring { animation-delay: 1.8s; }
-    .js section.in .card.prove li:nth-child(2) .ring { animation-delay: 2.1s; }
-    .js section.in .card.prove li:nth-child(3) .ring { animation-delay: 2.4s; }
+    .js .board.go .card.prove li .ring { animation: ping 1.2s ease forwards; }
+    .js .board.go .card.prove li:nth-child(1) .ring { animation-delay: 1.8s; }
+    .js .board.go .card.prove li:nth-child(2) .ring { animation-delay: 2.1s; }
+    .js .board.go .card.prove li:nth-child(3) .ring { animation-delay: 2.4s; }
     @keyframes ping { 30% { transform: scale(1.25); stroke-width: 2.6; } 100% { transform: scale(1); } }
     .js .progress i { transform: scaleX(0); transform-origin: right; }
-    .js section.in .progress i { animation: grow .5s var(--ease) forwards; }
-    .js section.in .progress i:nth-child(1) { animation-delay: .5s; }
-    .js section.in .progress i:nth-child(2) { animation-delay: .6s; }
-    .js section.in .progress i:nth-child(3) { animation-delay: .7s; }
-    .js section.in .progress i:nth-child(4) { animation-delay: .8s; }
-    .js section.in .progress i:nth-child(5) { animation-delay: .9s; }
-    .js section.in .progress i:nth-child(6) { animation-delay: 1.1s; }
-    .js section.in .progress i:nth-child(7) { animation-delay: 1.2s; }
-    .js section.in .progress i:nth-child(8) { animation-delay: 1.3s; }
+    .js .progress.go i { animation: grow .5s var(--ease) forwards; }
+    .js .progress.go i:nth-child(1) { animation-delay: .5s; }
+    .js .progress.go i:nth-child(2) { animation-delay: .6s; }
+    .js .progress.go i:nth-child(3) { animation-delay: .7s; }
+    .js .progress.go i:nth-child(4) { animation-delay: .8s; }
+    .js .progress.go i:nth-child(5) { animation-delay: .9s; }
+    .js .progress.go i:nth-child(6) { animation-delay: 1.1s; }
+    .js .progress.go i:nth-child(7) { animation-delay: 1.2s; }
+    .js .progress.go i:nth-child(8) { animation-delay: 1.3s; }
 
   /* viewers who asked their OS for less motion still get the page, without the entrance moves */
   @media (prefers-reduced-motion: reduce) {
@@ -1369,6 +1371,15 @@
     }, { threshold: 0.06, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('section').forEach(function (s) { inIo.observe(s); });
 
+    /* figures and lists start their own sequence only when they themselves are on screen,
+       so a tall section on a phone never plays its diagram before the reader gets there */
+    var goIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('go'); goIo.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.plate, .chain, .stagger, .loop, .output, .arch, .cmp, .road, .board, .progress, .tiles, .dl, .use, .legend').forEach(function (el) { goIo.observe(el); });
+
     /* flywheel: hover or focus a step to read it; it also turns on its own while in view */
     var fly = document.getElementById('fly');
     if (fly) {
@@ -1418,14 +1429,18 @@
         playBtn.hidden = true;
         allItems.forEach(function (li) { li.classList.remove('show'); });
         segs.forEach(function (s) { s.classList.remove('lit'); });
-        nodes.forEach(function (n) { n.classList.remove('on'); n.classList.remove('lit'); });
-        var gap = reduce ? 0 : 900;
+        nodes.forEach(function (n) { n.classList.remove('on'); n.classList.remove('lit'); n.classList.remove('pop'); });
+        /* one step at a time, in order: the node pops, its arc draws, its line of text slides in */
+        var gap = 1000;
         steps.forEach(function (s, i) {
           playTimers.push(setTimeout(function () {
             nodes[i].classList.add('lit');
+            nodes[i].classList.add('pop');
             light(i, true);
             allItems[i].classList.add('show');
-          }, 250 + gap * i));
+            if (i === 0) { try { all.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (err) {} }
+            playTimers.push(setTimeout(function () { nodes[i].classList.remove('pop'); }, 700));
+          }, 300 + gap * i));
         });
       }
       function backToSingle() {
