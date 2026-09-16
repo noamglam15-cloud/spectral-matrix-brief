@@ -151,8 +151,7 @@
   .plate-head .eyebrow { color: var(--ink-2); }
   .plate svg { width: 100%; height: auto; display: block; direction: ltr; }
   .proc, .fly svg { direction: ltr; }
-  .proc { transform: scaleX(-1); }
-  .proc text { transform: scaleX(-1); transform-box: fill-box; transform-origin: center; }
+  .proc .logs .ln { transform-origin: right; }
   .fig1 .axis { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk line { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk text { font-family: var(--mono); font-size: 11px; font-weight: 400; fill: var(--muted); text-anchor: middle; }
@@ -518,7 +517,7 @@
     .js .output.go .proc .wv { animation: wave-out 7s ease-out infinite; }
     .js .output.go .proc .wv:nth-child(2) { animation-delay: .3s; }
     .js .output.go .proc .wv:nth-child(3) { animation-delay: .6s; }
-    @keyframes wave-out { 0% { opacity: 0; transform: translateX(-6px); } 3% { opacity: .9; } 12% { opacity: 0; transform: translateX(22px); } 100% { opacity: 0; } }
+    @keyframes wave-out { 0% { opacity: 0; transform: translateX(6px); } 3% { opacity: .9; } 12% { opacity: 0; transform: translateX(-22px); } 100% { opacity: 0; } }
     .js .output.go .proc .rx circle { animation: rx-hit 7s ease infinite; }
     @keyframes rx-hit { 0%, 19% { stroke: var(--rule-2); transform: scale(1); } 22%, 30% { stroke: var(--mark); transform: scale(1.1); } 34%, 100% { stroke: var(--rule-2); transform: scale(1); } }
     .js .output.go .proc .rx use { animation: rx-tint 7s ease infinite; }
@@ -945,38 +944,39 @@
 
       <div class="output">
         <svg class="proc" viewBox="0 0 600 190" role="img" aria-label="המשבש משדר לעבר המקלט בתא; המקלט מאבד נעילה; הלוגים שלו נמשכים ונקראים; מנוע האופטימיזציה מכוונן את צורת הגל; ומה שיוצא הוא קובץ אות אחד.">
-          <path class="track" d="M60 100 H520"/>
-          <g class="st s1" transform="translate(60 100)">
+          <!-- laid out right-to-left: the jammer on the right, the file on the left -->
+          <path class="track" d="M80 100 H540"/>
+          <g class="st s1" transform="translate(540 100)">
             <circle r="22"/>
             <use href="#i-jammer" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
           <g class="waves">
-            <path class="wv" d="M92 86a20 20 0 0 1 0 28"/>
-            <path class="wv" d="M100 78a32 32 0 0 1 0 44"/>
-            <path class="wv" d="M108 70a44 44 0 0 1 0 60"/>
+            <path class="wv" d="M508 86a20 20 0 0 0 0 28"/>
+            <path class="wv" d="M500 78a32 32 0 0 0 0 44"/>
+            <path class="wv" d="M492 70a44 44 0 0 0 0 60"/>
           </g>
-          <g class="rx" transform="translate(200 100)">
+          <g class="rx" transform="translate(400 100)">
             <rect class="chamber" x="-34" y="-34" width="68" height="68" rx="8"/>
             <circle r="22"/>
             <use href="#i-chip" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             <text class="lock ok" x="0" y="-44">נעילה</text>
             <text class="lock lost" x="0" y="-44">אבדה נעילה</text>
           </g>
-          <g class="logs" transform="translate(280 62)">
+          <g class="logs" transform="translate(210 62)">
             <rect class="panel" x="0" y="0" width="110" height="76" rx="6"/>
-            <text class="ttl" x="8" y="13">RX LOG</text>
-            <rect class="ln" x="8" y="22" width="70" height="3" rx="1.5"/>
-            <rect class="ln" x="8" y="30" width="52" height="3" rx="1.5"/>
-            <rect class="ln" x="8" y="38" width="84" height="3" rx="1.5"/>
-            <rect class="ln" x="8" y="46" width="44" height="3" rx="1.5"/>
-            <rect class="ln hit" x="8" y="54" width="92" height="3" rx="1.5"/>
-            <rect class="ln" x="8" y="62" width="60" height="3" rx="1.5"/>
+            <text class="ttl" x="102" y="13" text-anchor="end">RX LOG</text>
+            <rect class="ln" x="32" y="22" width="70" height="3" rx="1.5"/>
+            <rect class="ln" x="50" y="30" width="52" height="3" rx="1.5"/>
+            <rect class="ln" x="18" y="38" width="84" height="3" rx="1.5"/>
+            <rect class="ln" x="58" y="46" width="44" height="3" rx="1.5"/>
+            <rect class="ln hit" x="10" y="54" width="92" height="3" rx="1.5"/>
+            <rect class="ln" x="42" y="62" width="60" height="3" rx="1.5"/>
           </g>
-          <g class="st s4 opt" transform="translate(450 100)">
+          <g class="st s4 opt" transform="translate(150 100)">
             <circle r="22"/>
             <use href="#i-cycle" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
-          <g transform="translate(496 64)">
+          <g transform="translate(44 64)">
             <g class="file">
               <path class="paper" d="M12 2h24l16 16v52a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/>
               <path d="M12 2h24l16 16v52a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/>
@@ -985,7 +985,7 @@
               <path class="ok" d="M20 62l4 4 8-8"/>
             </g>
           </g>
-          <g class="lbl"><text x="60" y="160">שידור</text><text class="lbl-l" x="200" y="160">מקלט בתא מסוכך</text><text class="lbl-s" x="200" y="160">מקלט</text><text x="335" y="160">לוגים</text><text x="450" y="160">אופטימיזציה</text><text class="lbl-l" x="528" y="160">קובץ אות</text><text class="lbl-s" x="528" y="160">קובץ</text></g>
+          <g class="lbl"><text x="540" y="160">שידור</text><text class="lbl-l" x="400" y="160">מקלט בתא מסוכך</text><text class="lbl-s" x="400" y="160">מקלט</text><text x="265" y="160">לוגים</text><text x="150" y="160">אופטימיזציה</text><text class="lbl-l" x="72" y="160">קובץ אות</text><text class="lbl-s" x="72" y="160">קובץ</text></g>
         </svg>
         <div>
           <span class="tag">התוצר</span>
