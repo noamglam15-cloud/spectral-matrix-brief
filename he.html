@@ -217,6 +217,8 @@
   .proc .logs .ln { fill: var(--rule-2); transform-box: fill-box; transform-origin: right; }
   .proc .logs .ln.hit { fill: var(--mark); }
   .proc .opt use { transform-box: fill-box; transform-origin: center; }
+  .proc .lbl-s, .plate svg .cap-s { display: none; }
+  .fly .node, .fly-all, .rail a, .masthead .meta a { -webkit-tap-highlight-color: transparent; }
   .proc .file rect, .proc .file path { fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .proc .file .wave { stroke: var(--mark); }
   .proc .file .ok { stroke: var(--mark); }
@@ -652,26 +654,55 @@
     .pro.with-fig > figure { grid-row: auto; max-width: 360px; }
   }
   @media (max-width: 700px) {
-    /* the comparison becomes one card per criterion: no sideways scrolling, ever */
-    .cmp table { min-width: 0; }
-    .cmp table, .cmp tbody, .cmp tr, .cmp tbody th, .cmp td { display: block; }
-    .cmp thead { display: none; }
-    .cmp tbody tr { padding: 1rem 1.2rem; border-bottom: 1px solid var(--rule); }
-    .cmp tbody tr:last-child { border-bottom: 0; }
-    .cmp tbody th { padding: 0 0 .6rem; border: 0; color: var(--ink); }
-    .cmp td { padding: .45rem 0; border: 0; }
-    .cmp td::before { content: attr(data-col); display: block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .1rem; }
-    .cmp td.us { background: transparent; padding-inline-start: .8rem; border-inline-start: 2px solid var(--mark); margin-top: .3rem; }
-    .cmp td.us::before { color: var(--mark); }
-    .cmp tbody tr:hover td, .cmp tbody tr:hover th { background: transparent; }
+    /* every comparison becomes one card per criterion: no sideways scrolling, ever */
+    .cmp table, .tbl-wrap table { min-width: 0; }
+    .cmp table, .cmp tbody, .cmp tr, .cmp tbody th, .cmp td,
+    .tbl-wrap table, .tbl-wrap tbody, .tbl-wrap tr, .tbl-wrap tbody th, .tbl-wrap td { display: block; }
+    .cmp thead, .tbl-wrap thead { display: none; }
+    .cmp tbody tr, .tbl-wrap tbody tr { padding: 1rem 1.2rem; border-bottom: 1px solid var(--rule); }
+    .cmp tbody tr:last-child, .tbl-wrap tbody tr:last-child { border-bottom: 0; }
+    .cmp tbody th, .tbl-wrap tbody th { padding: 0 0 .6rem; border: 0; color: var(--ink); }
+    .cmp td, .tbl-wrap td { padding: .45rem 0; border: 0; }
+    .cmp td::before, .tbl-wrap td::before { content: attr(data-col); display: block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .1rem; }
+    .cmp td.us, .tbl-wrap td.us { background: transparent; padding-inline-start: .8rem; border-inline-start: 2px solid var(--mark); margin-top: .3rem; }
+    .cmp td.us::before, .tbl-wrap td.us::before { color: var(--mark); }
+    .cmp tbody tr:hover td, .cmp tbody tr:hover th, .tbl-wrap tbody tr:hover td, .tbl-wrap tbody tr:hover th { background: transparent; }
+    .tbl-wrap { overflow: visible; }
   }
   @media (max-width: 560px) {
     body { font-size: 16.5px; }
+    h1 { font-size: clamp(1.9rem, 1.2rem + 3.5vw, 2.4rem); }
+    section { padding-block: 3.25rem; }
+    .sec-head { margin-bottom: 2rem; }
     .facts, .chain, .loop, .now, .road, .arch { grid-template-columns: minmax(0, 1fr); }
     .facts > div { border-inline-end: 0; border-top: 1px solid var(--rule); padding-inline-start: 0; }
     .facts > div:first-child { border-top: 0; }
     .masthead .meta { gap: .75rem; }
     .brand img { height: 52px; }
+    /* signal chain on a phone: a vertical chain, the same signal flowing downwards between stations */
+    .chain > div { padding: 1.2rem 0 1.4rem; }
+    .chain > div + div { padding-top: 2.9rem; padding-inline-start: 0; }
+    .chain .link { display: block; top: .35rem; inset-inline-start: .55rem; width: 2.6rem; height: 1.3rem; transform: rotate(90deg); transform-origin: center; }
+    html[dir="rtl"] .chain .link { transform: rotate(-90deg); }
+    /* the two diagrams: bigger type inside the drawings, short labels */
+    .plate { padding: 1.1rem 1rem 1rem; }
+    .plate svg text { font-size: 17px; }
+    .plate svg text.pt { font-size: 28px; }
+    .plate svg .cap-l { display: none; }
+    .plate svg .cap-s { display: block; }
+    .proc .lbl text { font-size: 15px; }
+    .proc .lbl-l { display: none; }
+    .proc .lock { font-size: 13px; }
+    .proc .ttl { font-size: 11px; }
+    .output { padding: 1.4rem 1.2rem; gap: 1.4rem; }
+    .output h3 { font-size: 1.25rem; }
+    .fly-panel .hint { display: none; }
+    .fly .layers { font-size: .96rem; }
+    .stats .num { font-size: 2.6rem; }
+    .zeros > div { grid-template-columns: minmax(0, 1fr); gap: .4rem; }
+    .zeros .num { font-size: 2.6rem; }
+    .ask .num { font-size: 4rem; }
+    .contacts { gap: 1.5rem; }
     .team { padding: 0 1.3rem; }
     .team li { padding: 1.6rem 0; }
   }
@@ -815,7 +846,7 @@
           <g class="pt" font-family="Heebo, Inter, sans-serif" font-size="11.5" fill="var(--muted)">
             <line x1="182.5" y1="136" x2="182.5" y2="142" stroke="var(--rule-2)"/>
             <line x1="637.5" y1="82" x2="637.5" y2="142" stroke="var(--rule-2)" stroke-dasharray="2 3"/>
-            <text x="410" y="200" text-anchor="middle" direction="rtl">קריסה של פי 400 בטווח האפקטיבי · החומרה לא השתנתה, המקלט השתנה</text>
+            <text class="cap-l" x="410" y="200" text-anchor="middle" direction="rtl">קריסה של פי 400 בטווח האפקטיבי · החומרה לא השתנתה, המקלט השתנה</text><text class="cap-s" x="410" y="200" text-anchor="middle" direction="rtl">קריסה של פי 400 בטווח האפקטיבי</text>
           </g>
         </svg>
         <p class="cap">נתונים טיפוסיים מהשטח. משבש רחב סרט גנרי מול מקלט ניווט רגיל, ואותו משבש באותו הספק מול מקלט מדף עם הגנות מובנות נגד שיבוש ונגד זיוף אות.</p>
@@ -931,7 +962,7 @@
               <path class="ok" d="M20 62l4 4 8-8"/>
             </g>
           </g>
-          <g class="lbl"><text x="60" y="160">שידור</text><text x="200" y="160">מקלט בתא מסוכך</text><text x="335" y="160">לוגים</text><text x="450" y="160">אופטימיזציה</text><text x="528" y="160">קובץ אות</text></g>
+          <g class="lbl"><text x="60" y="160">שידור</text><text class="lbl-l" x="200" y="160">מקלט בתא מסוכך</text><text class="lbl-s" x="200" y="160">מקלט</text><text x="335" y="160">לוגים</text><text x="450" y="160">אופטימיזציה</text><text class="lbl-l" x="528" y="160">קובץ אות</text><text class="lbl-s" x="528" y="160">קובץ</text></g>
         </svg>
         <div>
           <span class="tag">התוצר</span>
@@ -955,9 +986,9 @@
           <table>
             <thead><tr><th></th><th>ידני, היום</th><th class="us">Spectral Matrix</th></tr></thead>
             <tbody>
-              <tr><th>זמן לכל זוג</th><td>שבועות של עבודת צוות מומחים, מתחת ללחץ מבצעי</td><td class="us">ימים, ללא התערבות אנושית בלולאה</td></tr>
-              <tr><th>גישה למשבש</th><td>נדרשת. בלי החומרה עצמה אין ניסוי</td><td class="us">לא נדרשת. המגבלות שלו מדומות מדף הנתונים</td></tr>
-              <tr><th>האויב החליף מקלט</th><td>מתחילים מהתחלה</td><td class="us">מחליפים את המקלט בתא ומריצים שוב</td></tr>
+              <tr><th>זמן לכל זוג</th><td data-col="ידני, היום">שבועות של עבודת צוות מומחים, מתחת ללחץ מבצעי</td><td class="us" data-col="Spectral Matrix">ימים, ללא התערבות אנושית בלולאה</td></tr>
+              <tr><th>גישה למשבש</th><td data-col="ידני, היום">נדרשת. בלי החומרה עצמה אין ניסוי</td><td class="us" data-col="Spectral Matrix">לא נדרשת. המגבלות שלו מדומות מדף הנתונים</td></tr>
+              <tr><th>האויב החליף מקלט</th><td data-col="ידני, היום">מתחילים מהתחלה</td><td class="us" data-col="Spectral Matrix">מחליפים את המקלט בתא ומריצים שוב</td></tr>
             </tbody>
           </table>
         </div>
