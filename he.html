@@ -1,0 +1,1413 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Spectral Matrix · תקציר למשקיעים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F4F5F3;
+    --panel: #E9EBE9;
+    --panel-2: #DFE3E0;
+    --ink: #0F151B;
+    --ink-2: #333D46;
+    --muted: #66727D;
+    --rule: #CDD2D5;
+    --rule-2: #AEB7BD;
+    --mark: #A8322A;
+    --mark-soft: rgba(168, 50, 42, .09);
+    --band: #0F151B;
+    --band-text: #EEF1F2;
+    --band-muted: #9AA6AE;
+    --sans: "Heebo", "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --measure: 62ch;
+    --wide: 1120px;
+    --rail: 220px;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0D1114; --panel: #151B20; --panel-2: #1D252B;
+      --ink: #EAEEF0; --ink-2: #C5CCD1; --muted: #8E9AA3;
+      --rule: #263036; --rule-2: #37434B;
+      --mark: #E0574B; --mark-soft: rgba(224, 87, 75, .13);
+      --band: #05080A; --band-text: #EEF1F2; --band-muted: #9AA6AE;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0D1114; --panel: #151B20; --panel-2: #1D252B;
+    --ink: #EAEEF0; --ink-2: #C5CCD1; --muted: #8E9AA3;
+    --rule: #263036; --rule-2: #37434B;
+    --mark: #E0574B; --mark-soft: rgba(224, 87, 75, .13);
+    --band: #05080A; --band-text: #EEF1F2; --band-muted: #9AA6AE;
+    color-scheme: dark;
+  }
+
+  :root { direction: rtl; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink-2);
+    font-family: var(--sans); font-size: 17px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
+  h1, h2, h3, h4 { font-family: var(--sans); margin: 0; color: var(--ink); text-wrap: balance; }
+  h1 { font-weight: 700; font-size: clamp(2.3rem, 1.4rem + 2.8vw, 4rem); line-height: 1.06; letter-spacing: 0; }
+  h2 { font-weight: 600; font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.6rem); line-height: 1.12; letter-spacing: 0; max-width: 24ch; }
+  h3 { font-weight: 600; font-size: 1.2rem; line-height: 1.3; letter-spacing: 0; }
+  h4 { font-weight: 600; font-size: 1rem; line-height: 1.35; letter-spacing: 0; }
+  p { margin: 0; text-wrap: pretty; }
+  p + p { margin-top: 1em; }
+  .eyebrow { font-family: var(--sans); font-size: .76rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+  .mono { font-family: var(--mono); }
+  .measure { max-width: var(--measure); }
+  .lede { font-size: 1.32rem; line-height: 1.5; color: var(--ink-2); max-width: 56ch; font-weight: 400; letter-spacing: 0; }
+  strong { font-weight: 600; color: var(--ink); }
+  .num { font-family: var(--sans); font-weight: 700; letter-spacing: 0; line-height: .95; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .num.mark { color: var(--mark); }
+
+  /* ---------- icons ---------- */
+  .ic { width: 1.25rem; height: 1.25rem; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; display: block; }
+  .ic-row { display: flex; align-items: flex-start; gap: .7rem; }
+  h3.ic-row .ic, h4.ic-row .ic { margin-top: .2em; color: var(--mark); }
+  .arch .ic, .tile .ic { color: var(--mark); width: 1.5rem; height: 1.5rem; margin-bottom: .8rem; }
+
+  /* ---------- masthead + marking ---------- */
+  .marking { background: var(--mark); color: #fff; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; text-align: center; padding: .45rem 1rem; }
+  .masthead { background: var(--band); color: var(--band-text); padding-block: 1.5rem; }
+  .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap; }
+  .brand { position: relative; display: inline-block; overflow: hidden; line-height: 0; }
+  .brand img { height: 68px; width: auto; }
+  .brand::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%); transform: translateX(-120%); pointer-events: none; }
+  .masthead .meta { display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
+  .masthead .doc { display: inline-flex; align-items: center; gap: .7rem; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--band-muted); white-space: nowrap; }
+  .masthead .doc b { color: var(--band-text); font-weight: 600; }
+  .masthead .doc i { width: 4px; height: 4px; border-radius: 50%; background: var(--band-muted); display: inline-block; }
+  .masthead .meta a { color: var(--band-text); text-decoration: none; font-size: .82rem; font-weight: 500; letter-spacing: .01em; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: .45rem 1rem; white-space: nowrap; transition: border-color .25s ease, background-color .25s ease; }
+  .masthead .meta a:hover { border-color: var(--band-text); background: rgba(255,255,255,.07); }
+
+  /* ---------- page grid ---------- */
+  .wrap { width: min(var(--wide), 100% - 2.5rem); margin-inline: auto; }
+  .page { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: 3.5rem; align-items: start; }
+  .rail { position: sticky; top: 1.5rem; padding-top: 4rem; }
+  .rail .eyebrow { margin-bottom: 1rem; padding-inline-start: 1rem; }
+  .rail ol { list-style: none; margin: 0; padding: 0; border-inline-start: 1px solid var(--rule); position: relative; }
+  .rail ol::before { content: ""; position: absolute; inset-inline-start: -1px; top: var(--y, 0px); height: var(--h, 0px); width: 2px; background: var(--mark); transition: top .5s var(--ease), height .5s var(--ease); }
+  .rail a { display: block; padding: .6rem 1rem; margin-inline-start: 2px; border-radius: 8px; text-decoration: none; font-size: 1.02rem; font-weight: 500; line-height: 1.3; letter-spacing: 0; color: var(--muted); transition: color .25s ease, background-color .25s ease; }
+  .rail a:hover { color: var(--ink); background: var(--panel); }
+  .rail a.on { color: var(--ink); }
+  .rail .note { margin-top: 1.5rem; padding-inline-start: 1rem; font-size: .8rem; line-height: 1.55; color: var(--muted); max-width: 24ch; }
+  main { min-width: 0; }
+  section { padding-block: clamp(4rem, 3rem + 3vw, 6.5rem); border-top: 1px solid var(--rule); scroll-margin-top: 1rem; }
+  section:first-of-type { border-top: 0; }
+  .sec-head { display: grid; gap: 1.1rem; margin-bottom: 3rem; position: relative; }
+  .sec-head .eyebrow::before { content: attr(data-n); color: var(--mark); margin-inline-end: .9em; }
+  .sec-head .lead { max-width: var(--measure); color: var(--ink-2); font-size: 1.15rem; line-height: 1.6; }
+  .sec-head::after { content: ""; display: block; width: 3rem; height: 2px; background: var(--mark); margin-top: .6rem; }
+
+  /* ---------- hero ---------- */
+  .hero { padding-top: clamp(3rem, 2rem + 2.5vw, 5rem); }
+  .hero .eyebrow { display: flex; gap: .9em; flex-wrap: wrap; }
+  .hero .eyebrow b { color: var(--ink); font-weight: 700; }
+  .hero h1 { margin-top: 1.3rem; max-width: 20ch; }
+  .hero .lede { margin-top: 1.6rem; }
+  .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 3rem 0 0; padding: 0; border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); }
+  .facts > div { padding-block: 1.4rem; padding-inline: 0 1.4rem; border-inline-end: 1px solid var(--rule); }
+  .facts > div:last-child { border-inline-end: 0; }
+  .facts > div + div { padding-inline-start: 1.4rem; }
+  .facts .eyebrow { margin-bottom: .55rem; }
+  .facts .v { font-weight: 600; font-size: 1.15rem; line-height: 1.3; letter-spacing: 0; color: var(--ink); }
+  .chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 3rem; }
+  .chain > div { position: relative; padding-block: 1.3rem; padding-inline: 0 1.4rem; }
+  .chain > div + div { padding-inline-start: 1.6rem; }
+  /* the stage: one small scene per station; the link: the signal between them */
+  .chain .stage { width: 3rem; height: 3rem; display: block; margin-bottom: .8rem; color: var(--mark); overflow: visible; }
+  .chain .stage use { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .chain .stage .ring, .chain .stage .lockring { fill: none; stroke: var(--mark); stroke-width: 1.2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .chain .stage .bars rect { fill: var(--mark); opacity: .55; transform-box: fill-box; transform-origin: bottom; transform: scaleY(.18); }
+  .chain .stage .glow { fill: var(--mark-soft); opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .chain .stage .doc, .chain .stage .fwave, .chain .stage .fok { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .chain .stage .fwave, .chain .stage .fok { stroke-dasharray: 40; stroke-dashoffset: 40; }
+  .chain .link { position: absolute; inset-inline-start: -3rem; top: 1.15rem; width: 2.8rem; height: 1.3rem; overflow: visible; }
+  .chain .link .rail { fill: none; stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 2 4; }
+  .chain .link .wave { fill: none; stroke: var(--mark); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: .28; stroke-dasharray: 6 4; }
+  .chain .eyebrow { margin-bottom: .45rem; }
+  .chain .eyebrow.sm { color: var(--mark); }
+  .chain h3 { margin-bottom: .4rem; }
+  .chain p { font-size: 1rem; color: var(--ink-2); }
+
+  /* ---------- figure plate ---------- */
+  .plate { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 1.6rem 1.7rem 1.4rem; }
+  .plate-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; margin-bottom: .9rem; }
+  .plate-head .eyebrow { color: var(--ink-2); }
+  .plate svg { width: 100%; height: auto; display: block; direction: ltr; }
+  .proc, .fly svg { direction: ltr; }
+  .plate .cap { font-size: .86rem; color: var(--muted); margin-top: .7rem; line-height: 1.5; }
+  .legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .legend > div { padding: 1.2rem 1.4rem; border-radius: 12px; border: 1px solid var(--rule); }
+  .legend > div + div { background: var(--mark-soft); border-color: transparent; }
+  .legend .eyebrow { margin-bottom: .4rem; }
+  .legend h3 { margin-bottom: .15rem; }
+  .legend .sub { font-size: .98rem; color: var(--muted); }
+  .legend p.body { margin-top: .8rem; font-size: 1rem; color: var(--ink-2); }
+  .two { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(2rem, 3vw, 3.5rem); align-items: start; margin-top: 3rem; }
+  figure { margin: 0; }
+  figure img { width: 100%; height: auto; border-radius: 12px; filter: saturate(.85) contrast(1.02); }
+  figcaption { font-size: .86rem; line-height: 1.5; color: var(--muted); margin-top: .7rem; }
+  figcaption b { color: var(--ink); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; font-size: .72rem; display: block; margin-bottom: .2rem; }
+  .callout { border-inline-start: 3px solid var(--mark); padding-block: .2rem; padding-inline: 1.2rem 0; font-size: 1.25rem; line-height: 1.45; color: var(--ink); font-weight: 500; letter-spacing: 0; max-width: var(--measure); margin-top: 2rem; }
+
+  /* ---------- technical notes ---------- */
+  .pro { margin-top: 3rem; max-width: var(--wide); background: var(--panel); border-radius: 14px; border-inline-start: 3px solid var(--mark); padding: 1.7rem 1.9rem 1.8rem; }
+  .pro > .eyebrow { color: var(--mark); margin-bottom: .6rem; }
+  .pro > h3 { font-size: 1.25rem; max-width: 44ch; margin-bottom: 1.2rem; }
+  .pro .body { font-size: 1rem; line-height: 1.65; color: var(--ink-2); display: grid; gap: 1.2rem; max-width: 72ch; }
+  .pro .body h4 { margin: 0 0 .35rem; }
+  .pro .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2.5rem; max-width: none; }
+  .pro .tbl-wrap { margin-top: 1.5rem; background: var(--paper); }
+  .pro table { min-width: 620px; }
+  .pro.with-fig { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 1.5rem 2.4rem; align-items: start; }
+  .pro.with-fig > figure { grid-row: 1 / span 3; }
+  .pro.with-fig > figure img { aspect-ratio: 4 / 5; object-fit: cover; }
+  .pro.with-fig > .eyebrow, .pro.with-fig > h3 { margin-bottom: 0; }
+  .pro.with-fig > .full { grid-column: 1 / -1; }
+
+  /* ---------- value / moat lists ---------- */
+  .dl { display: grid; border-top: 1px solid var(--rule-2); max-width: var(--wide); }
+  .dl > div { display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, 1fr); gap: 1.6rem; padding: 1.35rem 0; border-bottom: 1px solid var(--rule); }
+  .dl h3 { font-size: 1.1rem; }
+  .dl p { font-size: 1.02rem; color: var(--ink-2); max-width: 60ch; }
+
+  /* ---------- loop ---------- */
+  .loop { list-style: none; padding: 0; margin: 0; counter-reset: st; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; position: relative; }
+  .loop::before { content: ""; position: absolute; left: 0; right: 0; top: 1.05rem; height: 1px; background: var(--rule-2); }
+  .loop li { position: relative; padding-top: 2.6rem; }
+  .loop li::before { counter-increment: st; content: counter(st, decimal-leading-zero); position: absolute; top: 0; inset-inline-start: 0; font-size: .78rem; font-weight: 700; letter-spacing: .08em; background: var(--paper); color: var(--mark); padding-block: .3rem; padding-inline: 0 .5rem; line-height: 1.2; }
+  .loop h3 { font-size: 1.05rem; margin-bottom: .4rem; }
+  .loop p { font-size: .98rem; color: var(--ink-2); line-height: 1.55; }
+  .loop-return { margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--mark); }
+  .loop-return i { flex: 1; height: 1px; background: var(--mark); position: relative; }
+  .loop-return i::before { content: ""; position: absolute; inset-inline-start: 0; top: -4px; border: 4.5px solid transparent; border-inline-end: 7px solid var(--mark); }
+
+  /* the output: process becomes a file */
+  .output { margin-top: 3rem; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 2.5rem; align-items: center; border: 1px solid var(--rule); border-radius: 16px; padding: 2rem 2.2rem; background: var(--panel); }
+  .output svg { width: 100%; height: auto; display: block; }
+  .output .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: #fff; background: var(--mark); padding: .4rem .7rem; border-radius: 999px; margin-bottom: .9rem; }
+  .output h3 { font-size: 1.45rem; letter-spacing: 0; margin-bottom: .6rem; }
+  .output p { font-size: 1.05rem; color: var(--ink-2); }
+  .proc .st circle, .proc .rx circle { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; }
+  .proc .st use, .proc .rx use { color: var(--ink); }
+  .proc .lbl { font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .12em; fill: var(--muted); text-anchor: middle; }
+  .proc .track { stroke: var(--rule-2); stroke-dasharray: 3 6; fill: none; }
+  .proc .wv { fill: none; stroke: var(--mark); stroke-width: 2; stroke-linecap: round; opacity: .35; }
+  .proc .chamber { fill: none; stroke: var(--rule-2); stroke-width: 1.2; stroke-dasharray: 4 4; }
+  .proc .lock { font-family: var(--sans); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-anchor: middle; fill: var(--muted); }
+  .proc .lock.lost { fill: var(--mark); opacity: 0; }
+  .proc .logs .panel { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1.2; }
+  .proc .logs .ttl { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; fill: var(--muted); }
+  .proc .logs .ln { fill: var(--rule-2); transform-box: fill-box; transform-origin: right; }
+  .proc .logs .ln.hit { fill: var(--mark); }
+  .proc .opt use { transform-box: fill-box; transform-origin: center; }
+  .proc .file rect, .proc .file path { fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .proc .file .wave { stroke: var(--mark); }
+  .proc .file .ok { stroke: var(--mark); }
+  .proc .file .paper { fill: var(--paper); }
+
+  /* ---------- architecture ---------- */
+  .arch { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+  .arch > div { background: var(--paper); padding: 1.5rem 1.6rem; transition: background-color .3s ease; }
+  .arch > div.core { background: var(--panel); }
+  .arch > div:hover { background: var(--panel-2); }
+  .arch .ic { transition: transform .35s var(--ease); }
+  .arch > div:hover .ic { transform: translateY(-2px) scale(1.12); }
+  .arch .eyebrow { margin-bottom: .5rem; }
+  .arch h3 { font-size: 1.08rem; margin-bottom: .4rem; }
+  .arch p { font-size: .98rem; color: var(--ink-2); line-height: 1.55; }
+  .arch-foot { margin-top: 1rem; font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--mark); }
+
+  /* ---------- compare ---------- */
+  .cmp { border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; background: var(--paper); }
+  .cmp table { min-width: 0; table-layout: fixed; }
+  .cmp thead th:first-child { width: 21%; }
+  table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 620px; font-size: 1rem; }
+  th, td { text-align: start; vertical-align: top; padding: 1.05rem 1.2rem; border-bottom: 1px solid var(--rule); line-height: 1.5; }
+  thead th { font-weight: 600; font-size: 1.05rem; letter-spacing: 0; color: var(--ink); background: var(--panel); border-bottom: 1px solid var(--rule-2); padding-top: 1.3rem; padding-bottom: 1.2rem; }
+  thead th small { display: block; font-weight: 400; font-size: .86rem; color: var(--muted); margin-top: .3rem; letter-spacing: 0; }
+  tbody th { font-weight: 600; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 1.2rem; line-height: 1.45; }
+  td { color: var(--ink-2); }
+  th.us, td.us { background: var(--mark-soft); color: var(--ink); }
+  thead th.us { color: var(--mark); box-shadow: inset 0 3px 0 var(--mark); }
+  td.us { font-weight: 500; }
+  td.us .ok { display: inline-block; width: 1.1rem; height: 1.1rem; vertical-align: -.2rem; margin-inline-end: .45rem; color: var(--mark); stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr { transition: background-color .25s ease; }
+  tbody tr:hover td:not(.us), tbody tr:hover th { background: var(--panel); }
+  .tbl-note { margin-top: 1.4rem; font-size: 1.02rem; color: var(--ink-2); max-width: var(--measure); }
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; }
+
+  /* ---------- model ---------- */
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .tile { border: 1px solid var(--rule); border-radius: 16px; padding: 1.8rem 1.9rem; display: grid; gap: .5rem; align-content: start; background: var(--paper); }
+  .tile.us { border-color: var(--mark); background: var(--mark-soft); }
+  .tile .num { font-size: clamp(2.6rem, 2rem + 2.2vw, 4rem); }
+  .tile .per { font-size: .86rem; color: var(--muted); }
+  .tile h3 { margin-top: .7rem; }
+  .tile ul { margin: .4rem 0 0; padding-inline-start: 1.2rem; font-size: 1rem; color: var(--ink-2); }
+  .tile li + li { margin-top: .4rem; }
+
+  /* flywheel: interactive */
+  .fly { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 3rem; align-items: center; margin-top: 3rem; border-top: 1px solid var(--rule); padding-top: 2.5rem; }
+  .fly svg { width: 100%; height: auto; overflow: visible; }
+  .fly .ring { fill: none; stroke: var(--rule-2); stroke-width: 1.5; stroke-dasharray: 3 5; }
+  .fly .seg { fill: none; stroke: var(--mark); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 175.9 879.6; stroke-dashoffset: 175.9; transition: stroke-dashoffset .9s var(--ease); }
+  .fly .seg.lit { stroke-dashoffset: 0; }
+  .fly .node.lit circle { stroke: var(--mark); }
+  .fly .node.lit use { color: var(--mark); }
+  .fly-all { justify-self: center; margin-top: .4rem; font: inherit; font-size: .92rem; font-weight: 500; color: var(--mark); background: none; border: 0; padding: .3rem .2rem; cursor: pointer; letter-spacing: 0; border-bottom: 1px solid transparent; transition: border-color .25s ease; }
+  .fly-all span { display: inline-block; transition: transform .35s var(--ease); }
+  .fly-all:hover { border-bottom-color: var(--mark); }
+  .fly-all:hover span { transform: translateX(-3px); }
+  .fly-panel .all { list-style: none; margin: 0; padding: 0; counter-reset: fa; display: grid; gap: 1rem; }
+  .fly-panel .all li:not(.back) { display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: .6rem; row-gap: .15rem; align-items: start; opacity: 0; transform: translateY(10px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .fly-panel .all li.show { opacity: 1; transform: none; }
+  .fly-panel .all li:not(.back)::before { counter-increment: fa; content: counter(fa); grid-row: 1 / span 2; font-size: .78rem; font-weight: 700; color: var(--mark); padding-top: .2rem; }
+  .fly-panel .all h4 { grid-column: 2; font-size: 1.05rem; margin: 0; }
+  .fly-panel .all li:not(.back) > p { grid-column: 2; font-size: .96rem; color: var(--ink-2); max-width: 48ch; }
+  .fly-panel .all .back { margin-top: .4rem; }
+  .fly-panel .all .back button { font: inherit; font-size: .84rem; font-weight: 500; color: var(--mark); background: none; border: 1px solid var(--rule-2); border-radius: 999px; padding: .4rem .9rem; cursor: pointer; transition: border-color .25s ease, background-color .25s ease; }
+  .fly-panel .all .back button:hover { border-color: var(--mark); background: var(--mark-soft); }
+  .fly .node { cursor: pointer; }
+  .fly .node circle { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1.5; transition: stroke .3s ease, fill .3s ease, transform .35s var(--ease); transform-box: fill-box; transform-origin: center; }
+  .fly .node use { color: var(--muted); transition: color .3s ease; }
+  .fly .node:hover circle, .fly .node.on circle { stroke: var(--mark); transform: scale(1.12); }
+  .fly .node.on circle { fill: var(--mark-soft); }
+  .fly .node:hover use, .fly .node.on use { color: var(--mark); }
+  .fly .centre { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; fill: var(--muted); text-anchor: middle; }
+  .fly-panel { min-height: 11rem; }
+  .fly-panel .step { font-size: .76rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--mark); margin-bottom: .6rem; }
+  .fly-panel h3 { font-size: 1.6rem; letter-spacing: 0; margin-bottom: .6rem; }
+  .fly-panel p { font-size: 1.08rem; color: var(--ink-2); max-width: 44ch; }
+  .fly-panel .dots { display: flex; gap: .45rem; margin-top: 1.4rem; }
+  .fly-panel .dots i { width: 1.8rem; height: 3px; border-radius: 2px; background: var(--rule); transition: background-color .3s ease; }
+  .fly-panel .dots i.on { background: var(--mark); }
+  .fly-panel .hint { margin-top: 1rem; font-size: .84rem; color: var(--muted); }
+  .fly .layers { grid-column: 1 / -1; font-size: 1.02rem; color: var(--ink-2); max-width: var(--measure); border-top: 1px solid var(--rule); padding-top: 1.4rem; }
+
+  /* ---------- market ---------- */
+  /* three columns on one baseline grid: label row, figure row, text row */
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto auto; border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); }
+  .stats > div { display: grid; grid-template-rows: subgrid; grid-row: span 3; padding-block: 1.7rem; padding-inline: 0 1.6rem; border-inline-end: 1px solid var(--rule); row-gap: .6rem; }
+  .stats > div + div { padding-inline-start: 1.6rem; }
+  .stats > div:last-child { border-inline-end: 0; }
+  .stats .eyebrow { align-self: start; }
+  .stats .num { font-size: clamp(2.6rem, 2rem + 2.4vw, 4.2rem); align-self: end; margin: 0; }
+  .stats .big-text { font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin: 0; letter-spacing: 0; color: var(--ink); align-self: end; }
+  .stats p { font-size: 1rem; color: var(--ink-2); align-self: start; }
+
+  /* ---------- why now ---------- */
+  .now { list-style: none; margin: 0; padding: 0; counter-reset: n; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--rule-2); padding-top: 1.5rem; }
+  .now li::before { counter-increment: n; content: counter(n, decimal-leading-zero); font-size: .78rem; font-weight: 700; color: var(--mark); letter-spacing: .08em; display: block; margin-bottom: .7rem; }
+  .now h3 { font-size: 1.05rem; margin-bottom: .4rem; }
+  .now p { font-size: .96rem; color: var(--ink-2); line-height: 1.5; }
+  .zeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .zeros > div { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.4rem; align-items: start; border: 1px solid var(--rule); border-radius: 16px; padding: 1.5rem 1.7rem; }
+  .zeros .num { font-size: 3.4rem; }
+  .zeros h3 { font-size: 1.08rem; margin-bottom: .4rem; }
+  .zeros p { font-size: .98rem; color: var(--ink-2); }
+
+  /* ---------- roadmap ---------- */
+  .road { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; position: relative; }
+  .road::before { content: ""; position: absolute; left: 0; right: 0; top: .55rem; height: 1px; background: var(--rule-2); }
+  .road li { position: relative; padding-top: 2rem; }
+  .road li::before { content: ""; position: absolute; top: 0; inset-inline-start: 0; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--rule-2); background: var(--paper); }
+  .road li.done::before { background: var(--ink); border-color: var(--ink); }
+  .road li.fund::before { background: var(--mark); border-color: var(--mark); }
+  .road .when { font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
+  .road li.fund .when { color: var(--mark); }
+  .road .sub { font-size: .86rem; color: var(--muted); margin-bottom: .55rem; }
+  .road h3 { margin-bottom: .45rem; }
+  .road p { font-size: .98rem; color: var(--ink-2); }
+
+  /* ---------- status: checklist board ---------- */
+  .board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .card { border: 1px solid var(--rule); border-radius: 16px; padding: 1.6rem 1.8rem; background: var(--paper); }
+  .card.prove { border-color: var(--mark); background: var(--mark-soft); }
+  .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.1rem; }
+  .card-head .eyebrow { color: var(--ink); }
+  .card.prove .card-head .eyebrow { color: var(--mark); }
+  .card-head .count { font-weight: 700; font-size: 1.6rem; letter-spacing: 0; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .card.prove .card-head .count { color: var(--mark); }
+  .card ul { list-style: none; margin: 0; padding: 0; }
+  .card li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .9rem; align-items: start; padding: .85rem 0; border-top: 1px solid var(--rule); font-size: 1rem; color: var(--ink-2); }
+  .card li svg { width: 1.6rem; height: 1.6rem; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card li .ring { stroke: var(--rule-2); }
+  .card li .tick { stroke: var(--ink); }
+  .card.prove li .ring { stroke: var(--mark); }
+  .card.prove li .tick { stroke: var(--mark); opacity: 0; }
+  .progress { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: .35rem; margin-bottom: 1.6rem; }
+  .progress i { height: 6px; border-radius: 3px; background: var(--ink); }
+  .progress i.todo { background: transparent; border: 1.5px solid var(--mark); }
+  .progress-cap { display: flex; justify-content: space-between; font-size: .84rem; color: var(--muted); margin-bottom: .6rem; }
+
+  /* ---------- team: a stage for each ---------- */
+  /* one block for the whole team: a single panel, people separated by a rule and by air */
+  .team { list-style: none; margin: 0; padding: 0 2.2rem; background: var(--panel); border-radius: 18px; }
+  .team li { display: grid; grid-template-columns: minmax(0, .46fr) minmax(0, 1fr); gap: 3rem; align-items: start; padding: 2.4rem 0; border-bottom: 1px solid var(--rule-2); }
+  .team li:last-child { border-bottom: 0; }
+  .team .who { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr); gap: 1.2rem; align-items: center; }
+  .team .mono-gram { width: 4.2rem; height: 4.2rem; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; }
+  .team li.lead .mono-gram { background: var(--mark); color: #fff; }
+  .team .role { font-size: .74rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mark); margin-bottom: .35rem; }
+  .team h3 { font-size: 1.55rem; letter-spacing: 0; line-height: 1.15; }
+  .team h3 { font-size: 1.4rem; }
+  .team .where { margin-top: .35rem; font-size: .92rem; color: var(--muted); }
+  .team p.bio { font-size: 1.05rem; line-height: 1.65; color: var(--ink-2); max-width: 58ch; }
+  .team p.does { margin-top: 1rem; padding-inline-start: 1.1rem; border-inline-start: 2px solid var(--mark); font-weight: 500; color: var(--ink); font-size: 1rem; max-width: 56ch; }
+
+  /* ---------- ask ---------- */
+  .ask { background: var(--band); color: var(--band-text); border-top: 0; margin-top: clamp(3rem, 2rem + 3vw, 5rem); position: relative; overflow: hidden; }
+  .ask .watermark { position: absolute; inset-inline-end: -2%; bottom: -6%; height: 62%; width: auto; opacity: .07; pointer-events: none; user-select: none; }
+  .ask .wrap-in { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 4vw, 5rem); align-items: start; position: relative; }
+  .ask .eyebrow { color: var(--band-muted); }
+  .ask .num { color: var(--band-text); font-size: clamp(4.5rem, 3rem + 4.5vw, 7rem); margin-top: .5rem; }
+  .ask .pre { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mark); margin-top: .3rem; }
+  .ask .cap { color: var(--band-muted); font-size: 1.12rem; margin-top: 1rem; max-width: 34ch; }
+  .use { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.18); }
+  .use li { display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, 1fr); gap: 1.4rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .use h3 { color: var(--band-text); font-size: 1.05rem; }
+  .use h3.ic-row .ic { color: var(--mark); }
+  .use p { color: var(--band-muted); font-size: 1rem; }
+  .milestone { margin-top: 1.8rem; border: 1px solid var(--mark); border-radius: 12px; padding: 1.1rem 1.3rem; display: grid; gap: .25rem; }
+  .milestone .eyebrow { color: var(--mark); }
+  .milestone .v { font-weight: 600; font-size: 1.2rem; color: var(--band-text); letter-spacing: 0; }
+  .contacts { margin-top: 2rem; display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .contacts .role { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mark); }
+  .contacts .name { font-weight: 600; font-size: 1.15rem; color: var(--band-text); margin-top: .2rem; }
+  footer { background: var(--band); color: var(--band-muted); padding: 1.6rem 0 2.4rem; border-top: 1px solid rgba(255,255,255,.12); font-size: .82rem; line-height: 1.6; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 1.5rem 3rem; align-items: center; flex-wrap: wrap; }
+  footer span { max-width: 72ch; }
+  footer img { height: 34px; width: auto; opacity: .85; flex: 0 0 auto; }
+
+  /* ---------- motion ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    /* brand */
+    .js .brand img { opacity: 0; transform: translateY(6px) scale(.97); animation: settle 1s var(--ease) .1s forwards; }
+    .js .brand::after { animation: sheen 1.3s cubic-bezier(.4, 0, .2, 1) .9s forwards; }
+    @keyframes settle { to { opacity: 1; transform: none; } }
+    @keyframes sheen { to { transform: translateX(120%); } }
+    .js .ask .watermark { opacity: 0; transform: translateX(-24px); transition: opacity 1.4s var(--ease), transform 1.4s var(--ease); }
+    .js .ask.in .watermark { opacity: .07; transform: none; }
+
+    /* flow: blocks rise into place, grids stagger their items */
+    .js section > *, .js .ask .wrap-in > * { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .js section.in > *, .js .ask.in .wrap-in > * { opacity: 1; transform: none; }
+    .js section.in > :nth-child(2), .js .ask.in .wrap-in > :nth-child(2) { transition-delay: .1s; }
+    .js section.in > :nth-child(3) { transition-delay: .2s; }
+    .js section.in > :nth-child(4) { transition-delay: .3s; }
+    .js section.in > :nth-child(5) { transition-delay: .4s; }
+    .js section.in > :nth-child(6) { transition-delay: .5s; }
+    .js section.in > :nth-child(n+7) { transition-delay: .6s; }
+    .js .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .js section.in .stagger > * { opacity: 1; transform: none; }
+    .js section.in .stagger > :nth-child(1) { transition-delay: .15s; }
+    .js section.in .stagger > :nth-child(2) { transition-delay: .25s; }
+    .js section.in .stagger > :nth-child(3) { transition-delay: .35s; }
+    .js section.in .stagger > :nth-child(4) { transition-delay: .45s; }
+    .js section.in .stagger > :nth-child(5) { transition-delay: .55s; }
+    .js section.in .stagger > :nth-child(6) { transition-delay: .65s; }
+    .js section.in .stagger > :nth-child(n+7) { transition-delay: .75s; }
+    .js section > .stagger, .js .ask > * { opacity: 1; transform: none; transition: none; }
+    .js tbody.stagger > tr { transform: none; }
+    .js .hero.in > * { transition-duration: 1.1s; }
+
+    /* section rule */
+    .js .sec-head::after { transform: scaleX(0); transform-origin: right; }
+    .js section.in .sec-head::after { animation: grow .6s var(--ease) .4s forwards; }
+    @keyframes grow { to { transform: scaleX(1); } }
+
+    /* fig. 1 */
+    .js section.in .draw { stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 1.4s cubic-bezier(.2,.7,.2,1) .6s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .js .pt { opacity: 0; }
+    .js section.in .pt { animation: fade .5s ease 1.6s forwards; }
+    @keyframes fade { to { opacity: 1; } }
+
+    /* signal chain, 6.5 s cycle while the hero is in view:
+       transmit (rings leave the antenna) → raw signal travels → the lab receives and decodes it (analyser bars)
+       → a clean waveform travels → it is written into the file (wave and check draw, the file glows)
+       → the file travels → lock on the threat (the ring closes on the crosshair) */
+    .js section.in .s-emit .ring { animation: ring-out 6.5s ease-out 1.2s infinite; }
+    .js section.in .s-emit .r2 { animation-delay: 1.5s; }
+    @keyframes ring-out { 0% { transform: scale(.6); opacity: .9; } 12% { transform: scale(2.3); opacity: 0; } 100% { opacity: 0; } }
+    .js section.in .chain .link .wave { animation: flow 6.5s linear 1.9s infinite; }
+    .js section.in .chain > div:nth-child(3) .link .wave { animation-delay: 4s; }
+    .js section.in .chain > div:nth-child(4) .link .wave { animation-delay: 5.3s; }
+    @keyframes flow { 0% { opacity: .28; stroke-dashoffset: 0; } 2% { opacity: 1; } 12% { opacity: 1; stroke-dashoffset: -40; } 14%, 100% { opacity: .28; stroke-dashoffset: -40; } }
+    html[dir="rtl"] .js section.in .chain .link .wave { animation-name: flow-rtl; }
+    @keyframes flow-rtl { 0% { opacity: .28; stroke-dashoffset: 0; } 2% { opacity: 1; } 12% { opacity: 1; stroke-dashoffset: 40; } 14%, 100% { opacity: .28; stroke-dashoffset: 40; } }
+    .js section.in .s-decode .bars rect { animation: bars 6.5s ease-in-out 2.7s infinite; }
+    .js section.in .s-decode .bars rect:nth-child(2) { animation-delay: 2.78s; }
+    .js section.in .s-decode .bars rect:nth-child(3) { animation-delay: 2.86s; }
+    .js section.in .s-decode .bars rect:nth-child(4) { animation-delay: 2.94s; }
+    .js section.in .s-decode .bars rect:nth-child(5) { animation-delay: 3.02s; }
+    @keyframes bars { 0% { transform: scaleY(.18); opacity: .55; } 3% { transform: scaleY(1); opacity: 1; } 6% { transform: scaleY(.35); } 9% { transform: scaleY(.85); } 12% { transform: scaleY(.3); } 15% { transform: scaleY(.7); } 18% { transform: scaleY(.45); opacity: 1; } 21%, 100% { transform: scaleY(.18); opacity: .55; } }
+    .js section.in .s-decode use { transform-box: fill-box; transform-origin: center; animation: decode 6.5s ease 2.7s infinite; }
+    @keyframes decode { 0% { filter: brightness(1); } 4%, 16% { filter: brightness(1.45); } 20%, 100% { filter: brightness(1); } }
+    .js section.in .s-file .fwave { animation: draw40 6.5s ease 4.6s infinite; }
+    .js section.in .s-file .fok { animation: draw40 6.5s ease 5s infinite; }
+    @keyframes draw40 { 0% { stroke-dashoffset: 40; } 8% { stroke-dashoffset: 0; } 70% { stroke-dashoffset: 0; } 74%, 100% { stroke-dashoffset: 40; } }
+    .js section.in .s-file .glow { animation: glow 6.5s ease 4.6s infinite; }
+    @keyframes glow { 0% { opacity: 0; transform: scale(.6); } 8% { opacity: 1; transform: scale(1.15); } 30% { opacity: .6; transform: scale(1); } 40%, 100% { opacity: 0; transform: scale(.6); } }
+    .js section.in .s-lock .lockring { animation: lock-in 6.5s cubic-bezier(.2, .7, .2, 1) 5.9s infinite; }
+    @keyframes lock-in { 0% { transform: scale(1.6); opacity: 0; } 2% { opacity: .9; } 8% { transform: scale(.62); opacity: .9; } 12% { transform: scale(.66); opacity: 0; } 100% { opacity: 0; } }
+    .js section.in .s-lock use { transform-box: fill-box; transform-origin: center; animation: lock-hit 6.5s ease 5.9s infinite; }
+    @keyframes lock-hit { 0% { filter: brightness(1); transform: scale(1); } 8% { filter: brightness(1.5); transform: scale(1.12); } 14%, 100% { filter: brightness(1); transform: scale(1); } }
+
+    /* the loop */
+    .js .loop::before { transform: scaleX(0); transform-origin: right; }
+    .js section.in .loop::before { animation: grow 1s cubic-bezier(.2,.7,.2,1) .6s forwards; }
+    .js .loop li::before { color: var(--muted); }
+    .js section.in .loop li::before { animation: step .5s ease forwards; }
+    .js section.in .loop li:nth-child(1)::before { animation-delay: .75s; }
+    .js section.in .loop li:nth-child(2)::before { animation-delay: .95s; }
+    .js section.in .loop li:nth-child(3)::before { animation-delay: 1.15s; }
+    .js section.in .loop li:nth-child(4)::before { animation-delay: 1.35s; }
+    .js section.in .loop li:nth-child(5)::before { animation-delay: 1.55s; }
+    @keyframes step { to { color: var(--mark); } }
+    .loop-return i { background: repeating-linear-gradient(90deg, var(--mark) 0 6px, transparent 6px 12px); }
+    .js section.in .loop-return { transition-delay: 1.9s; }
+    .js section.in .loop-return i { animation: run .6s linear 2.2s 3; }
+    @keyframes run { to { background-position-x: -24px; } }
+
+    /* the process, literally, on a 7 s cycle while in view:
+       0–20 %  the jammer transmits (waves roll toward the chamber)
+       20–34 % the receiver loses lock
+       34–58 % its logs are pulled, line by line; the measured line lights
+       58–78 % the engine turns once
+       80–100 % the file arrives, the waveform and the check draw in */
+    .js section.in .proc .s1 circle { animation: pulse7 7s ease infinite; }
+    @keyframes pulse7 { 0%, 6% { stroke: var(--rule-2); transform: scale(1); } 2%, 4% { stroke: var(--mark); transform: scale(1.14); } }
+    .js .proc .wv { opacity: 0; }
+    .js section.in .proc .wv { animation: wave-out 7s ease-out infinite; }
+    .js section.in .proc .wv:nth-child(2) { animation-delay: .3s; }
+    .js section.in .proc .wv:nth-child(3) { animation-delay: .6s; }
+    @keyframes wave-out { 0% { opacity: 0; transform: translateX(-6px); } 3% { opacity: .9; } 12% { opacity: 0; transform: translateX(22px); } 100% { opacity: 0; } }
+    .js section.in .proc .rx circle { animation: rx-hit 7s ease infinite; }
+    @keyframes rx-hit { 0%, 19% { stroke: var(--rule-2); transform: scale(1); } 22%, 30% { stroke: var(--mark); transform: scale(1.1); } 34%, 100% { stroke: var(--rule-2); transform: scale(1); } }
+    .js section.in .proc .rx use { animation: rx-tint 7s ease infinite; }
+    @keyframes rx-tint { 0%, 19% { color: var(--ink); } 22%, 56% { color: var(--mark); } 60%, 100% { color: var(--ink); } }
+    .js section.in .proc .lock.ok { animation: lock-ok 7s linear infinite; }
+    @keyframes lock-ok { 0%, 20% { opacity: 1; } 21%, 96% { opacity: 0; } 98%, 100% { opacity: 1; } }
+    .js section.in .proc .lock.lost { animation: lock-lost 7s linear infinite; }
+    @keyframes lock-lost { 0%, 20% { opacity: 0; } 22%, 58% { opacity: 1; } 60%, 100% { opacity: 0; } }
+    .js .proc .logs .ln { transform: scaleX(0); opacity: 0; }
+    .js section.in .proc .logs .ln { animation: log-in 7s cubic-bezier(.2, .7, .2, 1) infinite; }
+    .js section.in .proc .logs .ln:nth-of-type(2) { animation-delay: .2s; }
+    .js section.in .proc .logs .ln:nth-of-type(3) { animation-delay: .4s; }
+    .js section.in .proc .logs .ln:nth-of-type(4) { animation-delay: .6s; }
+    .js section.in .proc .logs .ln:nth-of-type(5) { animation-delay: .8s; }
+    .js section.in .proc .logs .ln:nth-of-type(6) { animation-delay: 1s; }
+    @keyframes log-in { 0%, 35% { transform: scaleX(0); opacity: 0; } 39% { transform: scaleX(1); opacity: 1; } 88% { opacity: 1; } 92%, 100% { opacity: 0; transform: scaleX(1); } }
+    .js section.in .proc .logs .ln.hit { animation-name: log-hit; }
+    @keyframes log-hit { 0%, 35% { transform: scaleX(0); opacity: 0; } 39% { transform: scaleX(1); opacity: 1; } 46% { opacity: .35; } 49% { opacity: 1; } 52% { opacity: .35; } 55%, 88% { opacity: 1; } 92%, 100% { opacity: 0; transform: scaleX(1); } }
+    .js section.in .proc .logs .panel { animation: panel7 7s ease infinite; }
+    @keyframes panel7 { 0%, 33% { stroke: var(--rule-2); } 36%, 58% { stroke: var(--mark); } 62%, 100% { stroke: var(--rule-2); } }
+    .js section.in .proc .opt use { animation: spin7 7s cubic-bezier(.4, 0, .2, 1) infinite; }
+    @keyframes spin7 { 0%, 58% { transform: rotate(0deg); color: var(--ink); } 60% { color: var(--mark); } 78% { transform: rotate(360deg); color: var(--mark); } 82%, 100% { transform: rotate(360deg); color: var(--ink); } }
+    .js section.in .proc .s4 circle { animation: opt7 7s ease infinite; }
+    @keyframes opt7 { 0%, 57% { stroke: var(--rule-2); } 60%, 78% { stroke: var(--mark); } 82%, 100% { stroke: var(--rule-2); } }
+    .js .proc .file { transform-box: fill-box; transform-origin: center; }
+    .js section.in .proc .file { animation: arrive 7s var(--ease) infinite; }
+    @keyframes arrive { 0%, 80% { opacity: .3; transform: scale(.94); } 86% { opacity: 1; transform: scale(1.06); } 90%, 100% { opacity: 1; transform: scale(1); } }
+    .js section.in .proc .file .wave { stroke-dasharray: 60; animation: wave 7s linear infinite; }
+    @keyframes wave { 0%, 86% { stroke-dashoffset: 60; } 94%, 100% { stroke-dashoffset: 0; } }
+    .js section.in .proc .file .ok { stroke-dasharray: 20; animation: okd 7s linear infinite; }
+    @keyframes okd { 0%, 93% { stroke-dashoffset: 20; } 100% { stroke-dashoffset: 0; } }
+
+    /* icons rise into place, then the four in the signal chain keep a slow float */
+    .js section.in .chain .stage, .js section.in .tile .ic, .js section.in .arch .ic, .js section.in h3.ic-row .ic { animation: rise .9s var(--ease) .5s backwards; }
+    .js section.in .chain > div:nth-child(2) .stage { animation-delay: .65s; }
+    .js section.in .chain > div:nth-child(3) .stage { animation-delay: .8s; }
+    .js section.in .chain > div:nth-child(4) .stage { animation-delay: .95s; }
+    .js section.in .dl > div:nth-child(2) .ic { animation-delay: .6s; }
+    .js section.in .dl > div:nth-child(3) .ic { animation-delay: .7s; }
+    .js section.in .dl > div:nth-child(4) .ic { animation-delay: .8s; }
+    .js section.in .dl > div:nth-child(5) .ic { animation-delay: .9s; }
+    .js section.in .dl > div:nth-child(6) .ic { animation-delay: 1s; }
+    @keyframes rise { 0% { opacity: 0; transform: translateY(10px); } 60% { opacity: 1; transform: translateY(-3px); } 100% { opacity: 1; transform: translateY(0); } }
+    .js section.in .chain .stage { animation: rise .9s var(--ease) .5s backwards, float 3.6s ease-in-out 1.4s infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+    /* architecture: icons draw themselves as the highlight passes */
+    .js .arch .ic * { stroke-dasharray: 100; stroke-dashoffset: 100; }
+    .js section.in .arch .ic * { animation: draw-ic 1.1s var(--ease) forwards; }
+    .js section.in .arch > div:nth-child(1) .ic * { animation-delay: .8s; }
+    .js section.in .arch > div:nth-child(2) .ic * { animation-delay: 1s; }
+    .js section.in .arch > div:nth-child(3) .ic * { animation-delay: 1.2s; }
+    .js section.in .arch > div:nth-child(4) .ic * { animation-delay: 1.4s; }
+    .js section.in .arch > div:nth-child(5) .ic * { animation-delay: 1.6s; }
+    .js section.in .arch > div:nth-child(6) .ic * { animation-delay: 1.8s; }
+    @keyframes draw-ic { to { stroke-dashoffset: 0; } }
+    .js section.in .arch > div { animation: pass .8s ease forwards; }
+    .js section.in .arch > div:nth-child(1) { animation-delay: .9s; }
+    .js section.in .arch > div:nth-child(2) { animation-delay: 1.1s; }
+    .js section.in .arch > div:nth-child(3) { animation-delay: 1.3s; }
+    .js section.in .arch > div:nth-child(4) { animation-delay: 1.5s; }
+    .js section.in .arch > div:nth-child(5) { animation-delay: 1.7s; }
+    .js section.in .arch > div:nth-child(6) { animation-delay: 1.9s; }
+    @keyframes pass { 35% { box-shadow: inset 0 0 0 2px var(--mark); } 100% { box-shadow: inset 0 0 0 0 transparent; } }
+    .js section.in .arch-foot { transition-delay: 2.5s; }
+
+    /* compare: rows settle in, then the Spectral Matrix column lights */
+    .js .cmp tbody tr { opacity: 0; transition: opacity .7s var(--ease); }
+    .js section.in .cmp tbody tr { opacity: 1; }
+    .js section.in .cmp tbody tr:nth-child(1) { transition-delay: .5s; }
+    .js section.in .cmp tbody tr:nth-child(2) { transition-delay: .6s; }
+    .js section.in .cmp tbody tr:nth-child(3) { transition-delay: .7s; }
+    .js section.in .cmp tbody tr:nth-child(4) { transition-delay: .8s; }
+    .js section.in .cmp tbody tr:nth-child(5) { transition-delay: .9s; }
+    .js section.in .cmp tbody tr:nth-child(6) { transition-delay: 1s; }
+    .js section.in .cmp tbody tr:nth-child(7) { transition-delay: 1.1s; }
+    .js .cmp td.us .ok { stroke-dasharray: 30; stroke-dashoffset: 30; }
+    .js section.in .cmp td.us .ok { animation: draw-ic .6s var(--ease) 1.4s forwards; }
+    .js .cmp thead th.us { box-shadow: inset 0 0 0 var(--mark); }
+    .js section.in .cmp thead th.us { animation: bar .6s var(--ease) 1.2s forwards; }
+    @keyframes bar { to { box-shadow: inset 0 3px 0 var(--mark); } }
+
+    /* roadmap */
+    .js .road::before { transform: scaleX(0); transform-origin: right; }
+    .js section.in .road::before { animation: grow .9s cubic-bezier(.2,.7,.2,1) .5s forwards; }
+    .js .road li::before { transform: scale(.4); opacity: .4; }
+    .js section.in .road li::before { animation: set .45s cubic-bezier(.2,.7,.2,1) forwards; }
+    .js section.in .road li:nth-child(1)::before { animation-delay: .7s; }
+    .js section.in .road li:nth-child(2)::before { animation-delay: .95s; }
+    .js section.in .road li:nth-child(3)::before { animation-delay: 1.2s; }
+    .js section.in .road li:nth-child(4)::before { animation-delay: 1.45s; }
+    @keyframes set { to { transform: scale(1); opacity: 1; } }
+
+    /* status: ticks draw in one by one, the open boxes pulse once */
+    .js .card li .tick { stroke-dasharray: 20; stroke-dashoffset: 20; }
+    .js section.in .card:not(.prove) li .tick { animation: draw-ic .5s var(--ease) forwards; }
+    .js section.in .card:not(.prove) li:nth-child(1) .tick { animation-delay: .7s; }
+    .js section.in .card:not(.prove) li:nth-child(2) .tick { animation-delay: .9s; }
+    .js section.in .card:not(.prove) li:nth-child(3) .tick { animation-delay: 1.1s; }
+    .js section.in .card:not(.prove) li:nth-child(4) .tick { animation-delay: 1.3s; }
+    .js section.in .card:not(.prove) li:nth-child(5) .tick { animation-delay: 1.5s; }
+    .js .card.prove li .ring { transform-box: fill-box; transform-origin: center; }
+    .js section.in .card.prove li .ring { animation: ping 1.2s ease forwards; }
+    .js section.in .card.prove li:nth-child(1) .ring { animation-delay: 1.8s; }
+    .js section.in .card.prove li:nth-child(2) .ring { animation-delay: 2.1s; }
+    .js section.in .card.prove li:nth-child(3) .ring { animation-delay: 2.4s; }
+    @keyframes ping { 30% { transform: scale(1.25); stroke-width: 2.6; } 100% { transform: scale(1); } }
+    .js .progress i { transform: scaleX(0); transform-origin: right; }
+    .js section.in .progress i { animation: grow .5s var(--ease) forwards; }
+    .js section.in .progress i:nth-child(1) { animation-delay: .5s; }
+    .js section.in .progress i:nth-child(2) { animation-delay: .6s; }
+    .js section.in .progress i:nth-child(3) { animation-delay: .7s; }
+    .js section.in .progress i:nth-child(4) { animation-delay: .8s; }
+    .js section.in .progress i:nth-child(5) { animation-delay: .9s; }
+    .js section.in .progress i:nth-child(6) { animation-delay: 1.1s; }
+    .js section.in .progress i:nth-child(7) { animation-delay: 1.2s; }
+    .js section.in .progress i:nth-child(8) { animation-delay: 1.3s; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1100px) {
+    .page { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .rail { position: sticky; top: 0; z-index: 5; padding-top: 0; background: var(--paper); border-bottom: 1px solid var(--rule); }
+    .rail .eyebrow, .rail .note { display: none; }
+    .rail ol { display: flex; gap: .15rem; border-inline-start: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: .5rem; }
+    .rail ol::-webkit-scrollbar { display: none; }
+    .rail ol::before { top: auto; bottom: 0; height: 2px; left: var(--x, 0px); width: var(--w, 0px); transition: left .5s var(--ease), width .5s var(--ease); }
+    .rail li { flex: 0 0 auto; }
+    .rail a { margin: 0; padding: .6rem .9rem; font-size: .95rem; white-space: nowrap; }
+    main { padding-top: 1rem; }
+    section { scroll-margin-top: 3.5rem; }
+  }
+  @media (max-width: 900px) {
+    .facts, .chain, .loop, .now, .road, .arch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .facts > div:nth-child(2) { border-inline-end: 0; }
+    .facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    .facts > div:nth-child(3) { padding-inline-start: 0; }
+    .chain .link { display: none; }
+    .chain > div + div { padding-inline-start: 0; }
+    .loop::before, .road::before { display: none; }
+    .two, .fly, .tiles, .board, .zeros, .ask .wrap-in, .legend, .output { grid-template-columns: minmax(0, 1fr); }
+    .stats { grid-template-columns: minmax(0, 1fr); }
+    .stats > div { border-inline-end: 0; border-bottom: 1px solid var(--rule); padding-inline-start: 0; }
+    .stats > div:last-child { border-bottom: 0; }
+    .dl > div, .use li { grid-template-columns: minmax(0, 1fr); gap: .4rem; }
+    .team li { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
+    .pro .cols { grid-template-columns: minmax(0, 1fr); }
+    .pro.with-fig { grid-template-columns: minmax(0, 1fr); }
+    .pro.with-fig > figure { grid-row: auto; max-width: 360px; }
+  }
+  @media (max-width: 700px) {
+    /* the comparison becomes one card per criterion: no sideways scrolling, ever */
+    .cmp table { min-width: 0; }
+    .cmp table, .cmp tbody, .cmp tr, .cmp tbody th, .cmp td { display: block; }
+    .cmp thead { display: none; }
+    .cmp tbody tr { padding: 1rem 1.2rem; border-bottom: 1px solid var(--rule); }
+    .cmp tbody tr:last-child { border-bottom: 0; }
+    .cmp tbody th { padding: 0 0 .6rem; border: 0; color: var(--ink); }
+    .cmp td { padding: .45rem 0; border: 0; }
+    .cmp td::before { content: attr(data-col); display: block; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .1rem; }
+    .cmp td.us { background: transparent; padding-inline-start: .8rem; border-inline-start: 2px solid var(--mark); margin-top: .3rem; }
+    .cmp td.us::before { color: var(--mark); }
+    .cmp tbody tr:hover td, .cmp tbody tr:hover th { background: transparent; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16.5px; }
+    .facts, .chain, .loop, .now, .road, .arch { grid-template-columns: minmax(0, 1fr); }
+    .facts > div { border-inline-end: 0; border-top: 1px solid var(--rule); padding-inline-start: 0; }
+    .facts > div:first-child { border-top: 0; }
+    .masthead .meta { gap: .75rem; }
+    .brand img { height: 52px; }
+    .team { padding: 0 1.3rem; }
+    .team li { padding: 1.6rem 0; }
+  }
+  @media print {
+    .marking, .masthead, .ask, footer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .rail { display: none; }
+    .page { grid-template-columns: 1fr; }
+    section { break-inside: avoid; }
+  }
+</style>
+
+<script>document.documentElement.setAttribute('dir', 'rtl'); document.documentElement.setAttribute('lang', 'he');</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-jammer" viewBox="0 0 24 24"><path d="M12 22V9M8 22h8M12 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6.5 2.5a8 8 0 0 0 0 7M17.5 2.5a8 8 0 0 1 0 7"/></symbol>
+  <symbol id="i-lab" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="M6 12c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 3 0"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M8.5 15c1-2.5 2-2.5 3 0s2 2.5 3 0"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10"/><path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.2"/></symbol>
+  <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14.3 4.9"/><path d="M4 12a8 8 0 0 1 14.3-4.9"/><path d="M18 3v4.5h-4.5M6 21v-4.5h4.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18"/><path d="M8 12l3 3 5-6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-nobox" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V5M8 9l4-4 4 4"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-rack" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6"/><rect x="4" y="14" width="16" height="6"/><path d="M7 7h.01M7 17h.01"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13"/><path d="M9 7V4h6v3M3 12h18"/></symbol>
+  <symbol id="i-library" viewBox="0 0 24 24"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 6l4-1 3 15-4 1z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4l9 5-9 5-9-5z"/><path d="M3 14l9 5 9-5"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 4.5a5 5 0 0 0-5.2 6.9L3 17.7 6.3 21l6.3-6.3a5 5 0 0 0 6.9-5.2l-3 3-2.5-.7-.7-2.5z"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-5-6.3"/></symbol>
+</svg>
+
+<div class="marking">מסמך סודי · מיועד לנמען בלבד · אינו מהווה הצעה להשקעה</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Walkin Warden"><img src="img/logo.png" alt="Walkin Warden" width="408" height="212"></a>
+    <div class="meta">
+      <span class="doc"><b>Investor Brief</b><i aria-hidden="true"></i>ספטמבר 2026</span>
+      <a href="index.html" hreflang="en" lang="en">English edition</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page">
+  <nav class="rail" aria-label="תוכן">
+    <p class="eyebrow">תוכן העניינים</p>
+    <ol>
+      <li><a href="#problem">הבעיה</a></li>
+      <li><a href="#value">מה משתנה</a></li>
+      <li><a href="#how">הלולאה</a></li>
+      <li><a href="#architecture">ארכיטקטורה</a></li>
+      <li><a href="#moat">היתרון</a></li>
+      <li><a href="#compare">החלופות</a></li>
+      <li><a href="#model">המודל העסקי</a></li>
+      <li><a href="#market">השוק</a></li>
+      <li><a href="#now">למה עכשיו</a></li>
+      <li><a href="#roadmap">מפת הדרכים</a></li>
+      <li><a href="#status">סטטוס</a></li>
+      <li><a href="#team">הצוות</a></li>
+      <li><a href="#ask">הגיוס</a></li>
+    </ol>
+    <p class="note">עמוד אחד. לקרוא מלמעלה למטה, או לקפוץ ישר לסקשן שמעניין אותך.</p>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <p class="eyebrow"><b>Spectral Matrix</b><span lang="en">Electronic Warfare as a Service, by Walkin Warden</span></p>
+      <h1>תוכנה שמחזירה למשבשים שכבר פרוסים בשטח את היעילות מול המקלטים החכמים החדשים, בלי להחליף את החומרה.</h1>
+      <p class="lede">לכל משבש קיים ולכל מקלט אויב, Spectral Matrix מייצרת במעבדה אוטומטית את צורת האות היעילה ביותר, ומספקת אותה לצבא כקובץ שנטען לציוד שכבר יש לו.</p>
+
+      <dl class="facts stagger">
+        <div><dt class="eyebrow">הגיוס</dt><dd class="v">$2M Pre-Seed</dd></div>
+        <div><dt class="eyebrow">אבן דרך ראשונה</dt><dd class="v">POC עובד בתוך כ-8 חודשים</dd></div>
+        <div><dt class="eyebrow">המודל</dt><dd class="v">EWaaS: הקמה, ואז מנוי שנתי</dd></div>
+        <div><dt class="eyebrow">מה משתנה אצל הלקוח</dt><dd class="v">החומרה הקיימת חוזרת לשירות</dd></div>
+      </dl>
+
+      <div class="chain stagger" aria-label="שרשרת האות">
+        <div>
+          <svg class="stage s-emit" viewBox="0 0 48 48" aria-hidden="true"><circle class="ring r1" cx="24" cy="24" r="10"/><circle class="ring r2" cx="24" cy="24" r="10"/><use href="#i-jammer" x="12" y="12" width="24" height="24"/></svg>
+          <p class="eyebrow">קלט</p><h3>המשבש הקיים</h3><p>הציוד שהצבא כבר רכש ופרס. נשאר בדיוק כפי שהוא.</p>
+        </div>
+        <div>
+          <svg class="link" viewBox="0 0 60 28" aria-hidden="true"><path class="rail" d="M0 14 H60"/><path class="wave raw" d="M0 14l4-7 4 11 4-10 4 8 4-5 4 9 4-12 4 9 4-6 4 8 4-7 4 6 4-3 4 2"/></svg>
+          <svg class="stage s-decode" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-lab" x="12" y="2" width="24" height="24"/><g class="bars"><rect x="10" y="32" width="3" height="14" rx="1"/><rect x="16" y="32" width="3" height="14" rx="1"/><rect x="22" y="32" width="3" height="14" rx="1"/><rect x="28" y="32" width="3" height="14" rx="1"/><rect x="34" y="32" width="3" height="14" rx="1"/></g></svg>
+          <p class="eyebrow sm">Spectral Matrix</p><h3>מעבדה אוטומטית</h3><p>מוצאת את צורת האות שמנצחת את המקלט של האיום, בתוך המגבלות של אותו משבש.</p>
+        </div>
+        <div>
+          <svg class="link" viewBox="0 0 60 28" aria-hidden="true"><path class="rail" d="M0 14 H60"/><path class="wave" d="M0 14q7.5-13 15 0t15 0 15 0 15 0"/></svg>
+          <svg class="stage s-file" viewBox="0 0 48 48" aria-hidden="true"><circle class="glow" cx="24" cy="24" r="18"/><path class="doc" d="M15 5h13l8 8v28a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path class="doc" d="M28 5v8h8"/><path class="fwave" d="M17 27c2-6 4-6 6 0s4 6 6 0 4-6 6 0"/><path class="fok" d="M19 36l3 3 6-6"/></svg>
+          <p class="eyebrow">פלט</p><h3>אות מעודכן</h3><p>קובץ שנטען למשבש כמו כל עדכון תוכנה, בשטח או מרחוק.</p>
+        </div>
+        <div>
+          <svg class="link" viewBox="0 0 60 28" aria-hidden="true"><path class="rail" d="M0 14 H60"/><path class="wave" d="M0 14q7.5-13 15 0t15 0 15 0 15 0"/></svg>
+          <svg class="stage s-lock" viewBox="0 0 48 48" aria-hidden="true"><circle class="lockring" cx="24" cy="24" r="20"/><use href="#i-target" x="12" y="12" width="24" height="24"/></svg>
+          <p class="eyebrow">מול</p><h3>האיום הנוכחי</h3><p>הכטב״ם עם המקלט החכם, שהמשבש הגנרי כבר לא מזיז.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 PROBLEM -->
+    <section id="problem">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="01">הבעיה</p>
+        <h2>הכטב״מים למדו להתחמק. המשבשים נשארו מאחור.</h2>
+        <p class="lead">עד תחילת 2025 משבש רחב סרט חסם את אות הניווט, והכטב״ם איבד את דרכו הרחק מהיעד. היום מקלט חכם וזול יושב על כל כטב״ם, ואותו משבש בדיוק כמעט לא מזיז אותו.</p>
+      </div>
+
+      <div class="plate" aria-labelledby="fig1">
+        <div class="plate-head">
+          <span class="eyebrow" id="fig1">איור 1 · מרחק ההסטה מהיעד, אותו משבש, אותו הספק</span>
+          <span class="eyebrow">סקלה לוגריתמית · מטרים</span>
+        </div>
+        <svg viewBox="0 0 800 210" role="img" aria-label="על ציר לוגריתמי מ-10 מטרים עד 100 קילומטרים, מרחק ההסטה של הכטב״ם קורס מ-20 ומעלה קילומטרים עם מקלט רגיל לכ-50 מטרים עם מקלט חכם, ירידה של פי 400 מול אותו משבש.">
+          <line x1="60" y1="150" x2="760" y2="150" stroke="var(--rule-2)" stroke-width="1"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)" text-anchor="middle">
+            <line x1="60" y1="150" x2="60" y2="156" stroke="var(--rule-2)"/><text x="60" y="172">10 m</text>
+            <line x1="235" y1="150" x2="235" y2="156" stroke="var(--rule-2)"/><text x="235" y="172">100 m</text>
+            <line x1="410" y1="150" x2="410" y2="156" stroke="var(--rule-2)"/><text x="410" y="172">1 km</text>
+            <line x1="585" y1="150" x2="585" y2="156" stroke="var(--rule-2)"/><text x="585" y="172">10 km</text>
+            <line x1="760" y1="150" x2="760" y2="156" stroke="var(--rule-2)"/><text x="760" y="172">100 km</text>
+          </g>
+          <g font-family="Heebo, Inter, sans-serif" font-size="11.5" font-weight="600" letter-spacing=".5">
+            <text x="760" y="52" fill="var(--muted)" direction="rtl" text-anchor="start">עד 2025 · מקלט ניווט רגיל</text>
+            <line class="draw" x1="60" y1="70" x2="637.5" y2="70" stroke="var(--ink)" stroke-width="6"/>
+            <rect class="pt" x="634" y="60" width="7" height="20" fill="var(--ink)"/>
+            <text class="pt" x="648" y="75" fill="var(--ink)" font-size="19" font-weight="700" letter-spacing="-0.5">20+ km</text>
+          </g>
+          <g font-family="Heebo, Inter, sans-serif" font-size="11.5" font-weight="600" letter-spacing=".5">
+            <text x="760" y="106" fill="var(--mark)" direction="rtl" text-anchor="start">היום · מקלט חכם, 20–200 דולר</text>
+            <line class="draw" x1="60" y1="124" x2="182.5" y2="124" stroke="var(--mark)" stroke-width="6"/>
+            <rect class="pt" x="179" y="114" width="7" height="20" fill="var(--mark)"/>
+            <text class="pt" x="193" y="129" fill="var(--mark)" font-size="19" font-weight="700" letter-spacing="-0.5">50 m</text>
+          </g>
+          <g class="pt" font-family="Heebo, Inter, sans-serif" font-size="11.5" fill="var(--muted)">
+            <line x1="182.5" y1="136" x2="182.5" y2="142" stroke="var(--rule-2)"/>
+            <line x1="637.5" y1="82" x2="637.5" y2="142" stroke="var(--rule-2)" stroke-dasharray="2 3"/>
+            <text x="410" y="200" text-anchor="middle" direction="rtl">קריסה של פי 400 בטווח האפקטיבי · החומרה לא השתנתה, המקלט השתנה</text>
+          </g>
+        </svg>
+        <p class="cap">נתונים טיפוסיים מהשטח. משבש רחב סרט גנרי מול מקלט ניווט רגיל, ואותו משבש באותו הספק מול מקלט מדף עם הגנות מובנות נגד שיבוש ונגד זיוף אות.</p>
+      </div>
+
+      <div class="legend stagger">
+        <div>
+          <p class="eyebrow">עד 2025</p>
+          <h3>משבש גנרי</h3>
+          <p class="sub">מקלט ניווט רגיל</p>
+          <p class="body">המשבש עובד. הכטב״ם מאבד את דרכו, בדרך כלל יותר מעשרים קילומטרים מהיעד.</p>
+        </div>
+        <div>
+          <p class="eyebrow" style="color:var(--mark)">היום</p>
+          <h3>אותו משבש</h3>
+          <p class="sub">מקלט חכם, רכיב מדף של 20 עד 200 דולר</p>
+          <p class="body">אותו משבש, אותו הספק. הכטב״ם ממשיך כמעט עד היעד, בהסטה של כחמישים מטרים.</p>
+        </div>
+      </div>
+
+      <div class="two">
+        <div>
+          <p class="callout">הלקוח כבר מחזיק בחומרה. האיום התפתח מהר יותר מטכניקת השידור.</p>
+          <p class="measure" style="margin-top:1.5rem">מלאי לוחמה אלקטרונית שנרכש במאות מיליוני דולרים, ופרוס היום בחזיתות, לא עושה כלום מול האיום הנוכחי. לא בגלל החומרה. בגלל האות שהיא משדרת.</p>
+        </div>
+        <figure>
+          <img src="img/drone.jpg" alt="כטב״ם חמוש מעל סוללות הגנה בשעת דמדומים" width="1200" height="750" loading="lazy">
+          <figcaption><b>האיום</b>נשק טקטי הפך לאיום אסטרטגי: כטב״ם ארוך טווח נושא משקל, עם מקלט ניווט של 200 דולר.</figcaption>
+        </figure>
+      </div>
+
+      <aside class="pro">
+        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
+        <h3>מה בדיוק השתנה במקלט, ולמה המשבש הגנרי לא מתמודד עם זה</h3>
+        <div class="body cols">
+          <div><h4>המקלט החדש</h4><p>בפברואר 2025 נתקלנו לראשונה במקלטי ניווט חכמים על כטב״מי האויב: רכיבי מדף עם הגנות מובנות נגד שיבוש ונגד זיוף אות. מאותו רגע זו ברירת המחדל בכל כטב״ם שפוגשים, לא יוצא הדופן.</p></div>
+          <div><h4>המשבש הגנרי</h4><p>מעורר ומגבר, ולעיתים בנייה עצמית בתוך הצבא. זה רוב המלאי שפרוס היום בחזיתות. מול מקלט חכם, במצבו הנוכחי, הוא אינו מסיט את הכטב״ם מהיעד. הבעיה אינה ההספק, אלא צורת האות מול ההגנות של אותו מקלט.</p></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 02 VALUE -->
+    <section id="value">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="02">מה משתנה</p>
+        <h2>אל תחליפו את המשבש. שנו את מה שהוא משדר.</h2>
+        <p class="lead">הרעיון מוכר בעולם המקצועי, וקוראים לו התאמת טכניקות שידור. מה שלא היה קיים הוא מי שעושה את זה למשבשי ניווט, מהר, ובלי לגעת בחומרה.</p>
+      </div>
+      <div class="dl stagger">
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-nobox"/></svg><span>בלי פלטפורמת חומרה חדשה</span></h3><p>המשבש שכבר פרוס נשאר בדיוק כפי שהוא. אנחנו לא צריכים אותו בידיים, רק את דף הנתונים שלו.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span>בלי מחזור רכש של שנים</span></h3><p>אין מכרז חומרה. ההתקשרות יושבת על תקציב השדרוג והתפעול, שמאושר שנה בשנה.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><span>טכניקה מותאמת לכל מקלט</span></h3><p>לכל זוג של משבש ואיום נבנית צורת האות היעילה ביותר, במעבדה, מול המקלט האמיתי.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-upload"/></svg><span>עדכון שמגיע לציוד שכבר בשטח</span></h3><p>הקובץ נטען דרך תוכנת ההפעלה של המשבש, באמצעי נייד אצל המפעיל או בשידור מרחוק מהחמ״ל לכל המערכות בבת אחת.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span>מענה בימים, לא בשנים</span></h3><p>כשהאויב מחליף מקלט, מחליפים את המקלט בתא ומריצים שוב. המערכת עובדת בשלב בניין הכוח, לפני הלחימה.</p></div>
+      </div>
+    </section>
+
+    <!-- 03 HOW -->
+    <section id="how">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="03">הלולאה</p>
+        <h2>מעבדה אוטומטית שמוצאת את האות הנכון לכל זוג של משבש ואיום.</h2>
+        <p class="lead">היום זה נעשה ידנית, על ידי צוות מומחים, ולוקח שבוע עבודה מלא לכל איום. Spectral Matrix הופכת את התהליך ללולאה שרצה לבד.</p>
+      </div>
+      <ol class="loop stagger">
+        <li><h3>מדמים את המשבש הקיים</h3><p>מפרט המשבש של הלקוח נטען כמגבלות על ציוד השידור במעבדה. המשבש עצמו לא צריך להגיע אלינו.</p></li>
+        <li><h3>מכניסים את מקלט היעד למעבדה</h3><p>מקלט האויב האמיתי יושב בתא מסוכך ומקבל שמיים מדומים, כולל מסלול טיסה.</p></li>
+        <li><h3>בודקים טכניקת שידור</h3><p>המערכת משדרת מול המקלט, בתוך המגבלות של המשבש האמיתי.</p></li>
+        <li><h3>מודדים את תגובת המקלט</h3><p>האם המקלט איבד את הנעילה על הלוויינים. זה מה שקובע אם הכטב״ם ממשיך למסלול או לא.</p></li>
+        <li><h3>משפרים וחוזרים</h3><p>שכבת אופטימיזציה מייצרת גרסה מדויקת יותר לריצה הבאה, עד שהחומרה של הלקוח נותנת את המרב.</p></li>
+      </ol>
+      <div class="loop-return" aria-hidden="true"><i></i><span>ריצה אחר ריצה, עד שהמקלט נשבר</span></div>
+
+      <div class="output">
+        <svg class="proc" viewBox="0 0 600 190" role="img" aria-label="המשבש משדר לעבר המקלט בתא; המקלט מאבד נעילה; הלוגים שלו נמשכים ונקראים; מנוע האופטימיזציה מכוונן את צורת הגל; ומה שיוצא הוא קובץ אות אחד.">
+          <path class="track" d="M60 100 H520"/>
+          <g class="st s1" transform="translate(60 100)">
+            <circle r="22"/>
+            <use href="#i-jammer" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <g class="waves">
+            <path class="wv" d="M92 86a20 20 0 0 1 0 28"/>
+            <path class="wv" d="M100 78a32 32 0 0 1 0 44"/>
+            <path class="wv" d="M108 70a44 44 0 0 1 0 60"/>
+          </g>
+          <g class="rx" transform="translate(200 100)">
+            <rect class="chamber" x="-34" y="-34" width="68" height="68" rx="8"/>
+            <circle r="22"/>
+            <use href="#i-chip" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <text class="lock ok" x="0" y="-44">נעילה</text>
+            <text class="lock lost" x="0" y="-44">אבדה נעילה</text>
+          </g>
+          <g class="logs" transform="translate(280 62)">
+            <rect class="panel" x="0" y="0" width="110" height="76" rx="6"/>
+            <text class="ttl" x="8" y="13">RX LOG</text>
+            <rect class="ln" x="8" y="22" width="70" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="30" width="52" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="38" width="84" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="46" width="44" height="3" rx="1.5"/>
+            <rect class="ln hit" x="8" y="54" width="92" height="3" rx="1.5"/>
+            <rect class="ln" x="8" y="62" width="60" height="3" rx="1.5"/>
+          </g>
+          <g class="st s4 opt" transform="translate(450 100)">
+            <circle r="22"/>
+            <use href="#i-cycle" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <g transform="translate(496 64)">
+            <g class="file">
+              <path class="paper" d="M12 2h24l16 16v52a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/>
+              <path d="M12 2h24l16 16v52a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/>
+              <path d="M36 2v16h16"/>
+              <path class="wave" d="M16 48c3-9 6-9 9 0s6 9 9 0 6-9 9 0"/>
+              <path class="ok" d="M20 62l4 4 8-8"/>
+            </g>
+          </g>
+          <g class="lbl"><text x="60" y="160">שידור</text><text x="200" y="160">מקלט בתא מסוכך</text><text x="335" y="160">לוגים</text><text x="450" y="160">אופטימיזציה</text><text x="528" y="160">קובץ אות</text></g>
+        </svg>
+        <div>
+          <span class="tag">התוצר</span>
+          <h3>קובץ אות</h3>
+          <p>טכניקת שידור מאומתת, כקובץ שנטען למשבש הקיים כמו כל עדכון תוכנה. לא חומרה, לא התקנה, לא מכרז.</p>
+        </div>
+      </div>
+
+      <aside class="pro with-fig">
+        <figure>
+          <img src="img/bench.jpg" alt="שולחן המדידה: מנתחי אותות שמציגים את צורת הגל שהמשבש משדר ואת תגובת המקלט" width="800" height="1000" loading="lazy">
+          <figcaption><b>המדידה</b>כל ריצה נמדדת: מה שודר, ומה המקלט עשה עם זה.</figcaption>
+        </figure>
+        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
+        <h3>מה כבר הוכח, ומה ההבדל מהעבודה הידנית שנעשית היום</h3>
+        <div class="body">
+          <div><h4>מה כבר הוכח בשטח</h4><p>המייסד וצוותו כבר עשו את זה ידנית, במהלך מערכה. אותה מערכת בדיוק, באותו הספק, הגיעה לטווח שיבוש גדול פי עשרה. מה שהשתנה היה צורת האות בלבד. ההתאמה הידנית גזלה שבוע עבודה של מהנדס RF, פיזיקאי ואיש עיבוד אותות לכל זוג של משבש ואיום. האוטומציה עושה את אותו מסלול בימים.</p></div>
+          <div><h4>מה הלולאה מודדת</h4><p>הקריטריון היחיד הוא תגובת המקלט האמיתי: שמירה על נעילה, איבוד נעילה, או הסטה. לא סימולציה של המקלט אלא המקלט עצמו, עם ההגנות שלו, מול שמיים מלאים שכוללים מסלול טיסה. זה מה שהופך את התוצר לטכניקה מאומתת ולא להערכה.</p></div>
+        </div>
+        <div class="tbl-wrap full">
+          <table>
+            <thead><tr><th></th><th>ידני, היום</th><th class="us">Spectral Matrix</th></tr></thead>
+            <tbody>
+              <tr><th>זמן לכל זוג</th><td>שבועות של עבודת צוות מומחים, מתחת ללחץ מבצעי</td><td class="us">ימים, ללא התערבות אנושית בלולאה</td></tr>
+              <tr><th>גישה למשבש</th><td>נדרשת. בלי החומרה עצמה אין ניסוי</td><td class="us">לא נדרשת. המגבלות שלו מדומות מדף הנתונים</td></tr>
+              <tr><th>האויב החליף מקלט</th><td>מתחילים מהתחלה</td><td class="us">מחליפים את המקלט בתא ומריצים שוב</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 04 ARCHITECTURE -->
+    <section id="architecture">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="04">ארכיטקטורה</p>
+        <h2>הארכיטקטורה, לקורא המקצועי</h2>
+        <p class="lead">סביבת בדיקה סגורה שמחזיקה בתוכה את שני הצדדים: את המגבלות של המשבש של הלקוח ואת המקלט האמיתי של האיום. ביניהם רצה לולאת מדידה ואופטימיזציה, והתוצר היחיד שיוצא החוצה הוא טכניקת שידור מאומתת.</p>
+      </div>
+      <div class="arch stagger">
+        <div><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><p class="eyebrow">מגבלות</p><h3>מגבלות המשבש של הלקוח</h3><p>רוחב סרט, הספק ומעורר, מדף הנתונים, כמגבלות קשיחות על כל מה שהמעבדה משדרת.</p></div>
+        <div class="core"><svg class="ic" aria-hidden="true"><use href="#i-lab"/></svg><p class="eyebrow">סביבה</p><h3>סביבת בדיקה RF / GNSS</h3><p>תא מסוכך, מחולל אותות רחב סרט וסימולטור ניווט לווייני שמייצר שמיים מלאים.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><p class="eyebrow">יעד</p><h3>מקלט היעד</h3><p>המקלט האמיתי של האיום, מתוך ספרייה ממופה של מקלטים מסחריים.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg><p class="eyebrow">מדידה</p><h3>מדידה</h3><p>האם המקלט שמר על נעילה, איבד אותה, או הוסט. לוגי המקלט מנותחים ריצה אחר ריצה.</p></div>
+        <div class="core"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><p class="eyebrow">אופטימיזציה</p><h3>מנוע אופטימיזציה</h3><p>מנתח את התוצאה ומייצר את צורת האות לריצה הבאה. הלולאה נסגרת בלי אדם בתוכה.</p></div>
+        <div><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><p class="eyebrow">תוצר</p><h3>טכניקת שידור מאומתת</h3><p>קובץ אות למשבש של הלקוח, מתועד מול המקלט שהוא נבנה נגדו.</p></div>
+      </div>
+      <p class="arch-foot">↺ הלולאה חוזרת</p>
+      <figure style="margin-top:3rem">
+        <img src="img/lab.jpg" alt="תא RF מסוכך עם מחוללי אותות ומנתחי ספקטרום: סביבת המעבדה שבה נבחן כל מקלט אויב" width="900" height="1200" loading="lazy" style="aspect-ratio:16/9;object-fit:cover">
+        <figcaption><b>המעבדה</b>מקלט האויב יושב בתא מסוכך, מקבל שמיים מדומים, ומותקף שוב ושוב עד שהאות מדויק.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 05 MOAT -->
+    <section id="moat">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="05">היתרון</p>
+        <h2>היתרון מצטבר: כל מקלט שממופה מוזיל את הלקוח הבא ומייקר את העזיבה.</h2>
+        <p class="lead">זה לא יתרון של אלגוריתם בודד. זה שילוב של ספרייה שגדלה, נתוני מדידה שנצברים, אינטגרציה לחומרה של כל לקוח, ושירות שמתחדש כל עוד האיום מתחלף.</p>
+      </div>
+      <div class="dl stagger">
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-library"/></svg><span>ספריית מקלטים שגדלה עם כל לקוח</span></h3><p>מקלטי המדף שאנחנו ממפים הם הנכס שלנו, והם משותפים. מקלט שמופה עבור לקוח אחד משרת את הבאים אחריו, והמעבדה השנייה עולה פחות מהראשונה.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg><span>נתוני מדידה שנצברים ריצה אחר ריצה</span></h3><p>כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. מנוע האופטימיזציה מתחיל כל איום חדש מנקודה מתקדמת יותר.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-people"/></svg><span>אוטומציה של עבודה שרק מומחים בודדים יודעים לעשות</span></h3><p>שבוע עבודה של מהנדס RF, פיזיקאי ואיש עיבוד אותות, לכל זוג של משבש ואיום, הופך לימים בלי אדם בתוך הלולאה.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span>אינטגרציה לציוד של כל לקוח</span></h3><p>ההקמה בונה סביבת מעבדה שמדמה את הציוד של הלקוח עד רמת דף הנתונים. מי שעשה את זה פעם אחת אצל לקוח הוא הכתובת לכל עדכון הבא.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><span>עדכונים חוזרים כל עוד האיום מתחלף</span></h3><p>השירות השנתי מזרים טכניקות חדשות למערכות הפרוסות, מרחוק, כתגובה לאיומים חדשים בשטח. האיום מתחלף בשבועות, והמנוי חי מזה.</p></div>
+        <div><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span>התוצרים של הלקוח נשארים אצלו</span></h3><p>מפרטי המשבשים של הלקוח וקבצי האות שנגזרים מהם אינם עוברים לאיש. הספרייה המשותפת היא של המקלטים, לא של הלקוחות.</p></div>
+      </div>
+      <p class="callout">ככל שיותר משפחות מקלטים ממופות, המערכת נעשית מהירה יותר לכל לקוח חדש, והשירות השנתי שווה יותר לכל לקוח קיים. זה הנכס שנבנה עם הזמן, לא הקובץ הבודד.</p>
+      <aside class="pro">
+        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
+        <h3>למה קשה ויקר לאויב להתגונן מזה</h3>
+        <div class="body"><p>יש הגנות, והן ידועות: אנטנות שמכוונות את הקליטה לכיוון הלוויין, ומערכת ניווט עצמאית שלא תלויה בלוויינים. שתיהן מייקרות ומסרבלות כל כטב״ם, והן דורשות מהאויב מחזור פיתוח והחלפת מלאי. לנו, מנגד, הקשחה כזאת עולה החלפת מקלט בתא והרצה מחדש, כלומר ימים. מה שעמיד בזמן הוא השיטה, לא הקובץ הבודד.</p></div>
+      </aside>
+    </section>
+
+    <!-- 06 COMPARE -->
+    <section id="compare">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="06">החלופות</p>
+        <h2>האיום מתחלף בשבועות. שתי הדרכים האחרות להתמודד איתו עונות בשנים, או בכוח אדם שאין.</h2>
+        <p class="lead">מי שמכיר את התחום שואל מיד: במה זה שונה ממה שכבר מוכרים לצבאות? זו התשובה, במונחים של עסק.</p>
+      </div>
+      <div class="cmp">
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>לקנות חומרה חדשה<small>כולל מערכת ייעודית נגד כטב״מים</small></th>
+                <th>מו״פ ידני בתוך הצבא<small>מהנדס שמכוון אות למקלט אחד</small></th>
+                <th class="us">Spectral Matrix<small>קובץ אות למשבשים שכבר פרוסים</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th>זמן תגובה לאיום חדש</th><td data-col="לקנות חומרה חדשה">שנים: מכרז, ייצור, הטמעה</td><td data-col="מו״פ ידני בתוך הצבא">שבועות עד חודשים לכל זוג משבש ואיום</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>ימים</td></tr>
+              <tr><th>החלפת חומרה</th><td data-col="לקנות חומרה חדשה">כן, מערכת חדשה במקום הקיימת</td><td data-col="מו״פ ידני בתוך הצבא">לא</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>לא. החומרה הפרוסה נשארת</td></tr>
+              <tr><th>תהליך הרכש</th><td data-col="לקנות חומרה חדשה">מכרז חומרה, עשרות עד מאות מיליוני דולר</td><td data-col="מו״פ ידני בתוך הצבא">פנימי, תלוי באנשים</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>הקמה חד פעמית, ואז מנוי מתקציב השדרוג והתפעול</td></tr>
+              <tr><th>כוח אדם מומחה</th><td data-col="לקנות חומרה חדשה">אצל היצרן, לא אצל הלקוח</td><td data-col="מו״פ ידני בתוך הצבא">צוות נדיר שאין כמעט לאף צבא</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>אוטומטי. אין אדם בתוך הלולאה</td></tr>
+              <tr><th>עדכונים חוזרים</th><td data-col="לקנות חומרה חדשה">מחזור רכש חדש לכל דור איום</td><td data-col="מו״פ ידני בתוך הצבא">כל איום מהתחלה</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>הזרמת טכניקות חדשות ברציפות, מרחוק</td></tr>
+              <tr><th>יכולת גידול</th><td data-col="לקנות חומרה חדשה">מערכת אחת לכל רכש</td><td data-col="מו״פ ידני בתוך הצבא">לינארית בכוח אדם</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>ספרייה משותפת: המעבדה השנייה עולה פחות מהראשונה</td></tr>
+              <tr><th>עלות מעבר ללקוח</th><td data-col="לקנות חומרה חדשה">נעילה ליצרן החומרה</td><td data-col="מו״פ ידני בתוך הצבא">אין, וגם אין המשכיות</td><td class="us" data-col="Spectral Matrix"><svg class="ok" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>ספריית איומים של הלקוח, ושיתוף מודיעיני ארוך טווח</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="tbl-note">מערכות שמאתרות ומאכנות משבשים ומזייפי אות בצד הנגדי משלימות אותנו ולא מתחרות בנו: הן מגלות מאיפה משדרים, אנחנו קובעים מה לשדר.</p>
+    </section>
+
+    <!-- 07 MODEL -->
+    <section id="model">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="07">המודל העסקי</p>
+        <h2>הקמה חד פעמית, ואחריה הכנסה חוזרת כל עוד האיום מתחלף.</h2>
+        <p class="lead">ההקמה מתאימה את המעבדה לציוד של הלקוח. המנוי השנתי מזרים טכניקות חדשות למערכות הפרוסות. ההכנסה החוזרת היא העיקר, וההקמה היא מה שמאפשר אותה.</p>
+      </div>
+      <div class="tiles stagger">
+        <div class="tile">
+          <svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg>
+          <p class="eyebrow">הקמה ראשונית, NRE</p>
+          <div class="num"><span data-count="5" data-prefix="~$" data-suffix="M">~$5M</span></div>
+          <p class="per">לכל לקוח · חד פעמי</p>
+          <h3>הקמה ואינטגרציה</h3>
+          <p class="eyebrow">מה זה קונה</p>
+          <ul>
+            <li>אפיון ומחקר ראשוני מול האיומים שמעניינים את הלקוח</li>
+            <li>סביבת מעבדה שמדמה את ציוד הלקוח, עד רמת דף הנתונים</li>
+            <li>התאמת התוכנה ומנוע האופטימיזציה לחומרה המקומית</li>
+          </ul>
+        </div>
+        <div class="tile us">
+          <svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg>
+          <p class="eyebrow" style="color:var(--mark)">EWaaS, שירות חוזר</p>
+          <div class="num mark">$5–10M</div>
+          <p class="per">ARR לכל לקוח · שנה בשנה</p>
+          <h3>שירות שנתי</h3>
+          <p class="eyebrow">מה זה קונה</p>
+          <ul>
+            <li>הזרמת טכניקות חדשות באופן רציף למערכות הפרוסות</li>
+            <li>בנייה ותחזוקה של ספריית האיומים של הלקוח, בהפרדה מלאה</li>
+            <li>עדכונים מרחוק כתגובה מיידית לאיומים חדשים בשטח</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fly" id="fly">
+        <svg viewBox="0 0 400 400" aria-label="גלגל התנופה: חמישה שלבים שמזינים זה את זה. עוברים עם העכבר על שלב כדי לקרוא אותו.">
+          <circle class="ring" cx="200" cy="200" r="140"/>
+          <circle class="seg" cx="200" cy="200" r="140" transform="rotate(-90 200 200)"/>
+          <circle class="seg" cx="200" cy="200" r="140" transform="rotate(-18 200 200)"/>
+          <circle class="seg" cx="200" cy="200" r="140" transform="rotate(54 200 200)"/>
+          <circle class="seg" cx="200" cy="200" r="140" transform="rotate(126 200 200)"/>
+          <circle class="seg" cx="200" cy="200" r="140" transform="rotate(198 200 200)"/>
+          <text class="centre" x="200" y="196">גלגל</text><text class="centre" x="200" y="212">התנופה</text>
+          <g class="node on" data-i="0" tabindex="0" role="button" aria-label="שלב 1: ידע על מקלט חדש"><circle cx="200" cy="60" r="24"/><use href="#i-chip" x="188" y="48" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="1" tabindex="0" role="button" aria-label="שלב 2: ספריית איומים גדולה יותר, לשימוש חוזר"><circle cx="333.1" cy="156.7" r="24"/><use href="#i-library" x="321.1" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="2" tabindex="0" role="button" aria-label="שלב 3: הקמה מהירה יותר, כיסוי רחב יותר"><circle cx="282.3" cy="313.3" r="24"/><use href="#i-wrench" x="270.3" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="3" tabindex="0" role="button" aria-label="שלב 4: שירות שנתי ששווה יותר"><circle cx="117.7" cy="313.3" r="24"/><use href="#i-cycle" x="105.7" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="node" data-i="4" tabindex="0" role="button" aria-label="שלב 5: עלות עזיבה גבוהה יותר"><circle cx="66.9" cy="156.7" r="24"/><use href="#i-lock" x="54.9" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+        </svg>
+        <button type="button" class="fly-all" id="fly-all">להציג את כל המחזור <span aria-hidden="true">←</span></button>
+        <div class="fly-panel" aria-live="polite">
+          <div class="single">
+            <p class="step">שלב 1 מתוך 5</p>
+            <h3>ידע על מקלט חדש</h3>
+            <p class="desc">כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. כל איום חדש שהמעבדה פוגשת הופך לידע שממנו המנוע מתחיל בפעם הבאה.</p>
+            <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+            <p class="hint">עוברים עם העכבר על שלב בגלגל כדי לקרוא אותו.</p>
+          </div>
+          <ol class="all" hidden>
+            <li><h4>ידע על מקלט חדש</h4><p>כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. כל איום חדש שהמעבדה פוגשת הופך לידע שממנו המנוע מתחיל בפעם הבאה.</p></li>
+            <li><h4>ספריית איומים גדולה יותר, לשימוש חוזר</h4><p>מקלט שמופה עבור לקוח אחד משרת את כל הבאים אחריו. ספריית מקלטי המדף היא הנכס המשותף.</p></li>
+            <li><h4>הקמה מהירה יותר, כיסוי רחב יותר</h4><p>ככל שיותר משפחות מקלטים ממופות, המעבדה השנייה עולה פחות מהראשונה ומכסה יותר מהאיום כבר מהיום הראשון.</p></li>
+            <li><h4>שירות שנתי ששווה יותר</h4><p>טכניקות חדשות זורמות למערכות הפרוסות ככל שהאיום מתחלף. ככל שהספרייה מכסה יותר, כל שנת שירות נותנת יותר.</p></li>
+            <li><h4>עלות עזיבה גבוהה יותר</h4><p>ספריית האיומים של הלקוח, האינטגרציה לציוד שלו והרציפות של העדכונים נשארים כולם עם השירות.</p></li>
+            <li class="back"><button type="button" id="fly-back">חזרה לשלב אחד בכל פעם</button></li>
+          </ol>
+        </div>
+        <p class="layers">שתי שכבות נפרדות, ובמפורש: ספריית מקלטי המדף שאנחנו ממפים היא הנכס שלנו והיא משותפת. מפרטי המשבשים של הלקוח וקבצי האות שנגזרים מהם נשארים שלו בלבד.</p>
+      </div>
+
+      <aside class="pro">
+        <p class="eyebrow">הערה טכנית · לקורא המקצועי</p>
+        <h3>מאיזה תקציב זה נקנה, ולמה קשה לצאת מזה</h3>
+        <div class="body"><p>אנחנו לא מתחרים על תקציבי הרכש. ההתקשרות יושבת על תקציבי השדרוג והתפעול של צבאות מערביים: תקציב שנתי, יציב, שמאושר בלי מכרז חומרה. העסקאות הן B2G ו-G2G ארוכות טווח, שנשענות על שיתוף מודיעיני, ולכן קשה מאוד לצאת מהן.</p></div>
+      </aside>
+    </section>
+
+    <!-- 08 MARKET -->
+    <section id="market">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="08">השוק</p>
+        <h2>השוק, ואיפה נכנסים קודם</h2>
+        <p class="lead">שוק הלוחמה האלקטרונית גדל, והחלק שצומח הכי מהר בתוכו הוא ההגנה מפני כטב״מים. הכניסה הראשונה היא בנקודה שבה ההיתכנות הטכנית והביקוש נפגשים, וזה בדיוק מה שה-POC בודק.</p>
+      </div>
+      <div class="stats stagger">
+        <div><p class="eyebrow">TAM</p><div class="num"><span data-count="22" data-prefix="$" data-suffix="B">$22B</span></div><p>שוק הלוחמה האלקטרונית העולמי, 2026. צומח במהירות בעקבות ריבוי הכטב״מים.</p></div>
+        <div><p class="eyebrow">הסגמנט הרלוונטי</p><div class="num"><span data-count="6" data-prefix="$" data-suffix="B">$6B</span></div><p>מערכות הגנה נגד כטב״מים ושיבוש אותות ניווט. מנוע הצמיחה, והחלק שאליו אנחנו נכנסים.</p></div>
+        <div><p class="eyebrow" style="color:var(--mark)">נקודת הכניסה</p><p class="big-text">המקלט הנפוץ ביותר בצד האויב, מול סוג האמל״ח הנפוץ ביותר בעולם</p><p>ה-POC מתחיל שם: משבש גנרי מול המקלט הנפוץ ביותר. הצלחה בנקודה הזאת היא מענה לרוב השוק כבר בשלב הראשון.</p></div>
+      </div>
+    </section>
+
+    <!-- 09 WHY NOW -->
+    <section id="now">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="09">למה עכשיו</p>
+        <h2>למה עכשיו</h2>
+        <p class="lead">חמישה דברים קרו בזה אחר זה, והם מה שפותח את החלון: המקלט הוזל, המלאי הפסיק לעבוד, האיום מאיץ, הרכש איטי מדי, והתשובה היחידה שמהירה מספיק היא תוכנה.</p>
+      </div>
+      <ol class="now stagger">
+        <li><h3>מקלטים חכמים וזולים הפכו לברירת המחדל</h3><p>רכיבי מדף של 20 עד 200 דולר, עם הגנות מובנות. מתחילת 2025 זה כל כטב״ם שפוגשים, לא יוצא הדופן.</p></li>
+        <li><h3>מלאי המשבשים הקיים הפסיק לעבוד</h3><p>ציוד שנרכש במאות מיליוני דולרים ופרוס בחזיתות לא מזיז את הכטב״ם החדש. לא בגלל החומרה, בגלל האות.</p></li>
+        <li><h3>האיום מתחלף בשבועות</h3><p>כל החלפת מקלט בצד האויב היא איום חדש. מי שעונה בשנים תמיד מאחור.</p></li>
+        <li><h3>רכש חומרה לוקח שנים</h3><p>מכרז, ייצור, הטמעה. עד שהמערכת החדשה מגיעה, המקלט שהיא נבנתה נגדו כבר הוחלף.</p></li>
+        <li><h3>עדכון אות מגיע בימים</h3><p>קובץ שנטען לציוד הקיים, בשטח או מרחוק מהחמ״ל לכל המערכות בבת אחת. זו התשובה היחידה שמהירה כמו האיום.</p></li>
+      </ol>
+      <h3 style="margin-top:3rem">ולמה אף אחד אחר לא עושה את זה</h3>
+      <div class="zeros stagger">
+        <div><div class="num mark">0</div><div><h3>יצרניות אמל״ח שהמודל שלהן מתגמל על החייאת מלאי קיים</h3><p>התעשייה הביטחונית מוכרת מערכות חדשות וחוזי תחזוקה. שדרוג של ציוד שכבר נמכר עומד בניגוד למודל ההכנסות שלה.</p></div></div>
+        <div><div class="num mark">0</div><div><h3>מרכזים ייעודיים שעושים את זה למשבשי ניווט</h3><p>מה שהמעצמות מפעילות מאות אנשים כדי לעשות עבור מטוסי קרב לא קיים כמערך מסודר עבור משבשי ניווט. היום זה נעשה ידנית, על ידי מומחים בודדים, ולאט.</p></div></div>
+      </div>
+    </section>
+
+    <!-- 10 ROADMAP -->
+    <section id="roadmap">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="10">מפת הדרכים</p>
+        <h2>מה קיים היום, מה הסבב מממן, ומה בא אחרי POC מוצלח</h2>
+        <p class="lead">שלוש קטגוריות של יכולת, בסדר עולה של קושי, על אותה מעבדה. הסבב הזה מממן את הראשונה.</p>
+      </div>
+      <ol class="road stagger">
+        <li class="done"><p class="when">קיים היום</p><p class="sub">לפני הסבב</p><h3>ארכיטקטורה, תוכנה ראשונית, ספרייה</h3><p>ארכיטקטורה טכנית מלאה, גרסה ראשונית של התוכנה, ספריית מקלטי יעד ממופה, מעבדה ראשונית ברמה בסיסית.</p></li>
+        <li class="fund"><p class="when">מה ה-Pre-Seed מממן</p><p class="sub">חודשים 1 עד 8, POC</p><h3>שיבוש (Jamming)</h3><p>סגירת הלולאה מקצה לקצה מול משבש גנרי ו-3 מקלטי איום מובילים, החל מהמקלט הנפוץ ביותר בצד האויב.</p></li>
+        <li><p class="when">אחרי POC מוצלח</p><p class="sub">שלב שני</p><h3>הזזת אות (Spoofing)</h3><p>קטגוריית אלגוריתם שנייה על אותה מעבדה: במקום להרעיש למקלט, לשכנע אותו שהוא נמצא במקום אחר.</p></li>
+        <li><p class="when">בהמשך</p><p class="sub">שלב שלישי</p><h3>Meaconing</h3><p>הרמה הגבוהה ביותר של הקושי, ומענה למקלטים המתקדמים ביותר שכבר קיימים בשוק.</p></li>
+      </ol>
+    </section>
+
+    <!-- 11 STATUS -->
+    <section id="status">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="11">סטטוס</p>
+        <h2>מה כבר קיים, ומה ה-POC צריך להוכיח</h2>
+        <p class="lead">הפרדה מפורשת, כדי שיכולת עתידית לא תיראה כיכולת קיימת.</p>
+      </div>
+      <div class="progress-cap"><span>קיים לפני הסבב: 5 פריטים</span><span>ה-POC צריך להוכיח: 3 פריטים</span></div>
+      <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i class="todo"></i><i class="todo"></i><i class="todo"></i></div>
+      <div class="board stagger">
+        <div class="card">
+          <div class="card-head"><p class="eyebrow">קיים ומוכח</p><span class="count">5</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>ארכיטקטורה טכנית מלאה של המערכת, כולל מפרט רכש מוכן ל-RFQ ברמת הקונקטור הבודד.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>גרסה ראשונית של התוכנה כתובה. הלולאה מחכה לציוד.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>ספריית מקלטי יעד ממופה: 6 מקלטים מסחריים, מהפגיע ביותר ועד רמה מחקרית, עם מפת היכולות של כל אחד.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>צוות ליבה: המייסד ועוד 4 אנשי מקצוע מהתחום. מעבדה ראשונית פועלת ברמה בסיסית.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>אימות מול התחום: הבעיה והפתרון נבחנו מול שישה אנשי מקצוע בכירים בלוחמה אלקטרונית.</span></li>
+          </ul>
+        </div>
+        <div class="card prove">
+          <div class="card-head"><p class="eyebrow">מה ה-POC צריך להוכיח</p><span class="count">3</span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>סגירת הלולאה מקצה לקצה, אוטומטית, על הציוד המלא של המעבדה.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>יכולת מוכחת מול 3 איומי כטב״ם מובילים, החל מהמקלט הנפוץ ביותר בצד האויב.</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10"/><path class="tick" d="M7.5 12.5l3 3 6-7"/></svg><span>התקשרות ראשונית (LOI) עם גוף ביטחוני ראשון, לשיתוף פעולה ולניסוי שדה.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 TEAM -->
+    <section id="team">
+      <div class="sec-head">
+        <p class="eyebrow" data-n="12">הצוות</p>
+        <h2>הצוות שעשה את זה ידנית פעם אחת, ועכשיו בונה את המכונה</h2>
+        <p class="lead">שלושה מהחמישה שירתו בלוחמה אלקטרונית מול מערכות ניווט לווייני. השניים הנוספים מביאים מו״פ ביטחוני ועסקאות לאומיות.</p>
+      </div>
+      <ul class="team stagger">
+        <li class="lead">
+          <div class="who"><div class="mono-gram" aria-hidden="true">NG</div><div><p class="role">CEO &amp; Founder</p><h3>נועם גלאם</h3><p class="where">לוחמה אלקטרונית מבצעית</p></div></div>
+          <div class="bio-col"><p class="bio">היחידה המבצעית ללוחמה אלקטרונית, עשרות משימות מבצעיות מול מערכות ניווט לווייני. פיתח אמל״ח נגד רחפנים שנמצא היום אחרי ניסוי צבאי. שותף בחברת טכנולוגיה לאופטימיזציה של אלגוריתמי AI.</p><p class="does">מכיר את הבעיה מהצד המבצעי, ועשה בעצמו את ההתאמה הידנית שהמערכת הופכת לאוטומטית.</p></div>
+        </li>
+        <li>
+          <div class="who"><div class="mono-gram" aria-hidden="true">CTO</div><div><p class="role">CTO / Tech Lead</p><h3>מומחה בינה מלאכותית ומערכות RF</h3><p class="where">מו״פ ביטחוני</p></div></div>
+          <div class="bio-col"><p class="bio">ניהל מחקר ופיתוח בחברה ביטחונית ציבורית, רשם 3 פטנטים בתחום התקשורת, ובעל ניסיון משני אקזיטים קודמים.</p><p class="does">האחריות הטכנולוגית הכוללת על המערכת.</p></div>
+        </li>
+        <li>
+          <div class="who"><div class="mono-gram" aria-hidden="true">DL</div><div><p class="role">RF &amp; Algorithms</p><h3>דוד לבדב</h3><p class="where">מדידות RF ו-GNSS</p></div></div>
+          <div class="bio-col"><p class="bio">חוקר ספקטרום וראש צוות טכני לשעבר ביחידת לוחמה אלקטרונית. כיום הנדסאי RF בתעשייה הביטחונית, במדידות RF ו-GNSS ובאינטגרציה של מערכות.</p><p class="does">המעבדה, ניתוח לוגי המקלט ופיתוח האלגוריתם.</p></div>
+        </li>
+        <li>
+          <div class="who"><div class="mono-gram" aria-hidden="true">NZ</div><div><p class="role">AI &amp; Automation</p><h3>ניר זרי</h3><p class="where">AI וצד שרת</p></div></div>
+          <div class="bio-col"><p class="bio">חוקר ספקטרום לשעבר ביחידת לוחמה אלקטרונית, והנדסאי אלקטרוניקה RF. מפתח AI ומתכנת צד שרת.</p><p class="does">בונה את האוטומציות שמריצות את הלולאה.</p></div>
+        </li>
+        <li>
+          <div class="who"><div class="mono-gram" aria-hidden="true">AS</div><div><p class="role">Strategic Advisor</p><h3>עמית שדה</h3><p class="where">מכרזים ועסקאות לאומיות</p></div></div>
+          <div class="bio-col"><p class="bio">ניסיון מוכח במכרזים ובעסקאות לאומיות.</p><p class="does">הצד העסקי, והקשרים מול גופים ביטחוניים וקרנות.</p></div>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<!-- 13 ASK -->
+<section class="ask" id="ask">
+  <img class="watermark" src="img/logo.png" alt="" aria-hidden="true" width="408" height="212">
+  <div class="wrap wrap-in">
+    <div>
+      <p class="eyebrow" data-n="13">הגיוס</p>
+      <div class="num"><span data-count="2" data-prefix="$" data-suffix="M">$2M</span></div>
+      <p class="pre">Pre-Seed</p>
+      <p class="cap">סבב אחד, אבן דרך אחת: POC עובד, מול המקלט הנפוץ ביותר בצד האויב.</p>
+      <div class="contacts">
+        <div><p class="role">CEO &amp; Founder</p><p class="name">נועם גלאם</p></div>
+        <div><p class="role">Strategic Advisor</p><p class="name">עמית שדה</p></div>
+      </div>
+    </div>
+    <div>
+      <ul class="use">
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-rack"/></svg><span>תשתית מעבדה</span></h3><p>מחולל אותות רחב סרט, סימולטור ניווט לווייני, תא מסוכך ומחשוב.</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-cycle"/></svg><span>מנוע האופטימיזציה</span></h3><p>סגירת הלולאה מקצה לקצה, אוטומטית.</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg><span>אימות שדה ולקוח</span></h3><p>הוכחת יכולת מול 3 איומי כטב״ם מובילים, וניסוי שדה עם הגוף הביטחוני הראשון.</p></li>
+        <li><h3 class="ic-row"><svg class="ic" aria-hidden="true"><use href="#i-case"/></svg><span>פיתוח עסקי</span></h3><p>הבשלת ההתקשרות מול גוף ביטחוני ראשון, עד להתקשרות ראשונית (LOI).</p></li>
+      </ul>
+      <div class="milestone"><p class="eyebrow">אבן הדרך שהסבב מממן</p><p class="v">POC עובד בתוך כ-8 חודשים</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Spectral Matrix by Walkin Warden · Investor Brief, ספטמבר 2026 · מסמך סודי, מיועד לנמען בלבד, ואינו מהווה הצעה להשקעה.</span>
+    <img src="img/logo.png" alt="Walkin Warden" width="408" height="212">
+  </div>
+</footer>
+
+<script>
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.classList.add('js');
+
+    /* contents: which section is being read; the indicator glides to it */
+    var links = document.querySelectorAll('.rail a');
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var railIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && map[e.target.id]) {
+          links.forEach(function (a) { a.classList.remove('on'); });
+          var a = map[e.target.id];
+          a.classList.add('on');
+          var ol = a.closest('ol');
+          ol.style.setProperty('--y', a.offsetTop + 'px');
+          ol.style.setProperty('--h', a.offsetHeight + 'px');
+          ol.style.setProperty('--x', a.offsetLeft + 'px');
+          ol.style.setProperty('--w', a.offsetWidth + 'px');
+          if (ol.scrollWidth > ol.clientWidth) {
+            a.scrollIntoView({ inline: 'center', block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+          }
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    document.querySelectorAll('section[id]').forEach(function (s) { railIo.observe(s); });
+
+    /* sections arm their motion once, as they come into view */
+    var inIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); inIo.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('section').forEach(function (s) { inIo.observe(s); });
+
+    /* flywheel: hover or focus a step to read it; it also turns on its own while in view */
+    var fly = document.getElementById('fly');
+    if (fly) {
+      var steps = [
+        { t: 'ידע על מקלט חדש', d: 'כל ריצה מול מקלט אמיתי מוסיפה תוצאה מדודה. כל איום חדש שהמעבדה פוגשת הופך לידע שממנו המנוע מתחיל בפעם הבאה.', a: -90 },
+        { t: 'ספריית איומים גדולה יותר, לשימוש חוזר', d: 'מקלט שמופה עבור לקוח אחד משרת את כל הבאים אחריו. ספריית מקלטי המדף היא הנכס המשותף.', a: -18 },
+        { t: 'הקמה מהירה יותר, כיסוי רחב יותר', d: 'ככל שיותר משפחות מקלטים ממופות, המעבדה השנייה עולה פחות מהראשונה ומכסה יותר מהאיום כבר מהיום הראשון.', a: 54 },
+        { t: 'שירות שנתי ששווה יותר', d: 'טכניקות חדשות זורמות למערכות הפרוסות ככל שהאיום מתחלף. ככל שהספרייה מכסה יותר, כל שנת שירות נותנת יותר.', a: 126 },
+        { t: 'A higher cost of leaving', d: 'The customer’s own threat library, the integration into its equipment and the continuity of updates all stay with the service.', a: 198 }
+      ];
+      var nodes = fly.querySelectorAll('.node');
+      var segs = fly.querySelectorAll('.seg');
+      var playBtn = document.getElementById('fly-all');
+      var panel = fly.querySelector('.fly-panel');
+      var single = panel.querySelector('.single'), all = panel.querySelector('.all');
+      var stepEl = single.querySelector('.step'), titleEl = single.querySelector('h3'), descEl = single.querySelector('.desc');
+      var dots = single.querySelectorAll('.dots i');
+      var allItems = all.querySelectorAll('li:not(.back)');
+      var cur = 0, timer = null, paused = false, mode = 'single', playTimers = [];
+
+      function light(i, keepOthers) {
+        segs.forEach(function (s, k) {
+          if (k === i) {
+            /* restart the draw from zero even if this segment was already lit */
+            s.style.transition = 'none'; s.classList.remove('lit'); void s.getBoundingClientRect(); s.style.transition = '';
+            s.classList.add('lit');
+          } else if (!keepOthers) { s.classList.remove('lit'); }
+        });
+      }
+      function show(i) {
+        cur = i;
+        nodes.forEach(function (n, k) { n.classList.toggle('on', k === i); n.classList.remove('lit'); });
+        dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+        stepEl.textContent = 'שלב ' + (i + 1) + ' מתוך 5';
+        titleEl.textContent = steps[i].t;
+        descEl.textContent = steps[i].d;
+        light(i, false);
+      }
+      function start() { if (reduce || timer || mode !== 'single') return; timer = setInterval(function () { if (!paused) show((cur + 1) % 5); }, 3400); }
+      function stop() { clearInterval(timer); timer = null; }
+      function clearPlay() { playTimers.forEach(clearTimeout); playTimers = []; }
+
+      /* "Show the whole cycle": the ring completes step by step and every step is laid out on the right */
+      function playAll() {
+        stop(); clearPlay(); mode = 'all';
+        single.hidden = true; all.hidden = false;
+        playBtn.hidden = true;
+        allItems.forEach(function (li) { li.classList.remove('show'); });
+        segs.forEach(function (s) { s.classList.remove('lit'); });
+        nodes.forEach(function (n) { n.classList.remove('on'); n.classList.remove('lit'); });
+        var gap = reduce ? 0 : 900;
+        steps.forEach(function (s, i) {
+          playTimers.push(setTimeout(function () {
+            nodes[i].classList.add('lit');
+            light(i, true);
+            allItems[i].classList.add('show');
+          }, 250 + gap * i));
+        });
+      }
+      function backToSingle() {
+        clearPlay(); mode = 'single';
+        all.hidden = true; single.hidden = false;
+        playBtn.hidden = false;
+        show(cur); start();
+      }
+      playBtn.addEventListener('click', playAll);
+      document.getElementById('fly-back').addEventListener('click', backToSingle);
+
+      nodes.forEach(function (n) {
+        var i = +n.getAttribute('data-i');
+        function pick() { if (mode !== 'single') return; paused = true; show(i); }
+        n.addEventListener('mouseenter', pick);
+        n.addEventListener('focus', pick);
+        n.addEventListener('click', pick);
+        n.addEventListener('mouseleave', function () { paused = false; });
+        n.addEventListener('blur', function () { paused = false; });
+      });
+      var flyIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { if (mode === 'single') { show(cur); start(); } } else { stop(); } });
+      }, { threshold: 0.4 });
+      flyIo.observe(fly);
+    }
+
+    /* figures: count up once, then rest on the real value */
+    if (reduce) return;
+    var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+    var countIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        countIo.unobserve(e.target);
+        var el = e.target, end = parseFloat(el.getAttribute('data-count'));
+        var pre = el.getAttribute('data-prefix') || '', suf = el.getAttribute('data-suffix') || '';
+        var t0 = null;
+        function frame(ts) {
+          if (t0 === null) t0 = ts;
+          var p = Math.min((ts - t0) / 700, 1);
+          el.textContent = pre + Math.round(end * ease(p)) + suf;
+          if (p < 1) requestAnimationFrame(frame); else el.textContent = pre + end + suf;
+        }
+        requestAnimationFrame(frame);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(function (el) { countIo.observe(el); });
+  })();
+</script>
