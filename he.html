@@ -152,7 +152,29 @@
   .plate svg { width: 100%; height: auto; display: block; direction: ltr; }
   .proc, .fly svg { direction: ltr; }
   .proc .logs .ln { transform-origin: right; }
-  .proc .lbl text, .proc .lock, .fly .centre, .plate .rl, .plate .cap-l, .plate .cap-s { direction: rtl; unicode-bidi: isolate; }
+  .figwrap { position: relative; container-type: inline-size; }
+  .svg-labels { position: absolute; inset: 0; pointer-events: none; direction: rtl; font-family: var(--sans); }
+  .svg-labels span { position: absolute; top: calc(var(--y) / var(--vh) * 100%); white-space: nowrap; line-height: 1; transform: translateY(-78%); font-size: calc(var(--fs) * 1px); font-size: calc(var(--fs) * 100cqw / var(--vw)); }
+  .svg-labels .mid { left: calc(var(--x) / var(--vw) * 100%); transform: translate(-50%, -78%); }
+  .svg-labels .end { right: calc((var(--vw) - var(--x)) / var(--vw) * 100%); }
+  .svg-labels .rl { --fs: 12; font-weight: 500; letter-spacing: .02em; color: var(--muted); }
+  .svg-labels .rl.r2 { color: var(--mark); }
+  .svg-labels .fcap { --fs: 11.5; color: var(--muted); }
+  .svg-labels .lbl { --fs: 10.5; font-weight: 600; letter-spacing: .1em; color: var(--muted); }
+  .svg-labels .lock { --fs: 9.5; font-weight: 700; letter-spacing: .1em; color: var(--muted); }
+  .svg-labels .lock.lost { color: var(--mark); opacity: 0; }
+  .svg-labels .centre { --fs: 12; font-weight: 600; letter-spacing: .12em; color: var(--muted); }
+  .svg-labels .cap-s, .svg-labels .lbl-s { display: none; }
+  .js .svg-labels .rl, .js .svg-labels .fcap { opacity: 0; }
+  .js .output.go .svg-labels .lock.ok { animation: lock-ok 7s linear infinite; }
+  .js .output.go .svg-labels .lock.lost { animation: lock-lost 7s linear infinite; }
+  @media (max-width: 560px) {
+    .svg-labels .rl, .svg-labels .fcap, .svg-labels .lbl { --fs: 15; }
+    .svg-labels .lock { --fs: 13; }
+    .svg-labels .cap-l, .svg-labels .lbl-l { display: none; }
+    .svg-labels .cap-s, .svg-labels .lbl-s { display: block; }
+  }
+
   .fig1 .axis { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk line { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk text { font-family: var(--mono); font-size: 11px; font-weight: 400; fill: var(--muted); text-anchor: middle; }
@@ -290,7 +312,8 @@
   .fly .node.lit use { color: var(--mark); }
   .fly .node.pop circle { transform: scale(1.28); fill: var(--mark-soft); }
   .fly-panel .all li:not(.back) { transition-duration: .8s; }
-  .fly-all { justify-self: center; margin-top: .4rem; font: inherit; font-size: .92rem; font-weight: 500; color: var(--mark); background: none; border: 0; padding: .3rem .2rem; cursor: pointer; letter-spacing: 0; border-bottom: 1px solid transparent; transition: border-color .25s ease; }
+  .fly-panel { grid-column: 2; grid-row: 1; }
+  .fly-all { grid-column: 1; grid-row: 2; justify-self: center; margin-top: .4rem; font: inherit; font-size: .92rem; font-weight: 500; color: var(--mark); background: none; border: 0; padding: .3rem .2rem; cursor: pointer; letter-spacing: 0; border-bottom: 1px solid transparent; transition: border-color .25s ease; }
   .fly-all span { display: inline-block; transition: transform .35s var(--ease); }
   .fly-all:hover { border-bottom-color: var(--mark); }
   .fly-all:hover span { transform: translateX(-3px); }
@@ -665,6 +688,7 @@
     .chain > div + div { padding-inline-start: 0; }
     .loop::before, .road::before { display: none; }
     .two, .fly, .tiles, .board, .zeros, .ask .wrap-in, .legend, .output { grid-template-columns: minmax(0, 1fr); }
+    .fly-panel, .fly-all { grid-column: auto; grid-row: auto; }
     .stats { grid-template-columns: minmax(0, 1fr); }
     .stats > div { border-inline-end: 0; border-bottom: 1px solid var(--rule); padding-inline-start: 0; }
     .stats > div:last-child { border-bottom: 0; }
@@ -845,6 +869,8 @@
           <span class="eyebrow" id="fig1">איור 1 · מרחק ההסטה מהיעד, אותו משבש, אותו הספק</span>
           <span class="eyebrow">סקלה לוגריתמית · מטרים</span>
         </div>
+        <!-- Hebrew labels are HTML laid over the drawing: iOS Safari draws Hebrew inside SVG <text> with the letters in reverse order -->
+        <div class="figwrap" style="--vw: 800; --vh: 210">
         <svg class="fig1" viewBox="0 0 800 210" role="img" aria-label="על ציר לוגריתמי מ-10 מטרים עד 100 קילומטרים, מרחק ההסטה של הכטב״ם קורס מ-20 ומעלה קילומטרים עם מקלט רגיל לכ-50 מטרים עם מקלט חכם, ירידה של פי 400 מול אותו משבש.">
           <line class="axis" x1="60" y1="150" x2="760" y2="150"/>
           <g class="ticks">
@@ -855,13 +881,11 @@
             <g class="tk"><line x1="760" y1="150" x2="760" y2="157"/><text x="760" y="174">100 km</text></g>
           </g>
           <g class="row r1">
-            <text class="rl" x="760" y="50" direction="rtl" text-anchor="start">עד 2025 · מקלט ניווט רגיל</text>
             <line class="draw b1" x1="60" y1="70" x2="637.5" y2="70"/>
             <rect class="pt" x="634" y="60" width="7" height="20"/>
             <text class="pt val" x="648" y="76">20+ km</text>
           </g>
           <g class="row r2">
-            <text class="rl" x="760" y="104" direction="rtl" text-anchor="start">היום · מקלט חכם, 20–200 דולר</text>
             <line class="draw b2" x1="60" y1="124" x2="182.5" y2="124"/>
             <rect class="pt" x="179" y="114" width="7" height="20"/>
             <text class="pt val" x="193" y="130">50 m</text>
@@ -869,9 +893,15 @@
           <g class="pt note">
             <line x1="182.5" y1="136" x2="182.5" y2="142"/>
             <line x1="637.5" y1="82" x2="637.5" y2="142" stroke-dasharray="2 3"/>
-            <text class="cap-l" x="410" y="200" text-anchor="middle" direction="rtl">קריסה של פי 400 בטווח האפקטיבי · החומרה לא השתנתה, המקלט השתנה</text><text class="cap-s" x="410" y="200" text-anchor="middle" direction="rtl">קריסה של פי 400 בטווח האפקטיבי</text>
           </g>
         </svg>
+        <div class="svg-labels" aria-hidden="true">
+          <span class="rl r1 end" style="--x: 760; --y: 50">עד 2025 · מקלט ניווט רגיל</span>
+          <span class="rl r2 end" style="--x: 760; --y: 104">היום · מקלט חכם, 20–200 דולר</span>
+          <span class="fcap cap-l mid" style="--x: 410; --y: 200">קריסה של פי 400 בטווח האפקטיבי · החומרה לא השתנתה, המקלט השתנה</span>
+          <span class="fcap cap-s mid" style="--x: 410; --y: 200">קריסה של פי 400 בטווח האפקטיבי</span>
+        </div>
+        </div>
         <p class="cap">נתונים טיפוסיים מהשטח. משבש רחב סרט גנרי מול מקלט ניווט רגיל, ואותו משבש באותו הספק מול מקלט מדף עם הגנות מובנות נגד שיבוש ונגד זיוף אות.</p>
       </div>
 
@@ -944,8 +974,9 @@
       <div class="loop-return" aria-hidden="true"><i></i><span>ריצה אחר ריצה, עד שהמקלט נשבר</span></div>
 
       <div class="output">
+        <div class="figwrap" style="--vw: 600; --vh: 190">
         <svg class="proc" viewBox="0 0 600 190" role="img" aria-label="המשבש משדר לעבר המקלט בתא; המקלט מאבד נעילה; הלוגים שלו נמשכים ונקראים; מנוע האופטימיזציה מכוונן את צורת הגל; ומה שיוצא הוא קובץ אות אחד.">
-          <!-- laid out right-to-left: the jammer on the right, the file on the left -->
+          <!-- laid out right-to-left: the jammer on the right, the file on the left; the Hebrew labels are HTML below the drawing -->
           <path class="track" d="M80 100 H540"/>
           <g class="st s1" transform="translate(540 100)">
             <circle r="22"/>
@@ -960,8 +991,6 @@
             <rect class="chamber" x="-34" y="-34" width="68" height="68" rx="8"/>
             <circle r="22"/>
             <use href="#i-chip" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <text direction="rtl" class="lock ok" x="0" y="-44">נעילה</text>
-            <text direction="rtl" class="lock lost" x="0" y="-44">אבדה נעילה</text>
           </g>
           <g class="logs" transform="translate(210 62)">
             <rect class="panel" x="0" y="0" width="110" height="76" rx="6"/>
@@ -986,8 +1015,19 @@
               <path class="ok" d="M20 62l4 4 8-8"/>
             </g>
           </g>
-          <g class="lbl"><text direction="rtl" x="540" y="160">שידור</text><text direction="rtl" class="lbl-l" x="400" y="160">מקלט בתא מסוכך</text><text direction="rtl" class="lbl-s" x="400" y="160">מקלט</text><text direction="rtl" x="265" y="160">לוגים</text><text direction="rtl" x="150" y="160">אופטימיזציה</text><text direction="rtl" class="lbl-l" x="72" y="160">קובץ אות</text><text direction="rtl" class="lbl-s" x="72" y="160">קובץ</text></g>
         </svg>
+        <div class="svg-labels" aria-hidden="true">
+          <span class="lock ok mid" style="--x: 400; --y: 56">נעילה</span>
+          <span class="lock lost mid" style="--x: 400; --y: 56">אבדה נעילה</span>
+          <span class="lbl mid" style="--x: 540; --y: 160">שידור</span>
+          <span class="lbl lbl-l mid" style="--x: 400; --y: 160">מקלט בתא מסוכך</span>
+          <span class="lbl lbl-s mid" style="--x: 400; --y: 160">מקלט</span>
+          <span class="lbl mid" style="--x: 265; --y: 160">לוגים</span>
+          <span class="lbl mid" style="--x: 150; --y: 160">אופטימיזציה</span>
+          <span class="lbl lbl-l mid" style="--x: 72; --y: 160">קובץ אות</span>
+          <span class="lbl lbl-s mid" style="--x: 72; --y: 160">קובץ</span>
+        </div>
+        </div>
         <div>
           <span class="tag">התוצר</span>
           <h3>קובץ אות</h3>
@@ -1134,6 +1174,7 @@
       </div>
 
       <div class="fly" id="fly">
+        <div class="figwrap" style="--vw: 400; --vh: 400">
         <svg viewBox="0 0 400 400" aria-label="גלגל התנופה: חמישה שלבים שמזינים זה את זה. עוברים עם העכבר על שלב כדי לקרוא אותו.">
           <circle class="ring" cx="200" cy="200" r="140"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(-90 200 200)"/>
@@ -1141,13 +1182,17 @@
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(54 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(126 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(198 200 200)"/>
-          <text direction="rtl" class="centre" x="200" y="196">גלגל</text><text direction="rtl" class="centre" x="200" y="212">התנופה</text>
           <g class="node on" data-i="0" tabindex="0" role="button" aria-label="שלב 1: ידע על מקלט חדש"><circle cx="200" cy="60" r="24"/><use href="#i-chip" x="188" y="48" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
           <g class="node" data-i="1" tabindex="0" role="button" aria-label="שלב 2: ספריית איומים גדולה יותר, לשימוש חוזר"><circle cx="333.1" cy="156.7" r="24"/><use href="#i-library" x="321.1" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
           <g class="node" data-i="2" tabindex="0" role="button" aria-label="שלב 3: הקמה מהירה יותר, כיסוי רחב יותר"><circle cx="282.3" cy="313.3" r="24"/><use href="#i-wrench" x="270.3" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
           <g class="node" data-i="3" tabindex="0" role="button" aria-label="שלב 4: שירות שנתי ששווה יותר"><circle cx="117.7" cy="313.3" r="24"/><use href="#i-cycle" x="105.7" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
           <g class="node" data-i="4" tabindex="0" role="button" aria-label="שלב 5: עלות עזיבה גבוהה יותר"><circle cx="66.9" cy="156.7" r="24"/><use href="#i-lock" x="54.9" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
         </svg>
+        <div class="svg-labels" aria-hidden="true">
+          <span class="centre mid" style="--x: 200; --y: 196">גלגל</span>
+          <span class="centre mid" style="--x: 200; --y: 212">התנופה</span>
+        </div>
+        </div>
         <button type="button" class="fly-all" id="fly-all">להציג את כל המחזור <span aria-hidden="true">←</span></button>
         <div class="fly-panel" aria-live="polite">
           <div class="single">
@@ -1365,7 +1410,9 @@
        so a tall section on a phone never plays its diagram before the reader gets there */
     /* fig. 1, step by step: axis → ticks rise → row labels → bar 1 → bar 2 → values → note */
     function playFig1(svg) {
-      if (!svg || !svg.animate) { svg && svg.querySelectorAll('.tk, .rl, .pt, .note').forEach(function (el) { el.style.opacity = 1; }); return; }
+      /* the Hebrew edition keeps its labels as HTML laid over the drawing (.figwrap), so look there too */
+      var root = svg && (svg.closest('.figwrap') || svg);
+      if (!svg || !svg.animate) { svg && root.querySelectorAll('.tk, .rl, .pt, .note, .fcap').forEach(function (el) { el.style.opacity = 1; }); return; }
       var soft = 'cubic-bezier(.2, .7, .2, 1)', spring = 'cubic-bezier(.16, 1, .3, 1)';
       var dash = [{ strokeDashoffset: 700 }, { strokeDashoffset: 0 }];
       var fade = [{ opacity: 0 }, { opacity: 1 }];
@@ -1373,12 +1420,12 @@
       svg.querySelectorAll('.tk').forEach(function (g, i) {
         g.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'translateY(0px)' }], { duration: 550, delay: 450 + i * 150, easing: spring, fill: 'forwards' });
       });
-      svg.querySelectorAll('.rl').forEach(function (t) { t.animate(fade, { duration: 500, delay: 1200, fill: 'forwards' }); });
+      root.querySelectorAll('.rl').forEach(function (t) { t.animate(fade, { duration: 500, delay: 1200, fill: 'forwards' }); });
       svg.querySelector('.b1').animate(dash, { duration: 1300, delay: 1400, easing: soft, fill: 'forwards' });
       svg.querySelector('.b2').animate(dash, { duration: 1300, delay: 2000, easing: soft, fill: 'forwards' });
       svg.querySelectorAll('.r1 .pt').forEach(function (el) { el.animate(fade, { duration: 500, delay: 2500, fill: 'forwards' }); });
       svg.querySelectorAll('.r2 .pt').forEach(function (el) { el.animate(fade, { duration: 500, delay: 2900, fill: 'forwards' }); });
-      svg.querySelector('.note').animate(fade, { duration: 600, delay: 3400, fill: 'forwards' });
+      root.querySelectorAll('.note, .fcap').forEach(function (el) { el.animate(fade, { duration: 600, delay: 3400, fill: 'forwards' }); });
     }
 
     var goIo = new IntersectionObserver(function (entries) {
