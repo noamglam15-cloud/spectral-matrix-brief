@@ -398,7 +398,7 @@
   footer img { height: 34px; width: auto; opacity: .85; flex: 0 0 auto; }
 
   /* ---------- motion ---------- */
-  @media (prefers-reduced-motion: no-preference) {
+  /* the motion below is always on: it is small, contained, and part of the explanation */
     /* brand */
     .js .brand img { opacity: 0; transform: translateY(6px) scale(.97); animation: settle 1s var(--ease) .1s forwards; }
     .js .brand::after { animation: sheen 1.3s cubic-bezier(.4, 0, .2, 1) .9s forwards; }
@@ -618,6 +618,11 @@
     .js section.in .progress i:nth-child(6) { animation-delay: 1.1s; }
     .js section.in .progress i:nth-child(7) { animation-delay: 1.2s; }
     .js section.in .progress i:nth-child(8) { animation-delay: 1.3s; }
+
+  /* viewers who asked their OS for less motion still get the page, without the entrance moves */
+  @media (prefers-reduced-motion: reduce) {
+    .js section > *, .js .ask .wrap-in > *, .js .stagger > *, .js .cmp tbody tr, .js .brand img { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+    .js .sec-head::after, .js .loop::before, .js .road::before { transform: none !important; }
   }
 
   /* ---------- responsive ---------- */
@@ -1378,7 +1383,7 @@
         descEl.textContent = steps[i].d;
         light(i, false);
       }
-      function start() { if (reduce || timer || mode !== 'single') return; timer = setInterval(function () { if (!paused) show((cur + 1) % 5); }, 3400); }
+      function start() { if (timer || mode !== 'single') return; timer = setInterval(function () { if (!paused) show((cur + 1) % 5); }, 3400); }
       function stop() { clearInterval(timer); timer = null; }
       function clearPlay() { playTimers.forEach(clearTimeout); playTimers = []; }
 
@@ -1424,7 +1429,6 @@
     }
 
     /* figures: count up once, then rest on the real value */
-    if (reduce) return;
     var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
     var countIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
