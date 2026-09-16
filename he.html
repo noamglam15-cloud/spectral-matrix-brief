@@ -152,6 +152,7 @@
   .plate svg { width: 100%; height: auto; display: block; direction: ltr; }
   .proc, .fly svg { direction: ltr; }
   .proc .logs .ln { transform-origin: right; }
+  .proc .lbl text, .proc .lock, .fly .centre, .plate .rl, .plate .cap-l, .plate .cap-s { direction: rtl; unicode-bidi: isolate; }
   .fig1 .axis { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk line { stroke: var(--rule-2); stroke-width: 1; }
   .fig1 .tk text { font-family: var(--mono); font-size: 11px; font-weight: 400; fill: var(--muted); text-anchor: middle; }
@@ -959,8 +960,8 @@
             <rect class="chamber" x="-34" y="-34" width="68" height="68" rx="8"/>
             <circle r="22"/>
             <use href="#i-chip" x="-12" y="-12" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <text class="lock ok" x="0" y="-44">נעילה</text>
-            <text class="lock lost" x="0" y="-44">אבדה נעילה</text>
+            <text direction="rtl" class="lock ok" x="0" y="-44">נעילה</text>
+            <text direction="rtl" class="lock lost" x="0" y="-44">אבדה נעילה</text>
           </g>
           <g class="logs" transform="translate(210 62)">
             <rect class="panel" x="0" y="0" width="110" height="76" rx="6"/>
@@ -985,7 +986,7 @@
               <path class="ok" d="M20 62l4 4 8-8"/>
             </g>
           </g>
-          <g class="lbl"><text x="540" y="160">שידור</text><text class="lbl-l" x="400" y="160">מקלט בתא מסוכך</text><text class="lbl-s" x="400" y="160">מקלט</text><text x="265" y="160">לוגים</text><text x="150" y="160">אופטימיזציה</text><text class="lbl-l" x="72" y="160">קובץ אות</text><text class="lbl-s" x="72" y="160">קובץ</text></g>
+          <g class="lbl"><text direction="rtl" x="540" y="160">שידור</text><text direction="rtl" class="lbl-l" x="400" y="160">מקלט בתא מסוכך</text><text direction="rtl" class="lbl-s" x="400" y="160">מקלט</text><text direction="rtl" x="265" y="160">לוגים</text><text direction="rtl" x="150" y="160">אופטימיזציה</text><text direction="rtl" class="lbl-l" x="72" y="160">קובץ אות</text><text direction="rtl" class="lbl-s" x="72" y="160">קובץ</text></g>
         </svg>
         <div>
           <span class="tag">התוצר</span>
@@ -1140,7 +1141,7 @@
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(54 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(126 200 200)"/>
           <circle class="seg" cx="200" cy="200" r="140" transform="rotate(198 200 200)"/>
-          <text class="centre" x="200" y="196">גלגל</text><text class="centre" x="200" y="212">התנופה</text>
+          <text direction="rtl" class="centre" x="200" y="196">גלגל</text><text direction="rtl" class="centre" x="200" y="212">התנופה</text>
           <g class="node on" data-i="0" tabindex="0" role="button" aria-label="שלב 1: ידע על מקלט חדש"><circle cx="200" cy="60" r="24"/><use href="#i-chip" x="188" y="48" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
           <g class="node" data-i="1" tabindex="0" role="button" aria-label="שלב 2: ספריית איומים גדולה יותר, לשימוש חוזר"><circle cx="333.1" cy="156.7" r="24"/><use href="#i-library" x="321.1" y="144.7" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
           <g class="node" data-i="2" tabindex="0" role="button" aria-label="שלב 3: הקמה מהירה יותר, כיסוי רחב יותר"><circle cx="282.3" cy="313.3" r="24"/><use href="#i-wrench" x="270.3" y="301.3" width="24" height="24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
