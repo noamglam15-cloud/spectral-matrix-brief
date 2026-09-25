@@ -6,20 +6,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
+  /* Dusk: the same palette as the Spectral Matrix experience — warm stone ground, ink, the one
+     red, and bands that run from night blue to the last of the sunset. One look, no dark mode. */
   :root {
-    --paper: #F4F5F3;
-    --panel: #E9EBE9;
-    --panel-2: #DFE3E0;
-    --ink: #0F151B;
-    --ink-2: #333D46;
-    --muted: #66727D;
-    --rule: #CDD2D5;
-    --rule-2: #AEB7BD;
-    --mark: #A8322A;
-    --mark-soft: rgba(168, 50, 42, .09);
-    --band: #0F151B;
+    --paper: #D9D5CE;
+    --panel: #E6E2DB;
+    --panel-2: #CEC9C1;
+    --ink: #12161A;
+    --ink-2: #353D45;
+    --muted: #5E6670;
+    --rule: #C2BDB5;
+    --rule-2: #A7A29A;
+    --mark: #B93A28;
+    --mark-soft: rgba(185, 58, 40, .10);
+    --band: linear-gradient(100deg, #18222C 0%, #25384A 42%, #57515E 76%, #9A6957 100%);
     --band-text: #EEF1F2;
-    --band-muted: #9AA6AE;
+    --band-muted: #B3BEC7;
+    --mark-on-band: #F2937A;
     --sans: "Heebo", "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
     --measure: 62ch;
@@ -28,31 +31,14 @@
     --ease: cubic-bezier(.16, 1, .3, 1);
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0D1114; --panel: #151B20; --panel-2: #1D252B;
-      --ink: #EAEEF0; --ink-2: #C5CCD1; --muted: #8E9AA3;
-      --rule: #263036; --rule-2: #37434B;
-      --mark: #E0574B; --mark-soft: rgba(224, 87, 75, .13);
-      --band: #05080A; --band-text: #EEF1F2; --band-muted: #9AA6AE;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0D1114; --panel: #151B20; --panel-2: #1D252B;
-    --ink: #EAEEF0; --ink-2: #C5CCD1; --muted: #8E9AA3;
-    --rule: #263036; --rule-2: #37434B;
-    --mark: #E0574B; --mark-soft: rgba(224, 87, 75, .13);
-    --band: #05080A; --band-text: #EEF1F2; --band-muted: #9AA6AE;
-    color-scheme: dark;
-  }
-
   :root { direction: rtl; }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body {
-    margin: 0; background: var(--paper); color: var(--ink-2);
+    margin: 0; color: var(--ink-2);
+    /* the top of the page carries a wash of evening sky, settling into the stone ground */
+    background: linear-gradient(180deg, #B9C5CF 0, #CFCDC9 520px, var(--paper) 980px) no-repeat, var(--paper);
     font-family: var(--sans); font-size: 17px; line-height: 1.65;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     
@@ -85,9 +71,15 @@
   .marking { background: var(--mark); color: #fff; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; text-align: center; padding: .45rem 1rem; }
   .masthead { background: var(--band); color: var(--band-text); padding-block: 1.5rem; }
   .masthead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap; }
-  .brand { position: relative; display: inline-block; overflow: hidden; line-height: 0; }
+  /* the mark's entrance — a signal sweep: an angular wipe centred under the arc reveals the logo
+     along the arc itself, then a glint crosses it, clipped to the logo's own shape */
+  @property --sweep { syntax: "<angle>"; inherits: false; initial-value: 360deg; }
+  .brand { position: relative; display: inline-block; line-height: 0;
+    -webkit-mask-image: conic-gradient(from 248deg at 52% 92%, #000 0deg, #000 var(--sweep), transparent calc(var(--sweep) + 14deg));
+    mask-image: conic-gradient(from 248deg at 52% 92%, #000 0deg, #000 var(--sweep), transparent calc(var(--sweep) + 14deg)); }
   .brand img { height: 68px; width: auto; }
-  .brand::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%); transform: translateX(-120%); pointer-events: none; }
+  .brand::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.9) 50%, transparent 62%) no-repeat; background-size: 260% 100%; background-position: 140% 0; pointer-events: none; mix-blend-mode: screen;
+    -webkit-mask-image: url(img/logo.png); mask-image: url(img/logo.png); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
   .masthead .meta { display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
   .masthead .doc { display: inline-flex; align-items: center; gap: .7rem; font-size: .78rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--band-muted); white-space: nowrap; }
   .masthead .doc b { color: var(--band-text); font-weight: 600; }
@@ -420,18 +412,18 @@
   .ask .wrap-in { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 4vw, 5rem); align-items: start; position: relative; }
   .ask .eyebrow { color: var(--band-muted); }
   .ask .num { color: var(--band-text); font-size: clamp(4.5rem, 3rem + 4.5vw, 7rem); margin-top: .5rem; }
-  .ask .pre { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mark); margin-top: .3rem; }
+  .ask .pre { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mark-on-band); margin-top: .3rem; }
   .ask .cap { color: var(--band-muted); font-size: 1.12rem; margin-top: 1rem; max-width: 34ch; }
   .use { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.18); }
   .use li { display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, 1fr); gap: 1.4rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
   .use h3 { color: var(--band-text); font-size: 1.05rem; }
-  .use h3.ic-row .ic { color: var(--mark); }
+  .use h3.ic-row .ic { color: var(--mark-on-band); }
   .use p { color: var(--band-muted); font-size: 1rem; }
-  .milestone { margin-top: 1.8rem; border: 1px solid var(--mark); border-radius: 12px; padding: 1.1rem 1.3rem; display: grid; gap: .25rem; }
-  .milestone .eyebrow { color: var(--mark); }
+  .milestone { margin-top: 1.8rem; border: 1px solid var(--mark-on-band); background: rgba(10, 15, 20, .32); border-radius: 12px; padding: 1.1rem 1.3rem; display: grid; gap: .25rem; }
+  .milestone .eyebrow { color: var(--mark-on-band); }
   .milestone .v { font-weight: 600; font-size: 1.2rem; color: var(--band-text); letter-spacing: 0; }
   .contacts { margin-top: 2rem; display: flex; gap: 2.5rem; flex-wrap: wrap; }
-  .contacts .role { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mark); }
+  .contacts .role { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mark-on-band); }
   .contacts .name { font-weight: 600; font-size: 1.15rem; color: var(--band-text); margin-top: .2rem; }
   footer { background: var(--band); color: var(--band-muted); padding: 1.6rem 0 2.4rem; border-top: 1px solid rgba(255,255,255,.12); font-size: .82rem; line-height: 1.6; }
   footer .wrap { display: flex; justify-content: space-between; gap: 1.5rem 3rem; align-items: center; flex-wrap: wrap; }
@@ -441,10 +433,13 @@
   /* ---------- motion ---------- */
   /* the motion below is always on: it is small, contained, and part of the explanation */
     /* brand */
-    .js .brand img { opacity: 0; transform: translateY(6px) scale(.97); animation: settle 1s var(--ease) .1s forwards; }
-    .js .brand::after { animation: sheen 1.3s cubic-bezier(.4, 0, .2, 1) .9s forwards; }
-    @keyframes settle { to { opacity: 1; transform: none; } }
-    @keyframes sheen { to { transform: translateX(120%); } }
+    .js .brand { animation: sweep 1.7s cubic-bezier(.65, 0, .35, 1) .15s both; }
+    .js .brand img { animation: arcglow 1.2s ease 1.5s both; }
+    /* the second glint fills forwards only: a backwards fill would pin the first one in place */
+    .js .brand::after { animation: sheen 1.15s cubic-bezier(.4, 0, .2, 1) 1.45s both, sheen 1.15s cubic-bezier(.4, 0, .2, 1) 9s 1 forwards; }
+    @keyframes sweep { from { --sweep: 0deg; } to { --sweep: 360deg; } }
+    @keyframes sheen { from { background-position: 140% 0; } to { background-position: -40% 0; } }
+    @keyframes arcglow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(38, 170, 232, 0)); } 45% { filter: drop-shadow(0 0 14px rgba(38, 170, 232, .7)); } }
     .js .ask .watermark { opacity: 0; transform: translateX(-24px); transition: opacity 1.4s var(--ease), transform 1.4s var(--ease); }
     .js .ask.in .watermark { opacity: .07; transform: none; }
 
@@ -662,7 +657,7 @@
 
   /* viewers who asked their OS for less motion still get the page, without the entrance moves */
   @media (prefers-reduced-motion: reduce) {
-    .js section > *, .js .ask .wrap-in > *, .js .stagger > *, .js .cmp tbody tr, .js .brand img { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+    .js section > *, .js .ask .wrap-in > *, .js .stagger > *, .js .cmp tbody tr, .js .brand img, .js .brand, .js .brand::after { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
     .js .sec-head::after, .js .loop::before, .js .road::before { transform: none !important; }
   }
 
