@@ -5,6 +5,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+  /* arriving from the Spectral Matrix experience (its closing mark zooms into this page): open
+     out of the same band colour, then drop the marker from the address */
+  if (/[?&]from=signal(&|$)/.test(location.search)) {
+    document.documentElement.classList.add('arrive');
+    try { history.replaceState(null, '', location.pathname + location.search.replace(/([?&])from=signal(&|$)/, '$1').replace(/[?&]$/, '') + location.hash); } catch (e) {}
+  }
+</script>
 <style>
   /* Dusk: the same palette as the Spectral Matrix experience — warm stone ground, ink, the one
      red, and bands that run from night blue to the last of the sunset. One look, no dark mode. */
@@ -629,10 +637,22 @@
     .js .progress.go i:nth-child(7) { animation-delay: 1.2s; }
     .js .progress.go i:nth-child(8) { animation-delay: 1.3s; }
 
+  /* the arrival from the experience: the band the zoom ended on opens like an iris around the mark */
+  @property --iris { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+  html.arrive body::before {
+    content: ""; position: fixed; inset: 0; z-index: 1000; pointer-events: none; background: var(--band);
+    -webkit-mask-image: radial-gradient(circle at var(--ax, 12%) var(--ay, 96px), transparent var(--iris), #000 calc(var(--iris) + 9%));
+    mask-image: radial-gradient(circle at var(--ax, 12%) var(--ay, 96px), transparent var(--iris), #000 calc(var(--iris) + 9%));
+    animation: iris 1.25s cubic-bezier(.55, 0, .2, 1) .12s both;
+  }
+  [dir="rtl"] { --ax: 88%; }
+  @keyframes iris { from { --iris: -10%; } to { --iris: 104%; visibility: hidden; } }
+
   /* viewers who asked their OS for less motion still get the page, without the entrance moves */
   @media (prefers-reduced-motion: reduce) {
     .js section > *, .js .ask .wrap-in > *, .js .stagger > *, .js .cmp tbody tr, .js .brand img, .js .brand, .js .brand::after { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
     .js .sec-head::after, .js .loop::before, .js .road::before { transform: none !important; }
+    html.arrive body::before { display: none; }
   }
 
   /* ---------- responsive ---------- */
@@ -1327,6 +1347,13 @@
 
 <script>
   (function () {
+    /* centre the arrival iris on the mark, wherever the layout put it */
+    var brand = document.querySelector('.masthead .brand');
+    if (brand && document.documentElement.classList.contains('arrive')) {
+      var b = brand.getBoundingClientRect();
+      document.documentElement.style.setProperty('--ax', (b.left + b.width / 2) + 'px');
+      document.documentElement.style.setProperty('--ay', (b.top + b.height / 2) + 'px');
+    }
     if (!('IntersectionObserver' in window)) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.documentElement.classList.add('js');
